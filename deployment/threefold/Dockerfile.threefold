@@ -1,0 +1,132 @@
+# ThreeFold-Optimized Dockerfile for Ex Revolution
+# Designed for decentralized deployment on ThreeFold infrastructure
+
+# Stage 1: Build stage
+FROM node:18-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Install build dependencies for ThreeFold optimization
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    curl \
+    git \
+    && rm -rf /var/cache/apk/*
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies
+RUN npm ci --include=dev
+
+# Copy source code
+COPY . .
+
+# Build the application with ThreeFold optimizations
+ENV DEPLOYMENT_PLATFORM=threefold
+ENV EDGE_OPTIMIZED=true
+RUN npm run build
+
+# Remove dev dependencies
+RUN npm prune --production
+
+# Stage 2: ThreeFold Production Stage
+FROM node:18-alpine AS threefold-production
+
+# Install runtime dependencies optimized for ThreeFold
+RUN apk add --no-cache \
+    curl \
+    tini \
+    dumb-init \
+    ca-certificates \
+    tzdata \
+    && rm -rf /var/cache/apk/*
+
+# Create app user for security
+RUN addgroup -g 1001 -S appgroup && \
+    adduser -S appuser -u 1001 -G appgroup
+
+# Set working directory
+WORKDIR /app
+
+# Copy built application from builder stage
+COPY --from=builder --chown=appuser:appgroup /app/node_modules ./node_modules
+COPY --from=builder --chown=appuser:appgroup /app/package*.json ./
+COPY --from=builder --chown=appuser:appgroup /app/start-website.js ./
+COPY --from=builder --chown=appuser:appgroup /app/sw.js ./
+COPY --from=builder --chown=appuser:appgroup /app/manifest.json ./
+COPY --from=builder --chown=appuser:appgroup /app/offline.html ./
+
+# Copy application directories
+COPY --from=builder --chown=appuser:appgroup /app/config ./config
+COPY --from=builder --chown=appuser:appgroup /app/middleware ./middleware
+COPY --from=builder --chown=appuser:appgroup /app/data ./data
+COPY --from=builder --chown=appuser:appgroup /app/models ./models
+COPY --from=builder --chown=appuser:appgroup /app/scripts ./scripts
+COPY --from=builder --chown=appuser:appgroup /app/css ./css
+COPY --from=builder --chown=appuser:appgroup /app/js ./js
+COPY --from=builder --chown=appuser:appgroup /app/assets ./assets
+
+# Copy built distribution files
+COPY --from=builder --chown=appuser:appgroup /app/dist ./dist 2>/dev/null || true
+
+# Copy ThreeFold-specific configurations
+COPY --from=builder --chown=appuser:appgroup /app/deployment/threefold/config ./config/threefold
+
+# Create necessary directories with proper permissions
+RUN mkdir -p uploads logs backups config/threefold && \
+    chown -R appuser:appgroup uploads logs backups config/threefold
+
+# Create ThreeFold-specific health check script
+RUN echo '#!/bin/sh\n\
+curl -f http://localhost:3000/api/health/threefold || exit 1\n\
+echo "ThreeFold Node: $THREEFOLD_NODE_ID"\n\
+echo "Farm: $THREEFOLD_FARM_ID"\n\
+echo "Region: $THREEFOLD_REGION"' > /usr/local/bin/threefold-health.sh && \
+    chmod +x /usr/local/bin/threefold-health.sh
+
+# Set environment variables for ThreeFold
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV DEPLOYMENT_PLATFORM=threefold
+ENV EDGE_OPTIMIZED=true
+ENV NPM_CONFIG_LOGLEVEL=warn
+
+# ThreeFold-specific environment variables
+ENV THREEFOLD_DEPLOYMENT=true
+ENV EDGE_CACHING_ENABLED=true
+ENV DISTRIBUTED_MONITORING=true
+ENV CACHE_STRATEGY=edge
+
+# Performance optimizations for ThreeFold edge nodes
+ENV NODE_OPTIONS="--max-old-space-size=1024 --optimize-for-size"
+ENV UV_THREADPOOL_SIZE=4
+
+# Expose port
+EXPOSE 3000
+
+# Health check optimized for ThreeFold infrastructure
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD /usr/local/bin/threefold-health.sh
+
+# Switch to non-root user
+USER appuser
+
+# Use dumb-init for better signal handling in ThreeFold containers
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+# Start the application
+CMD ["node", "start-website.js"]
+
+# Metadata for ThreeFold deployment
+LABEL maintainer="Ex Revolution <exrevolution8@gmail.com>"
+LABEL version="2.0.0-threefold"
+LABEL description="Ex Revolution - Enterprise Web Application for ThreeFold"
+LABEL org.opencontainers.image.source="https://github.com/exrevolution/website"
+LABEL org.opencontainers.image.documentation="https://github.com/exrevolution/website/blob/main/deployment/threefold/threefold-deployment.md"
+LABEL threefold.optimized="true"
+LABEL threefold.edge="true"
+LABEL threefold.distributed="true"

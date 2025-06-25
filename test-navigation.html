@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Mobile Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Mobile Navigation Test</h1>
+
+    <div class="test-section">
+        <h2>🔑 Authentication Setup</h2>
+        <p>Set up authentication token for testing:</p>
+        <button class="test-button" onclick="setupAuth()">Setup Auth Token</button>
+        <div id="auth-result" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 Mobile Menu Test</h2>
+        <p>Test mobile navigation on admin pages:</p>
+        <button class="test-button" onclick="testDashboard()">Test Dashboard</button>
+        <button class="test-button" onclick="testContacts()">Test Contacts</button>
+        <button class="test-button" onclick="testNewsletter()">Test Newsletter</button>
+        <div id="navigation-result" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔗 Direct Links</h2>
+        <p>Direct access to admin pages:</p>
+        <a href="admin/login.html" class="test-button">Login</a>
+        <a href="admin/dashboard.html" class="test-button">Dashboard</a>
+        <a href="admin/contacts.html" class="test-button">Contacts</a>
+        <a href="admin/newsletter.html" class="test-button">Newsletter</a>
+    </div>
+
+    <script>
+        function showResult(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = message;
+            element.className = `test-result ${type}`;
+        }
+
+        function setupAuth() {
+            // Set a mock token for testing
+            localStorage.setItem('token', 'test-token-12345');
+            showResult('auth-result', '✅ Authentication token set! You can now access admin pages.', 'success');
+        }
+
+        function testDashboard() {
+            showResult('navigation-result', '🔄 Opening dashboard...', 'info');
+
+            // Ensure token is set
+            if (!localStorage.getItem('token')) {
+                setupAuth();
+            }
+
+            // Open dashboard
+            window.open('admin/dashboard.html', '_blank');
+
+            setTimeout(() => {
+                showResult('navigation-result',
+                    '📱 Dashboard opened in new tab.\n\n' +
+                    'Test Instructions:\n' +
+                    '1. Switch to mobile view (F12 > Device toolbar)\n' +
+                    '2. Click the hamburger menu (☰)\n' +
+                    '3. Try clicking menu items (Users, Contacts, etc.)\n' +
+                    '4. Verify navigation works and sidebar closes\n\n' +
+                    '✅ If menu opens and navigation works = SUCCESS\n' +
+                    '❌ If menu doesn\'t open or navigation fails = ISSUE',
+                    'info'
+                );
+            }, 1000);
+        }
+
+        function testContacts() {
+            showResult('navigation-result', '🔄 Opening contacts...', 'info');
+
+            if (!localStorage.getItem('token')) {
+                setupAuth();
+            }
+
+            window.open('admin/contacts.html', '_blank');
+
+            setTimeout(() => {
+                showResult('navigation-result', '📱 Contacts page opened. Test mobile menu navigation.', 'info');
+            }, 1000);
+        }
+
+        function testUsers() {
+            showResult('navigation-result', '🔄 Opening users...', 'info');
+
+            if (!localStorage.getItem('token')) {
+                setupAuth();
+            }
+
+            window.open('admin/users.html', '_blank');
+
+            setTimeout(() => {
+                showResult('navigation-result', '📱 Users page opened. Test mobile menu navigation.', 'info');
+            }, 1000);
+        }
+
+        // Auto-setup auth on page load
+        window.addEventListener('load', () => {
+            const hasToken = localStorage.getItem('token');
+            if (hasToken) {
+                showResult('auth-result', '✅ Authentication token already set.', 'success');
+            } else {
+                showResult('auth-result', '⚠️ No auth token. Click "Setup Auth Token" first.', 'info');
+            }
+        });
+    </script>
+</body>
+</html>

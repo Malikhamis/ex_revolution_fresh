@@ -1,0 +1,603 @@
+/* Theme Switcher Styles */
+
+:root {
+    /* Light theme variables */
+    --light-bg-primary: #ffffff;
+    --light-bg-secondary: #f5f7fa;
+    --light-bg-card: #ffffff;
+    --light-text-primary: #222222;
+    --light-text-secondary: #444444;
+    --light-border: #e1e5eb;
+    --light-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* Dark theme variables */
+    --dark-bg-primary: #121212;
+    --dark-bg-secondary: #1e1e1e;
+    --dark-bg-card: #252525;
+    --dark-text-primary: #ffffff;
+    --dark-text-secondary: #b0b0b0;
+    --dark-border: #333333;
+    --dark-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme switcher container */
+.theme-switcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+/* Theme toggle button */
+.theme-toggle,
+#theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+    color: #ffffff;
+}
+
+.theme-toggle:hover,
+#theme-toggle:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
+}
+
+.theme-toggle-icon,
+#theme-toggle i {
+    font-size: 1.2rem;
+    color: #ffffff;
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dark-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.light-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.theme-toggle.dark-active .dark-icon {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.theme-toggle.dark-active .light-icon {
+    opacity: 1;
+    transform: scale(1);
+    color: #ffcc00;
+}
+
+/* Light theme styles - explicitly set for better control */
+body:not(.dark-theme) {
+    --bg-primary: var(--light-bg-primary);
+    --bg-secondary: var(--light-bg-secondary);
+    --bg-card: var(--light-bg-card);
+    --text-primary: var(--light-text-primary);
+    --text-secondary: var(--light-text-secondary);
+    --border-color: var(--light-border);
+    --shadow-sm: var(--light-shadow);
+    --shadow-md: var(--light-shadow);
+    --shadow-lg: var(--light-shadow);
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    --bg-primary: var(--dark-bg-primary);
+    --bg-secondary: var(--dark-bg-secondary);
+    --bg-card: var(--dark-bg-card);
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+    --border-color: var(--dark-border);
+    --shadow-sm: var(--dark-shadow);
+    --shadow-md: var(--dark-shadow);
+    --shadow-lg: var(--dark-shadow);
+}
+
+/* Adaptive text colors for all elements */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: var(--dark-text-primary);
+}
+
+body.dark-theme p,
+body.dark-theme span:not(.badge):not(.highlight),
+body.dark-theme li:not(.nav-item),
+body.dark-theme label,
+body.dark-theme .text-content {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-theme a:not(.btn):not(.nav-link):not(.logo-link):not(.cta-button) {
+    color: var(--primary-light);
+}
+
+body.dark-theme a:not(.btn):not(.nav-link):not(.logo-link):not(.cta-button):hover {
+    color: var(--primary);
+}
+
+/* Dark theme specific overrides */
+body.dark-theme .header {
+    background-color: var(--dark-bg-primary);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Main navigation container in dark mode */
+body.dark-theme .main-nav {
+    background-color: transparent;
+}
+
+/* Mobile navigation in dark mode */
+@media (max-width: 992px) {
+    body.dark-theme .main-nav {
+        background-color: var(--dark-bg-primary);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+/* Navigation styles for dark theme - exactly matching light mode */
+body.dark-theme .main-nav a {
+    color: var(--dark-text-primary);
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+body.dark-theme .main-nav a:hover {
+    color: var(--primary);
+    background: none;
+}
+
+body.dark-theme .main-nav a.active {
+    color: var(--primary);
+    background: none;
+}
+
+body.dark-theme .main-nav a.active::after {
+    background-color: var(--primary);
+}
+
+/* Logo styles for different themes */
+.logo-light {
+    display: block;
+}
+
+.logo-dark {
+    display: none;
+}
+
+/* Show dark logo in dark mode, hide light logo */
+body.dark-theme .logo-light {
+    display: none;
+}
+
+body.dark-theme .logo-dark {
+    display: block;
+}
+
+/* Footer styles for both themes - ALWAYS DARK APPEARANCE */
+/* Unified footer styles that apply to both light and dark themes */
+.footer,
+body.dark-theme .footer,
+body:not(.dark-theme) .footer {
+    background-color: #121212 !important; /* Dark background in both themes */
+    border-top: 1px solid #333333 !important;
+    color: #ffffff !important;
+}
+
+.footer-column h3,
+body.dark-theme .footer-column h3,
+body:not(.dark-theme) .footer-column h3 {
+    color: #ffffff !important;
+}
+
+.footer-column p,
+.footer-links a,
+.footer-column a,
+.footer a,
+body.dark-theme .footer-column p,
+body.dark-theme .footer-links a,
+body.dark-theme .footer-column a,
+body.dark-theme .footer a,
+body:not(.dark-theme) .footer-column p,
+body:not(.dark-theme) .footer-links a,
+body:not(.dark-theme) .footer-column a,
+body:not(.dark-theme) .footer a {
+    color: #ffffff !important; /* Bright white text for maximum readability */
+}
+
+.footer-links a:hover,
+.footer-column a:hover,
+.footer a:hover,
+body.dark-theme .footer-links a:hover,
+body.dark-theme .footer-column a:hover,
+body.dark-theme .footer a:hover,
+body:not(.dark-theme) .footer-links a:hover,
+body:not(.dark-theme) .footer-column a:hover,
+body:not(.dark-theme) .footer a:hover {
+    color: var(--primary-light) !important; /* Highlight with primary color on hover */
+}
+
+.footer-bottom,
+body.dark-theme .footer-bottom,
+body:not(.dark-theme) .footer-bottom {
+    border-top: 1px solid #333333 !important;
+}
+
+.copyright,
+body.dark-theme .copyright,
+body:not(.dark-theme) .copyright {
+    color: #ffffff !important; /* Bright white text for maximum readability */
+}
+
+.footer-nav a,
+body.dark-theme .footer-nav a,
+body:not(.dark-theme) .footer-nav a {
+    color: #ffffff !important; /* Bright white text for maximum readability */
+}
+
+.footer-nav a:hover,
+body.dark-theme .footer-nav a:hover,
+body:not(.dark-theme) .footer-nav a:hover {
+    color: var(--primary-light) !important; /* Highlight with primary color on hover */
+}
+
+.social-links a,
+body.dark-theme .social-links a,
+body:not(.dark-theme) .social-links a {
+    background-color: rgba(0, 102, 204, 0.8) !important; /* Blue background for better visibility */
+    color: #ffffff !important;
+}
+
+.social-links a:hover,
+body.dark-theme .social-links a:hover,
+body:not(.dark-theme) .social-links a:hover {
+    background-color: var(--primary) !important;
+    color: #ffffff !important;
+}
+
+/* Card styles for both themes */
+/* Dark theme */
+body.dark-theme .card,
+body.dark-theme .feature-card,
+body.dark-theme .service-card,
+body.dark-theme .team-card,
+body.dark-theme .testimonial-card,
+body.dark-theme .blog-card,
+body.dark-theme .contact-form,
+body.dark-theme .contact-info,
+body.dark-theme .faq-item,
+body.dark-theme .story-card,
+body.dark-theme .values-card,
+body.dark-theme .mission-card,
+body.dark-theme .vision-card,
+body.dark-theme .value-card,
+body.dark-theme .process-step,
+body.dark-theme .pricing-card,
+body.dark-theme .portfolio-item,
+body.dark-theme .blog-post,
+body.dark-theme .case-study-card,
+body.dark-theme .sidebar-widget,
+body.dark-theme .recent-post {
+    background-color: var(--dark-bg-card);
+    box-shadow: var(--dark-shadow);
+}
+
+/* Light theme */
+body:not(.dark-theme) .card,
+body:not(.dark-theme) .feature-card,
+body:not(.dark-theme) .service-card,
+body:not(.dark-theme) .team-card,
+body:not(.dark-theme) .testimonial-card,
+body:not(.dark-theme) .blog-card,
+body:not(.dark-theme) .contact-form,
+body:not(.dark-theme) .contact-info,
+body:not(.dark-theme) .faq-item,
+body:not(.dark-theme) .story-card,
+body:not(.dark-theme) .values-card,
+body:not(.dark-theme) .mission-card,
+body:not(.dark-theme) .vision-card,
+body:not(.dark-theme) .value-card,
+body:not(.dark-theme) .process-step,
+body:not(.dark-theme) .pricing-card,
+body:not(.dark-theme) .portfolio-item,
+body:not(.dark-theme) .blog-post,
+body:not(.dark-theme) .case-study-card,
+body:not(.dark-theme) .sidebar-widget,
+body:not(.dark-theme) .recent-post {
+    background-color: var(--light-bg-card);
+    box-shadow: var(--light-shadow);
+}
+
+body.dark-theme .form-control {
+    background-color: var(--dark-bg-secondary);
+    border-color: var(--dark-border);
+    color: var(--dark-text-primary);
+}
+
+body.dark-theme .form-control::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+/* Hero section styles for both themes - ALWAYS WHITE TEXT */
+.hero,
+.about-hero,
+.service-hero,
+.contact-hero,
+.services-hero,
+.blog-hero,
+.case-studies-hero {
+    color: #ffffff !important;
+}
+
+/* Hero text for both themes - BRIGHT WHITE */
+.hero h1,
+.about-hero h1,
+.service-hero h1,
+.contact-hero h1,
+.services-hero h1,
+.blog-hero h1,
+.case-studies-hero h1 {
+    color: #ffffff !important;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Ensure hero text is white in all modes and devices */
+@media (max-width: 768px) {
+    .hero h1,
+    .about-hero h1,
+    .service-hero h1,
+    .contact-hero h1,
+    .services-hero h1,
+    .blog-hero h1,
+    .case-studies-hero h1 {
+        color: #ffffff !important;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+.hero p,
+.about-hero p,
+.service-hero p,
+.contact-hero p,
+.services-hero p,
+.blog-hero p,
+.case-studies-hero p {
+    color: #ffffff !important;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.2px !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Hero backgrounds with gradient primary for both themes */
+.hero,
+.about-hero,
+.service-hero,
+.contact-hero,
+.services-hero,
+.blog-hero,
+.case-studies-hero {
+    background: var(--gradient-primary) !important;
+    color: var(--white) !important;
+    position: relative !important;
+}
+
+/* Card and content styles for both themes */
+/* Dark theme */
+body.dark-theme .card-header h2,
+body.dark-theme .stat-number,
+body.dark-theme .value-content h3,
+body.dark-theme .mission-card h3,
+body.dark-theme .vision-card h3,
+body.dark-theme .service-title,
+body.dark-theme .process-title,
+body.dark-theme .testimonial-info h4,
+body.dark-theme .blog-post-title,
+body.dark-theme .case-study-title,
+body.dark-theme .sidebar-widget h3 {
+    color: var(--dark-text-primary);
+}
+
+body.dark-theme .story-text,
+body.dark-theme .stat-label,
+body.dark-theme .value-content p,
+body.dark-theme .mission-card p,
+body.dark-theme .vision-card p,
+body.dark-theme .service-description,
+body.dark-theme .process-step p,
+body.dark-theme .testimonial-text,
+body.dark-theme .testimonial-company,
+body.dark-theme .blog-post-excerpt,
+body.dark-theme .blog-post-meta,
+body.dark-theme .case-study-description,
+body.dark-theme .category-name,
+body.dark-theme .recent-post-date {
+    color: var(--dark-text-secondary);
+}
+
+/* Light theme */
+body:not(.dark-theme) .card-header h2,
+body:not(.dark-theme) .stat-number,
+body:not(.dark-theme) .value-content h3,
+body:not(.dark-theme) .mission-card h3,
+body:not(.dark-theme) .vision-card h3,
+body:not(.dark-theme) .service-title,
+body:not(.dark-theme) .process-title,
+body:not(.dark-theme) .testimonial-info h4,
+body:not(.dark-theme) .blog-post-title,
+body:not(.dark-theme) .case-study-title,
+body:not(.dark-theme) .sidebar-widget h3 {
+    color: var(--light-text-primary);
+}
+
+body:not(.dark-theme) .story-text,
+body:not(.dark-theme) .stat-label,
+body:not(.dark-theme) .value-content p,
+body:not(.dark-theme) .mission-card p,
+body:not(.dark-theme) .vision-card p,
+body:not(.dark-theme) .service-description,
+body:not(.dark-theme) .process-step p,
+body:not(.dark-theme) .testimonial-text,
+body:not(.dark-theme) .testimonial-company,
+body:not(.dark-theme) .blog-post-excerpt,
+body:not(.dark-theme) .blog-post-meta,
+body:not(.dark-theme) .case-study-description,
+body:not(.dark-theme) .category-name,
+body:not(.dark-theme) .recent-post-date {
+    color: var(--light-text-secondary);
+}
+
+/* Icon styles for both themes */
+body.dark-theme .value-icon,
+body.dark-theme .stat-icon,
+body.dark-theme .service-icon,
+body.dark-theme .feature-icon,
+body.dark-theme .contact-method-icon {
+    background-color: var(--primary);
+    color: var(--dark-text-primary);
+}
+
+body.dark-theme .mission-icon,
+body.dark-theme .vision-icon {
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+}
+
+body:not(.dark-theme) .value-icon,
+body:not(.dark-theme) .stat-icon,
+body:not(.dark-theme) .service-icon,
+body:not(.dark-theme) .feature-icon,
+body:not(.dark-theme) .contact-method-icon {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+}
+
+body:not(.dark-theme) .mission-icon,
+body:not(.dark-theme) .vision-icon {
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    color: var(--white);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    /* Hide the fixed theme switcher on mobile */
+    .theme-switcher {
+        display: none;
+    }
+
+    /* Position theme switcher in header for mobile */
+    .header-container .theme-toggle {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        z-index: 999;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Ensure header container is positioned relative */
+    .header-container {
+        position: relative;
+    }
+
+    .theme-toggle,
+    #theme-toggle {
+        width: 45px;
+        height: 45px;
+    }
+
+    .theme-toggle-icon,
+    #theme-toggle i {
+        font-size: 1.1rem;
+    }
+}
+
+/* Button and link styles for both themes */
+/* Common button styles for both themes */
+.btn-primary,
+.service-link,
+.case-study-link,
+.blog-post-link,
+.cta-button {
+    background-color: var(--primary);
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.service-link:hover,
+.case-study-link:hover,
+.blog-post-link:hover,
+.cta-button:hover {
+    background-color: var(--primary-dark);
+    color: #ffffff !important;
+}
+
+/* Ensure blog post links are always white in both light and dark modes */
+.blog-post-link,
+body.dark-theme .blog-post-link,
+body:not(.dark-theme) .blog-post-link {
+    color: #ffffff !important;
+    background-color: var(--primary);
+}
+
+.blog-post-link:hover,
+body.dark-theme .blog-post-link:hover,
+body:not(.dark-theme) .blog-post-link:hover {
+    color: #ffffff !important;
+    background-color: var(--primary-dark);
+}
+
+/* Process section styles for both themes */
+body.dark-theme .process-section {
+    background-color: var(--dark-bg-secondary);
+}
+
+body:not(.dark-theme) .process-section {
+    background-color: var(--light-bg-secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.theme-toggle {
+    animation: fadeIn 0.3s ease;
+}
+
+.theme-toggle-icon {
+    animation: scaleIn 0.3s ease;
+}

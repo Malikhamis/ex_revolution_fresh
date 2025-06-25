@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Requests - Ex Revolution Technology</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Mobile Responsive CSS -->
+    <link href="assets/css/admin-mobile.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+            --secondary: #6c757d;
+            --dark: #343a40;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar-header img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: #fff;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e1e5eb;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
+        </div>
+        <div></div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" style="max-width: 100%;">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+            <li><a href="contacts.html"><i class="fas fa-envelope"></i> <span>Contact Requests</span></a></li>
+            <li><a href="quotes.html" class="active"><i class="fas fa-file-invoice-dollar"></i> <span>Quote Requests</span></a></li>
+            <li><a href="newsletter.html"><i class="fas fa-newspaper"></i> <span>Newsletter</span></a></li>
+            <li><a href="case-studies.html"><i class="fas fa-briefcase"></i> <span>Case Studies</span></a></li>
+            <li><a href="blog-posts.html"><i class="fas fa-blog"></i> <span>Blog Posts</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Quote Requests</h1>
+            <div>
+                <button class="btn btn-outline-secondary me-2">
+                    <i class="fas fa-download"></i> Export
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create Quote
+                </button>
+            </div>
+        </div>
+
+        <div class="row mb-4 stats-row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-primary">0</h3>
+                        <p class="stat-label text-muted">Total Quotes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-warning">0</h3>
+                        <p class="stat-label text-muted">Pending</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-success">0</h3>
+                        <p class="stat-label text-muted">Approved</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-info">$0</h3>
+                        <p class="stat-label text-muted">Total Value</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Quote Requests</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Client</th>
+                                <th>Service</th>
+                                <th>Budget</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotes-table-body">
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-4">
+                                    <i class="fas fa-spinner fa-spin fa-2x mb-3"></i><br>
+                                    Loading quote requests...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- API Configuration -->
+    <script src="assets/js/api-config.js"></script>
+
+    <!-- Mobile JS -->
+    <script src="assets/js/admin-mobile.js"></script>
+
+    <script>
+        let quotes = [];
+        let lastQuoteCount = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Load quotes data
+            loadQuotes();
+
+            // Add event listeners
+            document.querySelector('.btn-outline-secondary').addEventListener('click', exportQuotes);
+            document.querySelector('.btn-primary').addEventListener('click', showFilterModal);
+
+            // Auto-refresh quotes every 30 seconds to catch new submissions
+            setInterval(() => {
+                loadQuotes();
+                console.log('🔄 Auto-refreshing quotes...');
+            }, 30000);
+
+            // Logout functionality
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('token');
+                window.location.href = 'login.html';
+            });
+        });
+
+        async function loadQuotes() {
+            try {
+                const response = await window.apiConfig.get(window.apiConfig.quotes);
+
+                if (response && response.ok) {
+                    const newQuotes = await response.json();
+
+                    // Check for new quotes
+                    if (lastQuoteCount > 0 && newQuotes.length > lastQuoteCount) {
+                        const newQuoteCount = newQuotes.length - lastQuoteCount;
+                        showNotification(`🎉 ${newQuoteCount} new quote request${newQuoteCount > 1 ? 's' : ''} received!`, 'success');
+
+                        // Play notification sound (if browser allows)
+                        try {
+                            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT');
+                            audio.volume = 0.3;
+                            audio.play().catch(() => {}); // Ignore errors if audio fails
+                        } catch (e) {}
+                    }
+
+                    quotes = newQuotes;
+                    lastQuoteCount = quotes.length;
+                    displayQuotes(quotes);
+                    updateStats(quotes);
+                } else {
+                    showError('Failed to load quotes');
+                }
+            } catch (error) {
+                console.error('Error loading quotes:', error);
+                showError('Failed to load quotes');
+            }
+        }
+
+        function displayQuotes(quotesData) {
+            const tbody = document.getElementById('quotes-table-body');
+
+            if (quotesData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">
+                            <i class="fas fa-file-invoice-dollar fa-2x mb-3"></i><br>
+                            No quote requests yet. When visitors submit quote requests, they will appear here.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = quotesData.map(quote => `
+                <tr>
+                    <td>${formatDate(quote.createdAt)}</td>
+                    <td>${quote.name || quote.clientName || 'N/A'}</td>
+                    <td>${quote.projectType || quote.service || 'N/A'}</td>
+                    <td>${quote.budget || 'N/A'}</td>
+                    <td>
+                        <span class="badge ${getStatusBadgeClass(quote.status)}">
+                            ${quote.status.charAt(0).toUpperCase() + quote.status.slice(1)}
+                        </span>
+                        <br>
+                        <small class="text-muted">${quote.priority || 'medium'} priority</small>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" onclick="viewQuote(${quote.id})">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-success me-1" onclick="editQuote(${quote.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger me-1" onclick="deleteQuote(${quote.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateStats(quotesData) {
+            const total = quotesData.length;
+            const newQuotes = quotesData.filter(q => q.status === 'new').length;
+            const inProgress = quotesData.filter(q => q.status === 'in-progress').length;
+            const completed = quotesData.filter(q => q.status === 'completed').length;
+
+            // Update stats cards
+            const statCards = document.querySelectorAll('.col-md-3 h3');
+            if (statCards.length >= 4) {
+                statCards[0].textContent = total;
+                statCards[1].textContent = newQuotes;
+                statCards[2].textContent = inProgress;
+                statCards[3].textContent = completed;
+            }
+        }
+
+        function getStatusBadgeClass(status) {
+            switch (status) {
+                case 'new': return 'bg-primary';
+                case 'in-progress': return 'bg-warning';
+                case 'completed': return 'bg-success';
+                case 'rejected': return 'bg-danger';
+                default: return 'bg-secondary';
+            }
+        }
+
+        function getPriorityBadgeClass(priority) {
+            switch (priority) {
+                case 'high': return 'border border-danger';
+                case 'medium': return 'border border-warning';
+                case 'low': return 'border border-info';
+                default: return '';
+            }
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString();
+        }
+
+        async function approveQuote(quoteId) {
+            const token = localStorage.getItem('token');
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/quotes/${quoteId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-auth-token': token
+                    },
+                    body: JSON.stringify({ status: 'approved' })
+                });
+
+                if (response.ok) {
+                    showNotification('Quote approved successfully', 'success');
+                    loadQuotes(); // Reload data
+                } else {
+                    showError('Failed to approve quote');
+                }
+            } catch (error) {
+                console.error('Error approving quote:', error);
+                showError('Failed to approve quote');
+            }
+        }
+
+        async function deleteQuote(quoteId) {
+            const quote = quotes.find(q => q.id == quoteId);
+            if (!quote) return;
+
+            if (!confirm(`Are you sure you want to delete the quote request from "${quote.name || quote.clientName}"? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const response = await window.apiConfig.delete(`${window.apiConfig.quotes}/${quoteId}`);
+
+                if (response && response.ok) {
+                    showNotification('Quote deleted successfully', 'success');
+                    loadQuotes(); // Reload data
+                } else {
+                    showError('Failed to delete quote');
+                }
+            } catch (error) {
+                console.error('Error deleting quote:', error);
+                showError('Failed to delete quote');
+            }
+        }
+
+        function viewQuote(quoteId) {
+            const quote = quotes.find(q => q.id == quoteId);
+            if (!quote) return;
+
+            // Create modal for viewing quote details
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Quote Request Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Client Information</h6>
+                                    <strong>Name:</strong> ${quote.name || quote.clientName || 'N/A'}<br>
+                                    <strong>Email:</strong> ${quote.email || 'N/A'}<br>
+                                    <strong>Phone:</strong> ${quote.phone || 'N/A'}<br>
+                                    <strong>Company:</strong> ${quote.company || 'N/A'}<br>
+                                    <strong>Date:</strong> ${formatDate(quote.createdAt)}<br>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Project Details</h6>
+                                    <strong>Project Type:</strong> ${quote.projectType || quote.service || 'N/A'}<br>
+                                    <strong>Budget:</strong> ${quote.budget || 'N/A'}<br>
+                                    <strong>Timeline:</strong> ${quote.timeline || 'N/A'}<br>
+                                    <strong>Status:</strong>
+                                    <span class="badge ${getStatusBadgeClass(quote.status)}">
+                                        ${quote.status.charAt(0).toUpperCase() + quote.status.slice(1)}
+                                    </span><br>
+                                    <strong>Priority:</strong>
+                                    <span class="badge bg-secondary">${quote.priority || 'medium'}</span><br>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <h6>Project Description</h6>
+                                <div class="border p-3 mt-2" style="background-color: #f8f9fa;">
+                                    ${quote.description}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="editQuote(${quote.id}); bootstrap.Modal.getInstance(this.closest('.modal')).hide();">
+                                Edit Quote
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="deleteQuote(${quote.id}); bootstrap.Modal.getInstance(this.closest('.modal')).hide();">
+                                Delete Quote
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+
+            // Remove modal from DOM when hidden
+            modal.addEventListener('hidden.bs.modal', () => {
+                if (modal.parentNode) {
+                    document.body.removeChild(modal);
+                }
+            });
+        }
+
+        function editQuote(quoteId) {
+            const quote = quotes.find(q => q.id == quoteId);
+            if (!quote) return;
+
+            // Create edit modal
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Quote</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="edit-quote-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Status</label>
+                                            <select class="form-select" name="status">
+                                                <option value="new" ${quote.status === 'new' ? 'selected' : ''}>New</option>
+                                                <option value="in-progress" ${quote.status === 'in-progress' ? 'selected' : ''}>In Progress</option>
+                                                <option value="completed" ${quote.status === 'completed' ? 'selected' : ''}>Completed</option>
+                                                <option value="rejected" ${quote.status === 'rejected' ? 'selected' : ''}>Rejected</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Priority</label>
+                                            <select class="form-select" name="priority">
+                                                <option value="low" ${quote.priority === 'low' ? 'selected' : ''}>Low</option>
+                                                <option value="medium" ${quote.priority === 'medium' ? 'selected' : ''}>Medium</option>
+                                                <option value="high" ${quote.priority === 'high' ? 'selected' : ''}>High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Estimated Value ($)</label>
+                                    <input type="number" class="form-control" name="estimatedValue" value="${quote.estimatedValue}">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="saveQuoteChanges(${quote.id})">
+                                Save Changes
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+
+            // Remove modal from DOM when hidden
+            modal.addEventListener('hidden.bs.modal', () => {
+                if (modal.parentNode) {
+                    document.body.removeChild(modal);
+                }
+            });
+        }
+
+        async function saveQuoteChanges(quoteId) {
+            const form = document.getElementById('edit-quote-form');
+            const formData = new FormData(form);
+
+            const updateData = {
+                status: formData.get('status'),
+                priority: formData.get('priority'),
+                estimatedValue: parseInt(formData.get('estimatedValue')) || 0
+            };
+
+            try {
+                const response = await window.apiConfig.put(`${window.apiConfig.quotes}/${quoteId}`, updateData);
+
+                if (response && response.ok) {
+                    showNotification('Quote updated successfully', 'success');
+                    loadQuotes(); // Reload data
+
+                    // Close modal
+                    const modal = document.querySelector('.modal.show');
+                    if (modal) {
+                        bootstrap.Modal.getInstance(modal).hide();
+                    }
+                } else {
+                    showError('Failed to update quote');
+                }
+            } catch (error) {
+                console.error('Error updating quote:', error);
+                showError('Failed to update quote');
+            }
+        }
+
+        function exportQuotes() {
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + "Date,Client,Email,Phone,Service,Budget,Timeline,Status,Priority,Estimated Value,Description\n"
+                + quotes.map(quote =>
+                    `"${formatDate(quote.createdAt)}","${quote.clientName}","${quote.email}","${quote.phone}","${quote.service}","${quote.budget}","${quote.timeline}","${quote.status}","${quote.priority}","${quote.estimatedValue}","${quote.description.replace(/"/g, '""')}"`
+                ).join("\n");
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `quotes_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showNotification('Quotes exported successfully', 'success');
+        }
+
+        function showFilterModal() {
+            // Simple filter implementation
+            const filter = prompt('Filter by status (pending/approved/rejected/completed) or leave empty for all:');
+            if (filter === null) return;
+
+            if (filter === '') {
+                displayQuotes(quotes);
+            } else {
+                const filtered = quotes.filter(q => q.status.toLowerCase().includes(filter.toLowerCase()));
+                displayQuotes(filtered);
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        function showError(message) {
+            showNotification(message, 'error');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,810 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Services - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Comprehensive digital marketing services including SEO, PPC, social media marketing, content marketing, and email campaigns.">
+    <meta name="keywords" content="digital marketing, SEO, PPC, social media marketing, content marketing, email campaigns">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="../css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="../css/theme-switcher.css">
+
+    <style>
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Page-specific styles */
+        .service-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .service-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .service-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-hero h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .service-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-overview {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .service-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .service-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-features {
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-secondary);
+            color: var(--primary);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex-grow: 1;
+        }
+
+        .feature-content h3 {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+
+        .stats-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            height: 100%;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-md);
+            font-weight: 500;
+        }
+
+        .process-section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-title {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+
+        .pricing-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .pricing-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+            z-index: 1;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            font-size: 0.75rem;
+            border-bottom-left-radius: var(--border-radius-sm);
+        }
+
+        .pricing-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-md);
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-header h3 {
+            margin: 0;
+            color: var(--white);
+        }
+
+        .pricing-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-xs);
+            text-align: center;
+        }
+
+        .pricing-note {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-bottom: var(--spacing-xs);
+            font-style: italic;
+        }
+
+        .pricing-description {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-lg);
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .pricing-features li i {
+            color: var(--primary);
+            margin-right: var(--spacing-sm);
+            margin-top: 5px;
+        }
+
+        .pricing-features li i.fa-times {
+            color: var(--text-tertiary);
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-outline {
+            background-color: #0066cc !important; /* Blue background */
+            border: 2px solid #0066cc;
+            color: #ffffff !important; /* White text */
+        }
+
+        .btn-outline:hover {
+            background-color: #004c99 !important; /* Darker blue on hover */
+            color: #ffffff !important;
+            border-color: #004c99;
+        }
+
+        .cta-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue text color */
+            border: 2px solid #0066cc;
+        }
+
+        .btn-white:hover {
+            background-color: #0066cc;
+            color: #ffffff !important; /* White text on hover */
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-white:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        @media (max-width: 992px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-image {
+                order: -1;
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .service-overview,
+            .stats-section,
+            .process-section,
+            .cta-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .process-step {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../services.html" class="active">Services</a></li>
+                    <li><a href="../case-studies.html">Case Studies</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button -->
+                <a href="../quote.html" class="btn btn-primary mobile-cta">Request a Quote</a>
+            </nav>
+
+            <a href="../quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="service-hero">
+            <div class="container">
+                <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Digital Marketing Services</h1>
+                <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Comprehensive digital marketing strategies to increase your online presence, drive traffic, and convert leads into customers.</p>
+            </div>
+        </section>
+
+        <!-- Service Overview Section -->
+        <section class="service-overview">
+            <div class="container">
+                <div class="service-grid">
+                    <div class="service-content">
+                        <h2>Grow Your Business with Strategic Digital Marketing</h2>
+                        <p>At Ex Revolution Technology, we offer comprehensive digital marketing services designed to help your business thrive in the digital landscape. Our data-driven approach ensures that your marketing efforts deliver measurable results and a strong return on investment.</p>
+                        <p>Our team of digital marketing experts combines creativity with analytical thinking to develop and implement strategies that increase your online visibility, drive qualified traffic to your website, and convert visitors into loyal customers.</p>
+                    </div>
+                    <div class="service-image">
+                        <img src="../assets/images/digital-marketing-overview.jpg" alt="Digital Marketing Strategy Session">
+                    </div>
+                </div>
+
+                <div class="service-features">
+                    <h2 class="text-center mb-5">Our Digital Marketing Services</h2>
+                    <div class="grid grid-2">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We improve your website's visibility in search engine results through technical optimization, content strategy, and ethical link building to drive organic traffic and increase conversions.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-ad"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>Our PPC campaigns are strategically designed to target your ideal customers, maximize your ad spend, and generate immediate traffic and leads for your business.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-hashtag"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We develop and implement social media strategies that build brand awareness, engage your audience, and drive traffic to your website across the platforms that matter most to your business.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>Our content marketing services include creating valuable, relevant content that attracts and engages your target audience, establishes your authority, and drives profitable customer action.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We design and implement email marketing campaigns that nurture leads, build customer relationships, and drive conversions through personalized, targeted messaging.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We provide comprehensive analytics and reporting to track the performance of your digital marketing campaigns, identify opportunities for improvement, and demonstrate ROI.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Why Choose Our Digital Marketing Services</h2>
+                <div class="grid grid-4">
+                    <div class="stat-card">
+                        <div class="stat-number">200%</div>
+                        <p class="stat-label">Average Increase in Organic Traffic</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">150%</div>
+                        <p class="stat-label">Average ROI on PPC Campaigns</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <p class="stat-label">Successful Digital Marketing Clients</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <p class="stat-label">Years of Digital Marketing Experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Digital Marketing Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Discovery & Analysis</h3>
+                            <p>We start by understanding your business, target audience, and goals. We analyze your current digital presence, competitors, and market opportunities to establish a baseline and identify areas for improvement.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Strategy Development</h3>
+                            <p>Based on our findings, we develop a comprehensive digital marketing strategy tailored to your specific goals, target audience, and budget. This includes channel selection, messaging, content planning, and KPI definition.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Implementation</h3>
+                            <p>We execute the strategy across all selected channels, creating and optimizing content, setting up campaigns, and implementing tracking mechanisms to measure performance.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Monitoring & Optimization</h3>
+                            <p>We continuously monitor campaign performance, making data-driven adjustments to optimize results and maximize ROI. This includes A/B testing, audience refinement, and budget allocation.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Reporting & Analysis</h3>
+                            <p>We provide regular, detailed reports on campaign performance, including key metrics, insights, and recommendations for future improvements to ensure ongoing success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Choose Your Package</h2>
+                <div class="grid grid-3">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pricing-price">TZS 250,000/mo</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Basic SEO optimization</li>
+                                <li><i class="fas fa-check"></i> Social media management (2 platforms)</li>
+                                <li><i class="fas fa-check"></i> 4 blog posts per month</li>
+                                <li><i class="fas fa-check"></i> Basic Google Ads campaign</li>
+                                <li><i class="fas fa-check"></i> Monthly performance report</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card popular">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                            <span class="popular-tag">Most Popular</span>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pricing-price">TZS 700,000/mo</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Advanced SEO optimization</li>
+                                <li><i class="fas fa-check"></i> Social media management (4 platforms)</li>
+                                <li><i class="fas fa-check"></i> 8 blog posts per month</li>
+                                <li><i class="fas fa-check"></i> Comprehensive Google Ads campaign</li>
+                                <li><i class="fas fa-check"></i> Email marketing (1 campaign/month)</li>
+                                <li><i class="fas fa-check"></i> Bi-weekly performance reports</li>
+                                <li><i class="fas fa-check"></i> Basic conversion optimization</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pricing-price">TZS 1,500,000/mo</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Premium SEO optimization</li>
+                                <li><i class="fas fa-check"></i> Social media management (all platforms)</li>
+                                <li><i class="fas fa-check"></i> 12 blog posts per month</li>
+                                <li><i class="fas fa-check"></i> Advanced Google Ads & PPC campaigns</li>
+                                <li><i class="fas fa-check"></i> Email marketing (4 campaigns/month)</li>
+                                <li><i class="fas fa-check"></i> Weekly performance reports</li>
+                                <li><i class="fas fa-check"></i> Advanced conversion optimization</li>
+                                <li><i class="fas fa-check"></i> Competitor analysis & strategy</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <p>All prices are approximate market rates in Tanzanian Shillings (TZS). Actual pricing may vary based on your specific business needs and campaign requirements.</p>
+                    <p>Our packages can be fully customized to fit your marketing goals and budget. Contact us for a personalized quote.</p>
+                    <a href="../contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="color: #ffffff !important;">Ready to Boost Your Online Presence?</h2>
+                <p style="color: #ffffff !important;">Contact us today to discuss how our digital marketing services can help your business grow and thrive in the digital landscape.</p>
+                <div class="cta-buttons">
+                    <a href="../quote.html" class="btn btn-white">Request a Quote</a>
+                    <a href="../contact.html" class="btn btn-outline-white">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="../case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="../blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="../contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="../terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="../sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/direct-mobile-menu.js"></script>
+    <script src="../js/theme-switcher.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/newsletter-handler.js"></script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Chatbot Integration -->
+    <script src="../js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

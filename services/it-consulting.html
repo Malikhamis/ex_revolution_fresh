@@ -1,0 +1,906 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Consulting Services - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Expert IT consulting services including IT strategy development, technology assessment, digital transformation, and cybersecurity consulting.">
+    <meta name="keywords" content="IT consulting, IT strategy, technology assessment, digital transformation, cybersecurity consulting">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="../css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="../css/theme-switcher.css">
+
+    <style>
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Page-specific styles */
+        .service-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .service-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .service-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-hero h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .service-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-overview {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .service-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .service-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-features {
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-secondary);
+            color: #0066cc !important; /* Blue color to match other pages */
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex-grow: 1;
+        }
+
+        .feature-content h3 {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+
+        .benefits-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .benefit-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: #0066cc !important; /* Blue color to match other pages */
+            margin-bottom: var(--spacing-md);
+        }
+
+        .approach-section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .approach-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #0066cc !important; /* Blue color to match other pages */
+            color: var(--white);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-title {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+
+        .testimonial-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            height: 100%;
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .testimonial-text {
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius-circle);
+            margin-right: var(--spacing-sm);
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0;
+            color: var(--white);
+        }
+
+        .testimonial-company {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+
+        .pricing-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .pricing-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+            z-index: 1;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #0066cc !important; /* Blue color to match other pages */
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            font-size: 0.75rem;
+            border-bottom-left-radius: var(--border-radius-sm);
+        }
+
+        .pricing-header {
+            background-color: #0066cc !important; /* Blue background to match other pages */
+            color: var(--white);
+            padding: var(--spacing-md);
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-header h3 {
+            margin: 0;
+            color: var(--white);
+        }
+
+        .pricing-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0066cc !important; /* Blue color to match other pages */
+            margin-bottom: var(--spacing-xs);
+            text-align: center;
+        }
+
+        .pricing-note {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-bottom: var(--spacing-xs);
+            font-style: italic;
+        }
+
+        .pricing-description {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-lg);
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .pricing-features li i {
+            color: #0066cc !important; /* Blue color to match other pages */
+            margin-right: var(--spacing-sm);
+            margin-top: 5px;
+        }
+
+        .pricing-features li i.fa-times {
+            color: var(--text-tertiary);
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-outline {
+            background-color: #0066cc !important; /* Blue background */
+            border: 2px solid #0066cc;
+            color: #ffffff !important; /* White text */
+        }
+
+        .btn-outline:hover {
+            background-color: #004c99 !important; /* Darker blue on hover */
+            color: #ffffff !important;
+            border-color: #004c99;
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue text color */
+            border: 2px solid #0066cc;
+        }
+
+        .btn-white:hover {
+            background-color: #0066cc;
+            color: #ffffff !important; /* White text on hover */
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-white:hover {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue color to match other pages */
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        @media (max-width: 992px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-image {
+                order: -1;
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .service-overview,
+            .benefits-section,
+            .approach-section,
+            .testimonial-section,
+            .cta-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .approach-step {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../services.html" class="active">Services</a></li>
+                    <li><a href="../case-studies.html">Case Studies</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button -->
+                <a href="../quote.html" class="btn btn-primary mobile-cta">Request a Quote</a>
+            </nav>
+
+            <a href="../quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="service-hero">
+            <div class="container">
+                <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">IT Consulting Services</h1>
+                <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Expert IT consulting services to help you make informed technology decisions and implement effective IT strategies.</p>
+            </div>
+        </section>
+
+        <!-- Service Overview Section -->
+        <section class="service-overview">
+            <div class="container">
+                <div class="service-grid">
+                    <div class="service-content">
+                        <h2>Strategic IT Consulting for Business Growth</h2>
+                        <p>At Ex Revolution Technology, we provide expert IT consulting services to help businesses navigate the complex technology landscape. Our team of experienced consultants works closely with you to understand your business goals, challenges, and opportunities, and develop tailored IT strategies that drive growth and innovation.</p>
+                        <p>Whether you're looking to optimize your existing IT infrastructure, implement new technologies, or undergo a complete digital transformation, our consultants have the expertise and experience to guide you through the process and ensure successful outcomes.</p>
+                    </div>
+                    <div class="service-image">
+                        <img src="../assets/images/it-consulting-overview.jpg" alt="IT Consulting Session">
+                    </div>
+                </div>
+
+                <div class="service-features">
+                    <h2 class="text-center mb-5">Our IT Consulting Services</h2>
+                    <div class="grid grid-2">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We help you develop a comprehensive IT strategy aligned with your business goals, ensuring that your technology investments drive growth and competitive advantage.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>Our experts evaluate your current IT infrastructure, systems, and processes to identify strengths, weaknesses, and opportunities for improvement.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-digital-tachograph"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We guide you through the digital transformation journey, helping you leverage emerging technologies to reimagine your business processes and customer experiences.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>Our consultants help you design and implement a scalable, secure, and efficient IT infrastructure that supports your business needs now and in the future.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We assess your security posture, identify vulnerabilities, and develop comprehensive security strategies to protect your business from cyber threats.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>Our experienced project managers ensure your IT initiatives are delivered on time, within budget, and according to specifications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Benefits of Our IT Consulting Services</h2>
+                <div class="grid grid-3">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Services</h3>
+                        <p>Optimize your IT systems and processes to increase operational efficiency and reduce costs.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Services</h3>
+                        <p>Leverage technology to drive business growth, enter new markets, and gain competitive advantage.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Services</h3>
+                        <p>Protect your business from cyber threats with robust security strategies and best practices.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Services</h3>
+                        <p>Make informed technology decisions that align with your business goals and deliver long-term value.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Services</h3>
+                        <p>Tap into our team of experienced IT consultants with diverse skills and industry knowledge.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Services</h3>
+                        <p>Reduce IT costs through optimized infrastructure, efficient processes, and strategic technology investments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approach Section -->
+        <section class="approach-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Consulting Approach</h2>
+                <div class="approach-steps">
+                    <div class="approach-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Discovery & Assessment</h3>
+                            <p>We begin by understanding your business goals, challenges, and current IT environment through interviews, workshops, and technical assessments.</p>
+                        </div>
+                    </div>
+                    <div class="approach-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Analysis & Strategy Development</h3>
+                            <p>Based on our findings, we analyze your needs and develop a tailored IT strategy that aligns with your business objectives and addresses your specific challenges.</p>
+                        </div>
+                    </div>
+                    <div class="approach-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Recommendations & Roadmap</h3>
+                            <p>We provide detailed recommendations and a clear roadmap for implementation, including timelines, resource requirements, and expected outcomes.</p>
+                        </div>
+                    </div>
+                    <div class="approach-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Implementation Support</h3>
+                            <p>Our consultants work alongside your team to implement the recommended solutions, providing guidance, expertise, and project management support.</p>
+                        </div>
+                    </div>
+                    <div class="approach-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Evaluation & Optimization</h3>
+                            <p>We continuously evaluate the results of our recommendations and make adjustments as needed to ensure optimal outcomes and long-term success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <div class="container">
+                <h2 class="text-center mb-5">What Our Clients Say</h2>
+                <div class="grid grid-3">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">The IT strategy developed by Ex Revolution Technology has transformed our business operations. Their consultants took the time to understand our unique challenges and delivered solutions that have significantly improved our efficiency and security.</p>
+                        <div class="testimonial-author">
+                            <img src="../assets/images/testimonial-1.jpg" alt="John Smith" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>John Smith</h4>
+                                <p class="testimonial-company">CEO, Smith Enterprises</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">Working with Ex Revolution Technology on our digital transformation initiative has been a game-changer. Their expertise and guidance helped us navigate complex technology decisions and implement solutions that have driven real business results.</p>
+                        <div class="testimonial-author">
+                            <img src="../assets/images/testimonial-2.jpg" alt="Sarah Johnson" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>Sarah Johnson</h4>
+                                <p class="testimonial-company">CIO, Johnson & Co.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">The cybersecurity assessment conducted by Ex Revolution Technology was thorough and eye-opening. Their recommendations have significantly enhanced our security posture and given us peace of mind knowing our systems and data are protected.</p>
+                        <div class="testimonial-author">
+                            <img src="../assets/images/testimonial-3.jpg" alt="Michael Chen" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>Michael Chen</h4>
+                                <p class="testimonial-company">CTO, Chen Technologies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Consulting Packages</h2>
+                <div class="grid grid-3">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pricing-price">TZS 1,500,000</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Comprehensive IT assessment</li>
+                                <li><i class="fas fa-check"></i> Gap analysis report</li>
+                                <li><i class="fas fa-check"></i> Security evaluation</li>
+                                <li><i class="fas fa-check"></i> High-level recommendations</li>
+                                <li><i class="fas fa-check"></i> Executive presentation</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary" style="background-color: #0066cc !important;">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card popular">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                            <span class="popular-tag">Most Popular</span>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pricing-price">TZS 3,000,000</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Comprehensive IT assessment</li>
+                                <li><i class="fas fa-check"></i> Detailed gap analysis</li>
+                                <li><i class="fas fa-check"></i> Technology roadmap</li>
+                                <li><i class="fas fa-check"></i> Implementation planning</li>
+                                <li><i class="fas fa-check"></i> Budget forecasting</li>
+                                <li><i class="fas fa-check"></i> Risk assessment</li>
+                                <li><i class="fas fa-check"></i> Vendor recommendations</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary" style="background-color: #0066cc !important;">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Enterprise Package</h3></div><div class="pricing-content"><div class="pricing-price">Custom</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Enterprise architecture design</li>
+                                <li><i class="fas fa-check"></i> Business process reengineering</li>
+                                <li><i class="fas fa-check"></i> Technology stack modernization</li>
+                                <li><i class="fas fa-check"></i> Change management</li>
+                                <li><i class="fas fa-check"></i> Implementation oversight</li>
+                                <li><i class="fas fa-check"></i> Staff training & development</li>
+                                <li><i class="fas fa-check"></i> Ongoing advisory services</li>
+                                <li><i class="fas fa-check"></i> Performance monitoring</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary" style="background-color: #0066cc !important;">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <p>All prices are approximate market rates in Tanzanian Shillings (TZS). Actual pricing may vary based on project scope, complexity, and duration.</p>
+                    <p>Our IT consulting services are tailored to your specific needs and business objectives. Contact us for a personalized consultation and detailed quote.</p>
+                    <a href="../contact.html" class="btn btn-outline" style="background-color: #0066cc !important; color: #ffffff !important;">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="color: #ffffff !important;">Ready to Transform Your IT Strategy?</h2>
+                <p style="color: #ffffff !important;">Contact us today to discuss how our IT consulting services can help your business leverage technology for growth and success.</p>
+                <div class="cta-buttons">
+                    <a href="../quote.html" class="btn btn-white">Request a Quote</a>
+                    <a href="../contact.html" class="btn btn-outline-white">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="../case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="../blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="../contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="../terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="../sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/direct-mobile-menu.js"></script>
+    <script src="../js/theme-switcher.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/newsletter-handler.js"></script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Chatbot Integration -->
+    <script src="../js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

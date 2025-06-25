@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Newsletter Subscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        input[type="email"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Newsletter Subscription Test</h1>
+        <p>This page tests the newsletter subscription functionality.</p>
+        
+        <h3>Test Newsletter Form:</h3>
+        <form class="newsletter-form" id="testNewsletterForm">
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        
+        <div id="result" class="result"></div>
+        
+        <h3>Manual API Test:</h3>
+        <button onclick="testNewsletterAPI()">Test Newsletter API Directly</button>
+        
+        <div id="apiResult" class="result"></div>
+    </div>
+
+    <!-- Include the newsletter handler -->
+    <script src="js/newsletter-handler.js"></script>
+    
+    <script>
+        // Manual API test function
+        async function testNewsletterAPI() {
+            const apiResultDiv = document.getElementById('apiResult');
+            
+            try {
+                const response = await fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        source: 'manual_test'
+                    })
+                });
+                
+                const result = await response.json();
+                
+                apiResultDiv.className = 'result ' + (result.success ? 'success' : 'error');
+                apiResultDiv.innerHTML = `
+                    <strong>API Test Result:</strong><br>
+                    Status: ${response.status}<br>
+                    Success: ${result.success}<br>
+                    Message: ${result.message}<br>
+                    <small>Response: ${JSON.stringify(result, null, 2)}</small>
+                `;
+                apiResultDiv.style.display = 'block';
+                
+                console.log('Newsletter API test result:', result);
+                
+            } catch (error) {
+                console.error('Newsletter API test error:', error);
+                apiResultDiv.className = 'result error';
+                apiResultDiv.innerHTML = `<strong>API Test Error:</strong> ${error.message}`;
+                apiResultDiv.style.display = 'block';
+            }
+        }
+        
+        // Override the newsletter handler's showMessage function to display results
+        if (window.NewsletterHandler) {
+            const originalShowMessage = window.NewsletterHandler.showMessage;
+            window.NewsletterHandler.showMessage = function(message, type) {
+                const resultDiv = document.getElementById('result');
+                resultDiv.className = 'result ' + (type === 'success' ? 'success' : 'error');
+                resultDiv.innerHTML = `<strong>Form Test Result:</strong><br>${message}`;
+                resultDiv.style.display = 'block';
+                
+                // Also call the original function
+                originalShowMessage(message, type);
+            };
+        }
+        
+        // Add form submission logging
+        document.getElementById('testNewsletterForm').addEventListener('submit', function(e) {
+            console.log('Newsletter form submitted:', e);
+            console.log('Form data:', new FormData(this));
+        });
+        
+        // Check if newsletter handler is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Newsletter handler loaded:', !!window.NewsletterHandler);
+            console.log('Available functions:', window.NewsletterHandler);
+        });
+    </script>
+</body>
+</html>

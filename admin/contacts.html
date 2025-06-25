@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Requests - Ex Revolution Technology</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Mobile Responsive CSS -->
+    <link href="assets/css/admin-mobile.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+            --secondary: #6c757d;
+            --dark: #343a40;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar-header img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: #fff;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e1e5eb;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
+        </div>
+        <div></div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" style="max-width: 100%;">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+            <li><a href="contacts.html" class="active"><i class="fas fa-envelope"></i> <span>Contact Requests</span></a></li>
+            <li><a href="quotes.html"><i class="fas fa-file-invoice-dollar"></i> <span>Quote Requests</span></a></li>
+            <li><a href="newsletter.html"><i class="fas fa-newspaper"></i> <span>Newsletter</span></a></li>
+            <li><a href="case-studies.html"><i class="fas fa-briefcase"></i> <span>Case Studies</span></a></li>
+            <li><a href="blog-posts.html"><i class="fas fa-blog"></i> <span>Blog Posts</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Contact Requests</h1>
+            <div>
+                <button class="btn btn-outline-secondary me-2">
+                    <i class="fas fa-download"></i> Export
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+            </div>
+        </div>
+
+        <div class="row mb-4 stats-row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-primary">0</h3>
+                        <p class="stat-label text-muted">Total Requests</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-warning">0</h3>
+                        <p class="stat-label text-muted">New</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-success">0</h3>
+                        <p class="stat-label text-muted">Responded</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number text-info">0</h3>
+                        <p class="stat-label text-muted">This Week</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Contact Requests</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contacts-table-body">
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-4">
+                                    <i class="fas fa-spinner fa-spin fa-2x mb-3"></i><br>
+                                    Loading contact requests...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- API Configuration -->
+    <script src="assets/js/api-config.js"></script>
+
+    <!-- Mobile JS -->
+    <script src="assets/js/admin-mobile.js"></script>
+
+    <script>
+        let contacts = [];
+        let lastContactCount = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Temporarily disable authentication check for testing
+            console.log('🔧 Admin contacts page loaded (auth disabled for testing)');
+
+            // Load contacts data
+            loadContacts();
+
+            // Add event listeners
+            document.querySelector('.btn-outline-secondary').addEventListener('click', exportContacts);
+            document.querySelector('.btn-primary').addEventListener('click', showFilterModal);
+
+            // Auto-refresh contacts every 30 seconds to catch new submissions
+            setInterval(() => {
+                loadContacts();
+                console.log('🔄 Auto-refreshing contacts...');
+            }, 30000);
+
+            // Logout functionality
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('token');
+                window.location.href = 'login.html';
+            });
+        });
+
+        async function loadContacts() {
+            console.log('🔄 Loading contacts...');
+            console.log('📡 API URL:', window.apiConfig.contacts);
+
+            try {
+                // Try direct fetch first for debugging
+                const directResponse = await fetch(window.apiConfig.contacts);
+                console.log('📊 Direct fetch response status:', directResponse.status);
+
+                if (directResponse.ok) {
+                    const newContacts = await directResponse.json();
+                    console.log('✅ Contacts loaded directly:', newContacts);
+
+                    // Check for new contacts
+                    if (lastContactCount > 0 && newContacts.length > lastContactCount) {
+                        const newContactCount = newContacts.length - lastContactCount;
+                        showNotification(`🎉 ${newContactCount} new contact message${newContactCount > 1 ? 's' : ''} received!`, 'success');
+
+                        // Play notification sound (if browser allows)
+                        try {
+                            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT');
+                            audio.volume = 0.3;
+                            audio.play().catch(() => {}); // Ignore errors if audio fails
+                        } catch (e) {}
+                    }
+
+                    contacts = newContacts;
+                    lastContactCount = contacts.length;
+                    displayContacts(contacts);
+                    updateStats(contacts);
+                    console.log('✅ Contacts displayed successfully');
+                } else {
+                    console.error('❌ Failed to load contacts, status:', directResponse.status);
+                    showError('Failed to load contacts - Status: ' + directResponse.status);
+                }
+            } catch (error) {
+                console.error('❌ Error loading contacts:', error);
+                showError('Failed to load contacts: ' + error.message);
+            }
+        }
+
+        function displayContacts(contactsData) {
+            const tbody = document.getElementById('contacts-table-body');
+
+            if (contactsData.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">
+                            <i class="fas fa-envelope-open-text fa-2x mb-3"></i><br>
+                            No contact requests yet. When visitors submit the contact form, they will appear here.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = contactsData.map(contact => `
+                <tr>
+                    <td>${formatDate(contact.submittedAt || contact.createdAt)}</td>
+                    <td>${contact.name}</td>
+                    <td>${contact.email}</td>
+                    <td>${contact.subject || 'Contact Form Inquiry'}</td>
+                    <td>
+                        <span class="badge ${getStatusBadgeClass(contact.status)}">
+                            ${contact.status.charAt(0).toUpperCase() + contact.status.slice(1)}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" onclick="viewContact(${contact.id})" title="View Details">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-success me-1" onclick="markAsResponded(${contact.id})" title="Mark as Responded">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(${contact.id})" title="Delete Contact">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateStats(contactsData) {
+            const total = contactsData.length;
+            const newContacts = contactsData.filter(c => c.status === 'new').length;
+            const responded = contactsData.filter(c => c.status === 'responded').length;
+            const thisWeek = contactsData.filter(c => {
+                const weekAgo = new Date();
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                return new Date(c.submittedAt || c.createdAt) > weekAgo;
+            }).length;
+
+            // Update stats cards
+            const statCards = document.querySelectorAll('.col-md-3 h3');
+            if (statCards.length >= 4) {
+                statCards[0].textContent = total;
+                statCards[1].textContent = newContacts;
+                statCards[2].textContent = responded;
+                statCards[3].textContent = thisWeek;
+            }
+        }
+
+        function getStatusBadgeClass(status) {
+            switch (status) {
+                case 'new': return 'bg-primary';
+                case 'responded': return 'bg-success';
+                default: return 'bg-secondary';
+            }
+        }
+
+        async function deleteContact(contactId) {
+            const contact = contacts.find(c => c.id == contactId);
+            if (!contact) return;
+
+            if (!confirm(`Are you sure you want to delete the contact message from "${contact.name}"? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const response = await window.apiConfig.delete(`${window.apiConfig.contacts}/${contactId}`);
+
+                if (response && response.ok) {
+                    showNotification('Contact deleted successfully', 'success');
+                    loadContacts(); // Reload data
+                } else {
+                    showError('Failed to delete contact');
+                }
+            } catch (error) {
+                console.error('Error deleting contact:', error);
+                showError('Failed to delete contact');
+            }
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString();
+        }
+
+        async function markAsResponded(contactId) {
+            try {
+                const response = await window.apiConfig.put(`${window.apiConfig.contacts}/${contactId}`, {
+                    status: 'responded'
+                });
+
+                if (response && response.ok) {
+                    showNotification('Contact marked as responded', 'success');
+                    loadContacts(); // Reload data
+                } else {
+                    showError('Failed to update contact status');
+                }
+            } catch (error) {
+                console.error('Error updating contact:', error);
+                showError('Failed to update contact status');
+            }
+        }
+
+        function viewContact(contactId) {
+            const contact = contacts.find(c => c.id == contactId);
+            if (!contact) return;
+
+            // Create modal for viewing contact details
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Contact Request Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Name:</strong> ${contact.name}<br>
+                                    <strong>Email:</strong> ${contact.email}<br>
+                                    <strong>Phone:</strong> ${contact.phone || 'Not provided'}<br>
+                                    <strong>Date:</strong> ${formatDate(contact.submittedAt || contact.createdAt)}<br>
+                                    <strong>Status:</strong>
+                                    <span class="badge ${getStatusBadgeClass(contact.status)}">
+                                        ${contact.status.charAt(0).toUpperCase() + contact.status.slice(1)}
+                                    </span>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Subject:</strong> ${contact.subject || 'Contact Form Inquiry'}
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <strong>Message:</strong><br>
+                                <div class="border p-3 mt-2" style="background-color: #f8f9fa;">
+                                    ${contact.message}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" onclick="markAsResponded(${contact.id}); bootstrap.Modal.getInstance(this.closest('.modal')).hide();">
+                                Mark as Responded
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="deleteContact(${contact.id}); bootstrap.Modal.getInstance(this.closest('.modal')).hide();">
+                                Delete Contact
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+
+            // Remove modal from DOM when hidden
+            modal.addEventListener('hidden.bs.modal', () => {
+                if (modal.parentNode) {
+                    document.body.removeChild(modal);
+                }
+            });
+        }
+
+        function exportContacts() {
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + "Date,Name,Email,Subject,Status,Message\n"
+                + contacts.map(contact =>
+                    `"${formatDate(contact.createdAt)}","${contact.name}","${contact.email}","${contact.subject}","${contact.status}","${contact.message.replace(/"/g, '""')}"`
+                ).join("\n");
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `contacts_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showNotification('Contacts exported successfully', 'success');
+        }
+
+        function showFilterModal() {
+            // Simple filter implementation
+            const filter = prompt('Filter by status (pending/responded) or leave empty for all:');
+            if (filter === null) return;
+
+            if (filter === '') {
+                displayContacts(contacts);
+            } else {
+                const filtered = contacts.filter(c => c.status.toLowerCase().includes(filter.toLowerCase()));
+                displayContacts(filtered);
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        function showError(message) {
+            showNotification(message, 'error');
+        }
+    </script>
+</body>
+</html>

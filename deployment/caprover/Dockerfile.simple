@@ -1,0 +1,37 @@
+# Simple CapRover Dockerfile for Ex Revolution
+# Minimal approach for faster builds
+
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install only essential system dependencies
+RUN apk add --no-cache curl tini
+
+# Copy package files
+COPY package.json ./
+
+# Install only production dependencies with npm install (not npm ci)
+RUN npm install --production --no-optional
+
+# Copy application source
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p uploads logs backups
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV DISABLE_PERFORMANCE_MIDDLEWARE=true
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/api/health || exit 1
+
+# Start application directly
+CMD ["node", "start-website.js"]

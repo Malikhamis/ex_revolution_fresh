@@ -1,0 +1,628 @@
+/**
+ * Conversion Optimization and Lead Generation Styles
+ * This stylesheet contains styles for conversion optimization and lead generation elements
+ * including popups, chatbot, social proof notifications, and floating CTAs.
+ *
+ * Ex Revolution Technology
+ */
+
+/* Exit Intent Popup - Improved for better user experience */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Lighter background for less intrusive feel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    max-width: 450px; /* Slightly smaller */
+    width: 90%;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+}
+
+.popup-overlay.active .popup-content {
+    transform: translateY(0);
+    animation: gentle-bounce 0.5s ease;
+}
+
+@keyframes gentle-bounce {
+    0% { transform: translateY(20px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--primary);
+    transform: rotate(90deg);
+}
+
+.popup-content h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+}
+
+.popup-content p {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+/* Lead Magnet Popup */
+.lead-magnet-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lead-magnet-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lead-magnet-content {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.lead-magnet-popup.active .lead-magnet-content {
+    transform: translateY(0);
+}
+
+/* Lead Forms */
+.lead-form {
+    margin-top: var(--spacing-md);
+    width: 100%; /* Ensure full width */
+}
+
+.lead-form .form-group {
+    margin-bottom: var(--spacing-md);
+    width: 100%; /* Ensure full width */
+}
+
+.lead-form input,
+.lead-form textarea,
+.lead-form select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius-md);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    font-size: 16px; /* Prevent zoom on iOS */
+    min-height: 44px; /* Better touch target */
+}
+
+.lead-form textarea {
+    min-height: 80px; /* Taller for text areas */
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+.lead-form input:focus,
+.lead-form textarea:focus,
+.lead-form select:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.lead-form input.invalid,
+.lead-form textarea.invalid,
+.lead-form select.invalid {
+    border-color: var(--error);
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.lead-form input.valid,
+.lead-form textarea.valid,
+.lead-form select.valid {
+    border-color: var(--success);
+    background-color: rgba(34, 197, 94, 0.05);
+}
+
+/* Submit button styling */
+.lead-form button[type="submit"] {
+    min-height: 44px; /* Minimum recommended touch target size */
+    font-weight: 500; /* Make text more visible */
+    width: 100%; /* Full width on mobile */
+}
+
+.field-error {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.form-success {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: var(--success);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Chatbot */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.05);
+    background-color: var(--primary-dark);
+}
+
+.chatbot-toggle.attention {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    }
+}
+
+.chatbot-window {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 350px;
+    height: 450px;
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.chatbot-window.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.chatbot-header {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: var(--font-size-md);
+    color: var(--white);
+}
+
+.chatbot-close {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    flex-grow: 1;
+    padding: var(--spacing-md);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatbot-message {
+    max-width: 80%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.bot-message {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.user-message {
+    background-color: var(--primary);
+    color: var(--white);
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+.chatbot-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    width: 100%; /* Ensure full width */
+}
+
+.chatbot-options button {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-md); /* Larger padding for better touch */
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-height: 44px; /* Minimum recommended touch target size */
+    font-size: 0.95rem; /* Slightly larger for better readability */
+    word-wrap: break-word; /* Ensure text wraps properly */
+}
+
+.chatbot-options button:hover,
+.chatbot-options button:active {
+    background-color: var(--bg-tertiary);
+}
+
+.chatbot-input {
+    display: flex;
+    padding: var(--spacing-sm);
+    border-top: 1px solid var(--light-gray);
+    align-items: center; /* Vertically center items */
+}
+
+.chatbot-input input {
+    flex-grow: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius-md);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 16px; /* Prevent zoom on iOS */
+    min-height: 40px; /* Better touch target */
+}
+
+.chatbot-input button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-left: var(--spacing-xs);
+    cursor: pointer;
+    min-height: 40px; /* Match input height */
+    min-width: 40px; /* Ensure good touch target */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    width: 100%; /* Ensure full width */
+}
+
+.chatbot-lead-form input {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius-md);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    width: 100%; /* Ensure full width */
+    font-size: 16px; /* Prevent zoom on iOS */
+    min-height: 40px; /* Better touch target */
+}
+
+.chatbot-lead-form button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    min-height: 44px; /* Minimum recommended touch target size */
+    font-weight: 500; /* Make text more visible */
+}
+
+/* Social Proof */
+.social-proof-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 998;
+    max-width: 300px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-proof-container.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-proof-item {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--primary);
+}
+
+.proof-message {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.proof-time {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Floating CTA */
+.floating-cta {
+    position: fixed;
+    bottom: 20px;
+    right: 90px; /* Move to the left of the chatbot */
+    z-index: 997;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.floating-cta.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Form Progress Indicator */
+.form-progress {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.form-progress-step {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-progress-step.active {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Scroll-Triggered CTAs */
+.scroll-cta {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-cta.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* A/B Testing Elements */
+[data-ab-test] {
+    display: none;
+}
+
+/* Dark Mode Adjustments */
+body.dark-theme .popup-content,
+body.dark-theme .lead-magnet-content,
+body.dark-theme .chatbot-window,
+body.dark-theme .social-proof-item {
+    background-color: var(--dark-bg-card);
+}
+
+body.dark-theme .chatbot-message.bot-message {
+    background-color: var(--dark-bg-secondary);
+}
+
+body.dark-theme .chatbot-options button {
+    background-color: var(--dark-bg-secondary);
+    border-color: var(--dark-border-color);
+}
+
+body.dark-theme .chatbot-options button:hover {
+    background-color: var(--dark-bg-tertiary);
+}
+
+body.dark-theme .chatbot-input input,
+body.dark-theme .chatbot-lead-form input {
+    background-color: var(--dark-bg-primary);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-primary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    /* Chatbot adjustments */
+    .chatbot-window {
+        width: 300px;
+        height: 400px;
+        right: 0;
+        bottom: 80px; /* Increased to avoid covering content */
+    }
+
+    /* Social proof adjustments */
+    .social-proof-container {
+        max-width: 250px;
+        bottom: 90px; /* Move up to avoid overlapping with other elements */
+    }
+
+    /* Popup adjustments */
+    .popup-content,
+    .lead-magnet-content {
+        max-width: 90%;
+        max-height: 80vh; /* Limit height on mobile */
+        overflow-y: auto; /* Allow scrolling for tall content */
+    }
+
+    /* Ensure popups don't cover important content */
+    .popup-overlay,
+    .lead-magnet-popup {
+        align-items: center;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Smaller screens need more compact layouts */
+    .popup-content,
+    .lead-magnet-content {
+        padding: var(--spacing-sm);
+        width: 95%;
+        font-size: 0.95em; /* Slightly smaller text */
+    }
+
+    /* Make popup headings smaller */
+    .popup-content h3,
+    .lead-magnet-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    /* Adjust form elements for better mobile experience */
+    .lead-form input,
+    .lead-form textarea,
+    .lead-form select {
+        padding: 8px 12px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Adjust chatbot for very small screens */
+    .chatbot-window {
+        width: calc(100vw - 40px);
+        right: -20px;
+        height: 350px; /* Slightly smaller height */
+    }
+
+    /* Adjust chatbot toggle position */
+    .chatbot-container {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    /* Make chatbot toggle smaller */
+    .chatbot-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    /* Adjust social proof for very small screens */
+    .social-proof-container {
+        left: 10px;
+        max-width: calc(100vw - 20px);
+        bottom: 80px;
+    }
+
+    /* Ensure popup close button is easily tappable */
+    .popup-close {
+        top: 10px;
+        right: 10px;
+        font-size: 1.8rem; /* Larger for easier tapping */
+        padding: 5px; /* Increase tap target */
+    }
+
+    /* Ensure form buttons are easily tappable */
+    .lead-form button[type="submit"],
+    .chatbot-lead-form button {
+        padding: 10px 15px;
+        min-height: 44px; /* Minimum recommended touch target size */
+    }
+}

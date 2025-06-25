@@ -1,0 +1,838 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics Services - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Transform your data into actionable insights with our comprehensive data analytics services. Make informed business decisions with powerful data visualization and analysis.">
+    <meta name="keywords" content="data analytics, business intelligence, data visualization, predictive analytics, data mining">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="../css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="../css/theme-switcher.css">
+
+    <!-- Additional styles for adaptive font colors -->
+    <style>
+        /* Ensure text is readable in both light and dark modes */
+        body.dark-theme .service-content h2,
+        body.dark-theme .feature-content h3,
+        body.dark-theme .step-title {
+            color: var(--dark-text-primary);
+        }
+
+        body.dark-theme .service-content p,
+        body.dark-theme .feature-content p,
+        body.dark-theme .process-step p {
+            color: var(--dark-text-secondary);
+        }
+
+        body.dark-theme .feature-icon {
+            background-color: var(--dark-bg-secondary);
+            color: var(--primary-light);
+        }
+
+        /* Hero section uses gradient primary in both themes */
+
+        body.dark-theme .process-step {
+            background-color: var(--dark-bg-card);
+        }
+
+        body.dark-theme .step-number {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Ensure links are visible in dark mode */
+        body.dark-theme a:not(.btn):not(.cta-button) {
+            color: var(--primary-light);
+        }
+
+        body.dark-theme a:not(.btn):not(.cta-button):hover {
+            color: var(--primary);
+        }
+    </style>
+
+    <style>
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Page-specific styles */
+        .service-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .service-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .service-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-overview {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .service-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .service-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-features {
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-secondary);
+            color: var(--primary);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex-grow: 1;
+        }
+
+        .feature-content h3 {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+
+        .process-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .process-step {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step-title {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-lg);
+        }
+
+        .technologies-section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .tech-item {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .tech-name {
+            font-weight: 500;
+        }
+
+        .pricing-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .pricing-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+            z-index: 1;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            font-size: 0.75rem;
+            border-bottom-left-radius: var(--border-radius-sm);
+        }
+
+        .pricing-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-md);
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-header h3 {
+            margin: 0;
+            color: var(--white);
+        }
+
+        .pricing-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-xs);
+            text-align: center;
+        }
+
+        .pricing-note {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-bottom: var(--spacing-xs);
+            font-style: italic;
+        }
+
+        .pricing-description {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-lg);
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .pricing-features li i {
+            color: var(--primary);
+            margin-right: var(--spacing-sm);
+            margin-top: 5px;
+        }
+
+        .pricing-features li i.fa-times {
+            color: var(--text-tertiary);
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue text color */
+            border: 2px solid #0066cc;
+        }
+
+        .btn-white:hover {
+            background-color: #0066cc;
+            color: #ffffff !important; /* White text on hover */
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-white:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-outline {
+            background-color: #0066cc !important; /* Blue background */
+            border: 2px solid #0066cc;
+            color: #ffffff !important; /* White text */
+        }
+
+        .btn-outline:hover {
+            background-color: #004c99 !important; /* Darker blue on hover */
+            color: #ffffff !important;
+            border-color: #004c99;
+        }
+
+        @media (max-width: 992px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-image {
+                order: -1;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .service-overview,
+            .process-section,
+            .technologies-section,
+            .cta-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../services.html" class="active">Services</a></li>
+                    <li><a href="../case-studies.html">Case Studies</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button -->
+                <a href="../quote.html" class="btn btn-primary mobile-cta">Request a Quote</a>
+            </nav>
+
+            <a href="../quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="service-hero">
+            <div class="container">
+                <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Data Analytics Services</h1>
+                <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Transform your business data into actionable insights with our comprehensive analytics solutions.</p>
+            </div>
+        </section>
+
+        <!-- Service Overview Section -->
+        <section class="service-overview">
+            <div class="container">
+                <div class="service-grid">
+                    <div class="service-content">
+                        <h2>Unlock the Power of Your Data</h2>
+                        <p>At Ex Revolution Technology, we help businesses harness the full potential of their data through advanced analytics solutions. Our team of data scientists and analysts work with you to collect, process, analyze, and visualize your data, enabling you to make informed decisions and gain a competitive edge.</p>
+                        <p>Whether you're looking to optimize operations, understand customer behavior, forecast trends, or identify new opportunities, our data analytics services provide the insights you need to drive growth and innovation.</p>
+
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3 style="color: #ffffff !important;">Services</h3>
+                                    <p>Transform raw data into meaningful insights with customized dashboards and reports that help you monitor KPIs and make data-driven decisions.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3 style="color: #ffffff !important;">Services</h3>
+                                    <p>Present complex data in intuitive visual formats that make it easy to identify patterns, trends, and correlations.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3 style="color: #ffffff !important;">Services</h3>
+                                    <p>Leverage machine learning and statistical models to forecast future trends, behaviors, and outcomes with remarkable accuracy.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-image">
+                        <img src="../assets/images/data-analytics.jpg" alt="Data Analytics Dashboard">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Data Analytics Process</h2>
+                <div class="grid grid-4">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Data Collection</h3>
+                        <p>We gather data from various sources including databases, APIs, web scraping, and manual inputs to create a comprehensive dataset.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Data Cleaning & Processing</h3>
+                        <p>We clean, transform, and structure your data to ensure accuracy and consistency before analysis.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Analysis & Modeling</h3>
+                        <p>Our data scientists apply statistical methods and machine learning algorithms to extract meaningful insights and create predictive models.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Visualization & Reporting</h3>
+                        <p>We present findings through interactive dashboards and comprehensive reports that make complex data easy to understand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="technologies-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Tools & Technologies We Use</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="tech-name">Python</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="tech-name">SQL</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="tech-name">Tableau</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-area"></i>
+                        </div>
+                        <div class="tech-name">Power BI</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="tech-name">TensorFlow</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="tech-name">Scikit-learn</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <div class="tech-name">Pandas</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="tech-name">AWS/Azure</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Analytics Packages</h2>
+                <div class="grid grid-3">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pricing-price">TZS 1,000,000</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Data collection & cleaning</li>
+                                <li><i class="fas fa-check"></i> Basic statistical analysis</li>
+                                <li><i class="fas fa-check"></i> Standard visualizations</li>
+                                <li><i class="fas fa-check"></i> Monthly reporting</li>
+                                <li><i class="fas fa-check"></i> Basic dashboard setup</li>
+                                <li><i class="fas fa-times"></i> Advanced predictive models</li>
+                                <li><i class="fas fa-times"></i> Real-time analytics</li>
+                                <li><i class="fas fa-times"></i> Custom API integrations</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card popular">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                            <span class="popular-tag">Most Popular</span>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pricing-price">TZS 2,500,000</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Comprehensive data integration</li>
+                                <li><i class="fas fa-check"></i> Advanced statistical analysis</li>
+                                <li><i class="fas fa-check"></i> Interactive visualizations</li>
+                                <li><i class="fas fa-check"></i> Weekly reporting</li>
+                                <li><i class="fas fa-check"></i> Custom dashboard development</li>
+                                <li><i class="fas fa-check"></i> Basic predictive models</li>
+                                <li><i class="fas fa-check"></i> Data strategy consulting</li>
+                                <li><i class="fas fa-times"></i> Real-time analytics</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 style="color: #ffffff !important;">Enterprise Package</h3></div><div class="pricing-content"><div class="pricing-price">Custom</div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> End-to-end data pipeline setup</li>
+                                <li><i class="fas fa-check"></i> Advanced predictive modeling</li>
+                                <li><i class="fas fa-check"></i> Machine learning implementation</li>
+                                <li><i class="fas fa-check"></i> Real-time analytics</li>
+                                <li><i class="fas fa-check"></i> Enterprise dashboard solutions</li>
+                                <li><i class="fas fa-check"></i> Custom API integrations</li>
+                                <li><i class="fas fa-check"></i> Dedicated data scientist</li>
+                                <li><i class="fas fa-check"></i> 24/7 support</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <p>All prices are approximate market rates in Tanzanian Shillings (TZS). Actual pricing may vary based on project scope, complexity, and duration.</p>
+                    <p>Our data analytics services are tailored to your specific needs and business objectives. Contact us for a personalized consultation and detailed quote.</p>
+                    <a href="../contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="color: #ffffff !important;">Ready to Transform Your Data into Insights?</h2>
+                <p style="color: #ffffff !important;">Contact us today to discuss how our data analytics services can help your business make smarter decisions and drive growth.</p>
+                <div class="cta-buttons">
+                    <a href="../quote.html" class="btn btn-white">Request a Quote</a>
+                    <a href="../contact.html" class="btn btn-outline-white">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="data-analytics.html" style="color: #ffffff !important;">Data Analytics</a>
+                        <a href="branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="../case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="../blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="../contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="../terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="../sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/direct-mobile-menu.js"></script>
+    <script src="../js/theme-switcher.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/newsletter-handler.js"></script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Chatbot Integration -->
+    <script src="../js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

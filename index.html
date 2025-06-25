@@ -1,0 +1,1148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex Revolution Technology - Innovative IT Solutions</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Ex Revolution Technology provides innovative IT solutions, software development, digital marketing, and IT consulting services for businesses of all sizes.">
+    <meta name="keywords" content="IT solutions, software development, digital marketing, IT consulting">
+    <meta name="author" content="Ex Revolution Technology">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://exrevolution.com/">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ex Revolution Technology - Innovative IT Solutions">
+    <meta property="og:description" content="Transform your business with our cutting-edge IT solutions. We offer software development, digital marketing, IT consulting, and branding services.">
+    <meta property="og:image" content="https://exrevolution.com/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://exrevolution.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ex Revolution Technology">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ex Revolution Technology - Innovative IT Solutions">
+    <meta name="twitter:description" content="Transform your business with our cutting-edge IT solutions. Software development, digital marketing, IT consulting & more.">
+    <meta name="twitter:image" content="https://exrevolution.com/assets/images/twitter-card.jpg">
+    <meta name="twitter:site" content="@exrevolution">
+    <meta name="twitter:creator" content="@exrevolution">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="css/theme-switcher.css">
+
+    <!-- Conversion & Lead Generation Stylesheet -->
+    <link rel="stylesheet" href="css/conversion-lead.css">
+
+    <!-- Chatbot Stylesheet -->
+    <link rel="stylesheet" href="css/chatbot.css">
+
+    <!-- Buttons Stylesheet -->
+    <link rel="stylesheet" href="css/buttons.css">
+
+    <!-- About Section Stylesheet -->
+    <link rel="stylesheet" href="css/about-section.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ex Revolution Technology",
+        "url": "https://exrevolution.com",
+        "logo": "https://exrevolution.com/assets/images/logo.jpg",
+        "description": "Ex Revolution Technology provides innovative IT solutions, software development, digital marketing, and IT consulting services for businesses of all sizes.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "PSSSF Samora House, Junction of Samora and Morogoro Rd",
+            "addressLocality": "Dar es Salaam",
+            "addressCountry": "Tanzania"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+255744622649",
+            "contactType": "customer service",
+            "email": "exrevolution8@gmail.com"
+        },
+        "sameAs": [
+            "https://www.instagram.com/exrevolution.tz"
+        ],
+        "services": [
+            "Software Development",
+            "Digital Marketing",
+            "IT Consulting",
+            "Data Analytics",
+            "Branding Services"
+        ]
+    }
+    </script>
+
+    <style>
+        /* Page-specific styles */
+
+        /* Ensure hero text is white in both light and dark modes */
+        .hero h1,
+        .hero p {
+            color: var(--white) !important;
+        }
+
+        body.dark-theme .service-title,
+        body.dark-theme .about-content h2,
+        body.dark-theme .testimonial-author h4 {
+            color: var(--dark-text-primary);
+        }
+
+        body.dark-theme .service-description,
+        body.dark-theme .about-content p,
+        body.dark-theme .testimonial-text,
+        body.dark-theme .testimonial-company {
+            color: var(--dark-text-secondary);
+        }
+
+        body.dark-theme .service-icon {
+            background-color: var(--dark-bg-secondary);
+            color: var(--primary-light);
+        }
+
+        body.dark-theme .service-link {
+            color: var(--primary-light);
+        }
+
+        body.dark-theme .service-link:hover {
+            color: var(--primary);
+        }
+
+        body.dark-theme .testimonial-card,
+        body.dark-theme .service-card {
+            background-color: var(--dark-bg-card);
+            box-shadow: var(--dark-shadow);
+        }
+
+        body.dark-theme .stat-number {
+            color: var(--primary-light);
+        }
+
+        body.dark-theme .stat-label {
+            color: var(--dark-text-secondary);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-20px) translateX(10px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Animated gradient background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 100%;
+            margin: 0;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important; /* Stronger shadow for better visibility */
+            line-height: 1.2;
+            font-weight: var(--font-weight-bold);
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            margin-bottom: var(--spacing-lg);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important; /* Stronger shadow for better visibility */
+            line-height: 1.6;
+            max-width: 90%;
+            font-weight: 500 !important; /* Make text slightly bolder */
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: var(--spacing-md);
+        }
+
+        /* Custom hero button styles */
+        .hero .btn-primary {
+            background-color: rgba(37, 99, 235, 0.85);
+            border-color: rgba(37, 99, 235, 0.85);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero .btn-primary:hover {
+            background-color: rgba(37, 99, 235, 0.95);
+            border-color: rgba(37, 99, 235, 0.95);
+        }
+
+        .hero .btn-outline {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+
+        .hero .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--bg-secondary);
+            color: var(--primary);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .service-content {
+            padding: var(--spacing-lg);
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-title {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-xl);
+        }
+
+        .service-description {
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1;
+        }
+
+        .service-link {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            margin-top: auto;
+        }
+
+        .service-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .case-study-card {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 350px;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .case-study-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .case-study-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-lg);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3));
+            color: var(--white);
+            transition: background var(--transition-normal);
+        }
+
+        .case-study-card:hover .case-study-content {
+            background: linear-gradient(to top, rgba(37, 99, 235, 0.9), rgba(37, 99, 235, 0.5));
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            position: relative;
+        }
+
+        .testimonial-content {
+            position: relative;
+            padding-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius-circle);
+            margin-right: var(--spacing-sm);
+            object-fit: cover;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Digital Marketing Guide CTA Section */
+        .guide-cta-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .guide-cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .guide-cta-content {
+            padding-right: var(--spacing-xl);
+        }
+
+        .guide-cta-content h2 {
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-xxl);
+        }
+
+        .guide-cta-content p {
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-md);
+        }
+
+        .guide-cta-form {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .guide-cta-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            font-family: inherit;
+        }
+
+        .guide-cta-offer {
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .offer-content h3 {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-xl);
+        }
+
+        .offer-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-item span:first-child {
+            font-size: 2rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 5px;
+        }
+
+        .countdown-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+
+        /* Dark mode styles for guide CTA section */
+        body.dark-theme .guide-cta-section {
+            background-color: var(--dark-bg-secondary);
+        }
+
+        body.dark-theme .guide-cta-form input {
+            background-color: var(--dark-bg-primary);
+            color: var(--dark-text-primary);
+            border-color: var(--dark-border-color);
+        }
+
+        body.dark-theme .guide-cta-offer {
+            background-color: var(--primary-dark);
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: var(--spacing-xl) 0;
+                background: var(--gradient-primary);
+            }
+
+            .hero::before {
+                display: none;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-content {
+                text-align: center;
+                order: 1;
+                padding: 0 20px;
+                z-index: 3;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            /* Add a pseudo-element for the background image */
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('assets/images/hero-image.jpg');
+                background-size: cover;
+                background-position: center;
+                opacity: 0.15;
+                z-index: 1;
+                filter: blur(0px);
+                transform: scale(1.02); /* Slightly larger to avoid blur edges */
+            }
+
+            .guide-cta-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .guide-cta-content {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .guide-cta-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: var(--spacing-lg) 0;
+                min-height: 90vh;
+                max-height: 90vh;
+                height: 90vh;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+                background: var(--gradient-primary);
+            }
+
+            .hero-content {
+                background-color: rgba(0, 0, 0, 0.3);
+                border-radius: 12px;
+                padding: 25px;
+                backdrop-filter: blur(3px);
+                -webkit-backdrop-filter: blur(3px);
+                margin: 0 15px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+                max-width: 90%;
+                max-height: 80vh;
+                overflow-y: auto;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .hero .container {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            }
+
+            .hero p {
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            /* Adjust button opacity for mobile */
+            .hero .btn-primary {
+                background-color: rgba(37, 99, 235, 0.8);
+            }
+
+            .hero .btn-outline {
+                background-color: rgba(255, 255, 255, 0.12);
+            }
+
+            /* Add the hero image as a centered element */
+            .hero::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                background-image: url('assets/images/hero-image.jpg');
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 0.15;
+                z-index: 1;
+                filter: blur(0px);
+            }
+
+            /* Add a gradient overlay for better text readability */
+            .hero::before {
+                display: block;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 100%);
+                width: 100%;
+                height: 100%;
+                opacity: 0.7;
+                z-index: 2;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .case-study-card {
+                height: 300px;
+            }
+
+            .countdown {
+                gap: var(--spacing-sm);
+            }
+
+            .countdown-item span:first-child {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: var(--font-size-xs);
+            }
+        }
+
+        /* Additional adjustments for smaller mobile devices */
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 80vh;
+                max-height: 80vh;
+                height: 80vh;
+            }
+
+            .hero-content {
+                padding: 15px;
+                max-height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            /* Adjust image size for smaller screens */
+            .hero::after {
+                width: 100%;
+                height: 100%;
+                opacity: 0.12;
+            }
+
+            .hero-content {
+                background-color: rgba(0, 0, 0, 0.25);
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="case-studies.html">Case Studies</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button (only visible on mobile) -->
+
+            </nav>
+
+            <!-- Desktop CTA Button (only visible on desktop) -->
+            <a href="quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Innovative Software Solutions for Your Business Growth</h1>
+                    <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Ex Revolution Technology delivers cutting-edge software development and digital marketing services to help your business thrive in the digital landscape. We combine technical expertise with strategic thinking to create solutions that drive real business results.</p>
+                    <div class="hero-buttons">
+                        <a href="services.html" class="btn btn-primary">Our Services</a>
+                        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/hero-image.jpg" alt="Innovative Software Solutions" loading="eager" onerror="this.src='https://via.placeholder.com/600x400?text=Innovative+Solutions'">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section services-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Services</h2>
+                <div class="grid grid-4">
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="service-title">Software Development</h3>
+                            <p class="service-description">Custom software solutions tailored to your business needs, from web applications to mobile apps and enterprise systems.</p>
+                            <a href="services/software-development.html" class="service-link" style="color: #ffffff !important;">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="service-title">Digital Marketing</h3>
+                            <p class="service-description">Comprehensive digital marketing strategies to increase your online presence, drive traffic, and convert leads into customers.</p>
+                            <a href="services/digital-marketing.html" class="service-link" style="color: #ffffff !important;">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3 class="service-title">IT Consulting</h3>
+                            <p class="service-description">Expert IT consulting services to help you make informed technology decisions and implement effective IT strategies.</p>
+                            <a href="services/it-consulting.html" class="service-link" style="color: #ffffff !important;">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <h3 class="service-title">Branding Kit</h3>
+                            <p class="service-description">Comprehensive branding solutions to establish a strong, consistent brand identity across all digital and physical touchpoints.</p>
+                            <a href="services/branding-kit.html" class="service-link" style="color: #ffffff !important;">Learn More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2>Transforming Businesses Through Technology</h2>
+                        <p>Founded in 2024 by Shirhan Shermohamed, Ex Revolution Technology is a leading software development and digital marketing company based in Dar es Salaam, Tanzania.</p>
+                        <p>Our mission is to help businesses leverage technology to achieve their goals, improve efficiency, and drive growth. We combine local understanding with global standards to deliver exceptional results that exceed client expectations.</p>
+                        <p>With a team of experienced professionals and a passion for innovation, we've helped numerous businesses across various industries transform their operations, enhance their online presence, and achieve sustainable growth through cutting-edge technology solutions.</p>
+                        <a href="about.html" class="btn btn-primary">Learn More About Us</a>
+
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon" style="background-color: rgba(0, 102, 204, 0.8) !important; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                                    <i class="fas fa-project-diagram" style="color: #ffffff !important; font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="stat-number">100+</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon" style="background-color: rgba(0, 102, 204, 0.8) !important; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                                    <i class="fas fa-smile" style="color: #ffffff !important; font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Happy Clients</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon" style="background-color: rgba(0, 102, 204, 0.8) !important; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                                    <i class="fas fa-users" style="color: #ffffff !important; font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Team Members</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="assets/images/about-home.jpg" alt="Ex Revolution Technology Team" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+        <section class="section case-studies-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Real Results for Real Businesses</h2>
+                <p class="text-center mb-5">At Ex Revolution Technology, we measure our success by the success of our clients. Browse through our case studies to see how our solutions have helped businesses overcome challenges, improve efficiency, and drive growth.</p>
+
+                <div class="grid grid-3">
+                    <div class="case-study-card">
+                        <img src="assets/images/digital_marketing_concept.webp" alt="Usangu Logistics Website" class="case-study-image" loading="lazy">
+                        <div class="case-study-content">
+                            <p style="color: #ffffff !important;" class="case-study-category">Website Development</p>
+                            <h3 style="color: #ffffff !important;" class="case-study-title">Custom Website for Usangu Logistics</h3>
+                            <a href="case-studies/usangu-logistics.html" class="case-study-link" style="color: #ffffff !important;">View Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-study-card">
+                        <img src="assets/images/developer_laptop.jpeg" alt="Man Haulage Company Website" class="case-study-image" loading="lazy">
+                        <div class="case-study-content">
+                            <p style="color: #ffffff !important;" class="case-study-category">Website Development</p>
+                            <h3 style="color: #ffffff !important;" class="case-study-title">Corporate Website for Man Haulage Company Ltd</h3>
+                            <a href="case-studies/man-haulage.html" class="case-study-link" style="color: #ffffff !important;">View Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="case-study-card">
+                        <img src="assets/images/branding2.jpg" alt="Epic Haulage Branding" class="case-study-image" loading="lazy">
+                        <div class="case-study-content">
+                            <p style="color: #ffffff !important;" class="case-study-category">Branding</p>
+                            <h3 style="color: #ffffff !important;" class="case-study-title">Branding Kit for Epic Haulage</h3>
+                            <a href="case-studies/epic-haulage-branding.html" class="case-study-link" style="color: #ffffff !important;">View Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="case-studies.html" class="btn btn-primary">View All Case Studies</a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Digital Marketing Guide CTA Section -->
+        <section class="section guide-cta-section">
+            <div class="container">
+                <div class="guide-cta-grid">
+                    <div class="guide-cta-content">
+                        <h2>Free Digital Marketing Guide</h2>
+                        <p>Download our comprehensive guide to learn how to boost your online presence and generate more leads for your business. This 25-page guide includes actionable strategies, case studies, and step-by-step instructions.</p>
+                        <form class="guide-cta-form">
+                            <input type="email" placeholder="Your Email Address" required>
+                            <button type="submit" class="btn btn-primary">Download Now</button>
+                        </form>
+                    </div>
+                    <div class="guide-cta-offer">
+                        <div class="offer-content">
+                            <h3 style="color: #ffffff !important;">Limited Time Offer</h3>
+                            <p style="color: #ffffff !important;">Get 20% off your first project when you sign up today!</p>
+                            <div class="countdown">
+                                <div class="countdown-item">
+                                    <span id="days">02</span>
+                                    <span class="countdown-label">Days</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span id="hours">24</span>
+                                    <span class="countdown-label">Hours</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span id="minutes">00</span>
+                                    <span class="countdown-label">Minutes</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span id="seconds">00</span>
+                                    <span class="countdown-label">Seconds</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container text-center">
+                <h2 style="color: #ffffff !important;">Ready to Transform Your Business?</h2>
+                <p style="color: #ffffff !important;">Let's discuss how our IT solutions can help you achieve your business goals.</p>
+                <a href="quote.html" class="btn btn-primary mt-4">Request a Free Quote</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3>
+                    <p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="services/software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="services/digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="services/it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="services/data-analytics.html" style="color: #ffffff !important;">Data Analytics</a>
+                        <a href="services/branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3>
+                    <div class="footer-links">
+                        <a href="about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3>
+                    <div class="footer-links">
+                        <a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Exit Intent Popup -->
+    <div id="exit-popup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close">&times;</button>
+            <h3>Before You Go!</h3>
+            <p>Get our free guide on "5 Ways to Boost Your Business with Technology" and receive a 15% discount on your first project.</p>
+            <form class="lead-form">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Get My Free Guide</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Social Proof Container -->
+    <div class="social-proof-container"></div>
+
+
+
+    <!-- JavaScript -->
+    <script src="js/direct-mobile-menu.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/conversion-optimization.js"></script>
+    <script src="js/lead-generation.js"></script>
+    <script src="js/image-optimization.js"></script>
+
+    <!-- API Integration -->
+    <script src="js/api-service.js"></script>
+    <script src="js/contact-form-handler.js"></script>
+    <script src="js/quote-form-handler.js"></script>
+    <script src="js/guide-download-handler.js"></script>
+    <script src="js/newsletter-handler.js"></script>
+
+    <!-- Chatbot Integration -->
+    <script src="js/chatbot.js"></script>
+
+    <!-- Countdown Timer Script -->
+    <script>
+    (function() {
+        // Set the countdown target date (2 days from now)
+        var countdownDate = new Date();
+        countdownDate.setDate(countdownDate.getDate() + 2);
+        countdownDate.setHours(0, 0, 0, 0);
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+
+            // If the countdown is over, show zeros
+            if (distance < 0) {
+                document.getElementById("days").textContent = "00";
+                document.getElementById("hours").textContent = "00";
+                document.getElementById("minutes").textContent = "00";
+                document.getElementById("seconds").textContent = "00";
+                return;
+            }
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, "0");
+            document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,1129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Get in touch with Ex Revolution Technology. Contact us for inquiries about our IT services, software development, digital marketing, and consulting solutions.">
+    <meta name="keywords" content="contact Ex Revolution, IT services contact, software development inquiry, digital marketing contact">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="css/theme-switcher.css">
+
+    <!-- Chatbot Stylesheet -->
+    <link rel="stylesheet" href="css/chatbot.css">
+
+    <style>
+
+
+        /* Contact page specific styles */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .page-header {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-title h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .contact-method {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .contact-method:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-method-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-md);
+            background-color: var(--primary-light);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .contact-method-title {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-method-text {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius-md);
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .contact-info {
+            padding: var(--spacing-lg);
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-details {
+            margin-top: var(--spacing-lg);
+        }
+
+        .contact-item {
+            display: flex;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-light);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .contact-form-container {
+            padding: var(--spacing-lg);
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form-container h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-checkbox input {
+            margin-right: var(--spacing-sm);
+            margin-top: 5px;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+        }
+
+        .submit-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .map-container {
+            height: 450px;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: var(--spacing-md);
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .cta-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            margin-bottom: var(--spacing-md);
+            color: var(--white);
+        }
+
+        .cta-content p {
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--white);
+            color: var(--primary);
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-gray);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue text color */
+            border: 2px solid #0066cc;
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .btn-white:hover {
+            background-color: #0066cc;
+            color: #ffffff !important; /* White text on hover */
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .btn-outline-white:hover {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue color to match other pages */
+        }
+
+        @media (max-width: 992px) {
+            .contact-methods {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="case-studies.html">Case Studies</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button (only visible on mobile) -->
+
+            </nav>
+
+            <!-- Desktop CTA Button (only visible on desktop) -->
+            <a href="quote.html" class="cta-button">Request a Quote</a>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Contact Us</h1>
+            <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Get in touch with our team to discuss your project</p>
+        </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Can We Help You?</h2>
+                <p>Choose the best way to connect with our team</p>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="contact-method-title">Call Us</h3>
+                    <p class="contact-method-text">Speak directly with our team for immediate assistance with your
+                        questions.</p>
+                    <a href="tel:+255123456789" class="btn-outline">+255 672 622 649</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-method-title">Email Us</h3>
+                    <p class="contact-method-text">Send us an email and we'll respond to your inquiry within 24 hours.
+                    </p>
+                    <a href="mailto:exrevolution8@gmail.com" class="btn-outline">exrevolution8@gmail.com</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="contact-method-title">Visit Us</h3>
+                    <p class="contact-method-text">Come to our office for a face-to-face meeting with our team.</p>
+                    <a href="#map" class="btn-outline">View Location</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Let's Start a Conversation</h2>
+                    <p>Whether you have a question about our services, need a quote for your project, or want to discuss
+                        how we can help your business grow, our team is ready to assist you.</p>
+
+                    <p>At Ex Revolution Technology, we believe in building strong relationships with our clients. We
+                        take the time to understand your unique challenges and goals, allowing us to deliver solutions
+                        that truly meet your needs and exceed your expectations.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Our Location</h4>
+                                <p>PSSSF Samora House<br>Junction of Samora and Morogoro Rd<br>Dar es Salaam, Tanzania</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email Us</h4>
+                                <p>exrevolution8@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Call Us</h4>
+                                <p>+255 672 622 640</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links" style="margin-top: 30px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>Send Us a Message</h3>
+                    <!-- Success message (hidden by default) -->
+                    <div id="formSuccess" class="alert alert-success" style="display: none; background-color: #d4edda; color: #155724; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+                        Thank you for your message! We'll get back to you soon.
+                    </div>
+
+                    <!-- Error message (hidden by default) -->
+                    <div id="formError" class="alert alert-danger" style="display: none; background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+                        An error occurred. Please try again.
+                    </div>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required autocomplete="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Your Phone</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number" autocomplete="tel">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service" class="form-label">Service of Interest</label>
+                            <select id="service" name="subject" class="form-input" autocomplete="off">
+                                <option value="" selected disabled>Select a service</option>
+                                <option value="Software Development">Software Development</option>
+                                <option value="Digital Marketing">Digital Marketing</option>
+                                <option value="IT Consulting">IT Consulting</option>
+                                <option value="Data Analytics">Data Analytics</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" name="message" class="form-input" placeholder="How can we help you?"
+                                required autocomplete="off"></textarea>
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">I agree to the processing of my personal data
+                                in accordance with the privacy policy.</label>
+                        </div>
+
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section" id="map">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Us</h2>
+                <p>Visit our office in Dar es Salaam, Tanzania</p>
+            </div>
+            <div class="map-container">
+                <!-- Ex Revolution Technology at PSSSF Samora House -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.4!2d39.2625!3d-6.8162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4b1a5c5c5c5c%3A0x5c5c5c5c5c5c5c5c!2sPSSSF%20Samora%20House%2C%20Junction%20of%20Samora%20and%20Morogoro%20Rd%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1650000000000!5m2!1sen!2stz"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our services</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What services does Ex Revolution Technology offer?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ex Revolution Technology offers a comprehensive range of services including custom software
+                            development, website development, mobile app development, digital marketing (SEO, social
+                            media, content marketing, email marketing, PPC), strategic IT consulting, and data analytics
+                            solutions. Our team of experts works closely with clients to understand their unique needs
+                            and deliver tailored solutions that drive business growth.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long does it take to develop custom software?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The timeline for custom software development varies depending on the complexity and scope of
+                            the project. Simple applications may take 2-3 months, while more complex enterprise
+                            solutions can take 6 months or more. During our initial consultation, we'll provide a more
+                            accurate timeline based on your specific requirements. We follow an agile development
+                            methodology that allows for regular updates and feedback throughout the process, ensuring
+                            the final product meets your expectations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you provide ongoing support and maintenance?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer comprehensive support and maintenance services after project completion. We
+                            provide different support packages to ensure your software or website continues to function
+                            optimally. Our support services include regular updates, security patches, performance
+                            monitoring, bug fixes, and technical assistance. We also offer training for your team to
+                            ensure they can effectively use the new systems. Our goal is to build long-term
+                            relationships with our clients and support their ongoing success.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much do your services cost?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our pricing is customized based on the specific needs and scope of each project. We offer
+                            flexible pricing models including fixed-price contracts, time and materials, and retainer
+                            arrangements. We believe in transparent pricing with no hidden costs, and we work with
+                            clients to find a pricing structure that fits their budget and project requirements. Contact
+                            us for a free consultation and quote tailored to your project needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Which industries do you serve?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We serve a wide range of industries including retail, healthcare, finance, education,
+                            manufacturing, hospitality, and non-profit organizations. Our solutions are tailored to meet
+                            the specific needs and challenges of each industry, helping businesses of all types leverage
+                            technology for growth. Our diverse experience across different sectors allows us to bring
+                            innovative approaches and best practices to every project we undertake.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I get started with Ex Revolution Technology?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Getting started is easy! You can contact us through our contact form above, call us at +255 744 622 649,
+                            or email us at exrevolution8@gmail.com. We'll schedule a free consultation to discuss your project
+                            requirements, understand your business goals, and provide you with a detailed proposal. Our team is
+                            ready to help you transform your ideas into reality with innovative technology solutions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you work with international clients?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we work with clients both locally in Tanzania and internationally. Our team is experienced
+                            in remote collaboration and we use modern communication tools to ensure seamless project delivery
+                            regardless of location. We have successfully completed projects for clients across different time
+                            zones and are committed to providing the same high-quality service to all our clients worldwide.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What makes Ex Revolution Technology different?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our commitment to innovation, quality, and client satisfaction sets us apart. We combine technical
+                            expertise with deep business understanding to deliver solutions that not only meet your current needs
+                            but also scale with your business growth. Our agile development approach, transparent communication,
+                            and ongoing support ensure that you receive maximum value from your technology investment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 style="color: #ffffff !important;">Ready to Start Your Project?</h2>
+                <p style="color: #ffffff !important;">Let's discuss how Ex Revolution can help you achieve your business goals through innovative
+                    technology solutions. Our team is ready to understand your unique challenges and develop a
+                    customized strategy for your success.</p>
+                <div class="cta-buttons">
+                    <a href="quote.html" class="btn btn-white">Request a Quote</a>
+                    <a href="tel:+255744622649" class="btn btn-outline-white">Call Us Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="services/software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="services/digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="services/it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="services/branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/direct-mobile-menu.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- API Integration -->
+    <script src="js/api-service.js"></script>
+    <script src="js/contact-form-handler.js"></script>
+
+    <!-- FAQ Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-toggle i');
+
+                    // Toggle answer visibility
+                    if (answer.style.display === 'block') {
+                        answer.style.display = 'none';
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    } else {
+                        answer.style.display = 'block';
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                });
+            });
+
+            // Hide all answers initially
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+
+            // Initialize chatbot after FAQ setup
+            setTimeout(initContactChatbot, 100);
+        });
+
+        // Contact page specific chatbot implementation
+        function initContactChatbot() {
+            const container = document.querySelector('.chatbot-container');
+            if (!container) return;
+
+            // Create chatbot toggle
+            const toggle = document.createElement('button');
+            toggle.className = 'chatbot-toggle';
+            toggle.innerHTML = '<i class="fas fa-comments"></i>';
+            toggle.setAttribute('aria-label', 'Open chat');
+
+            // Create chatbot window
+            const window = document.createElement('div');
+            window.className = 'chatbot-window';
+            window.innerHTML = `
+                <div class="chatbot-header">
+                    <div class="chatbot-title">
+                        <div class="chatbot-avatar">
+                            <img src="assets/images/logo-icon.png" alt="Ex Revolution Support" style="width: 30px; height: 30px; border-radius: 50%;">
+                        </div>
+                        <h3>Chat with Us</h3>
+                    </div>
+                    <button class="chatbot-close" aria-label="Close chat">&times;</button>
+                </div>
+                <div class="chatbot-messages">
+                    <div class="chatbot-message bot-message">
+                        <p>Hello! Welcome to Ex Revolution Technology. How can I help you today?</p>
+                        <div class="chatbot-options">
+                            <button class="chatbot-option" data-value="services">Tell me about your services</button>
+                            <button class="chatbot-option" data-value="quote">I'd like a quote</button>
+                            <button class="chatbot-option" data-value="contact">I want to speak with someone</button>
+                            <button class="chatbot-option" data-value="pricing">How much do projects cost?</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-typing" style="display: none;">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="chatbot-input">
+                    <input type="text" placeholder="Type your message..." aria-label="Type your message">
+                    <button type="button" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            `;
+
+            container.appendChild(toggle);
+            container.appendChild(window);
+
+            // Add event listeners
+            toggle.addEventListener('click', () => {
+                window.classList.toggle('active');
+            });
+
+            window.querySelector('.chatbot-close').addEventListener('click', () => {
+                window.classList.remove('active');
+            });
+
+            // Handle option clicks
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('chatbot-option')) {
+                    const value = e.target.getAttribute('data-value');
+                    handleChatOption(value, window);
+                }
+            });
+
+            // Handle text input
+            const input = window.querySelector('.chatbot-input input');
+            const sendBtn = window.querySelector('.chatbot-input button');
+
+            sendBtn.addEventListener('click', () => sendMessage(input, window));
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage(input, window);
+            });
+        }
+
+        function handleChatOption(value, window) {
+            const messages = window.querySelector('.chatbot-messages');
+
+            const responses = {
+                services: {
+                    text: "We offer comprehensive IT solutions including:",
+                    list: [
+                        "• Software Development (Web & Mobile)",
+                        "• Digital Marketing & SEO",
+                        "• IT Consulting & Support",
+                        "• Branding & Design Services"
+                    ],
+                    options: [
+                        { text: "Get a quote", value: "quote" },
+                        { text: "Contact us", value: "contact" }
+                    ]
+                },
+                quote: {
+                    text: "I'd be happy to help you get a quote! Here's how to reach us:",
+                    list: [
+                        "📧 Email: exrevolution8@gmail.com",
+                        "📞 Phone: +255 744 622 649",
+                        "📝 Quote Form: quote.html"
+                    ],
+                    options: [
+                        { text: "View our services", value: "services" },
+                        { text: "Contact directly", value: "contact" }
+                    ]
+                },
+                contact: {
+                    text: "Here's how to reach our team:",
+                    list: [
+                        "📧 Email: exrevolution8@gmail.com",
+                        "📞 Phone: +255 744 622 649",
+                        "🌐 Website: exrevolution.com",
+                        "📍 Location: PSSSF Samora House, Junction of Samora and Morogoro Rd, Dar es Salaam",
+                        "⏰ Hours: Monday-Friday, 8AM-6PM EAT"
+                    ],
+                    options: [
+                        { text: "Get a quote", value: "quote" },
+                        { text: "View services", value: "services" }
+                    ]
+                },
+                pricing: {
+                    text: "Here's our starting pricing:",
+                    list: [
+                        "• Websites: Starting from $500",
+                        "• Mobile Apps: Starting from $1,500",
+                        "• Digital Marketing: $300/month",
+                        "• IT Consulting: $50/hour"
+                    ],
+                    options: [
+                        { text: "Get custom quote", value: "quote" },
+                        { text: "Learn about services", value: "services" }
+                    ]
+                }
+            };
+
+            const response = responses[value];
+            if (response) {
+                addBotMessage(response, messages);
+            }
+        }
+
+        function addBotMessage(response, container) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chatbot-message bot-message';
+
+            let html = `<p>${response.text}</p>`;
+            if (response.list) {
+                html += '<div class="response-list">' + response.list.map(item => `<div>${item}</div>`).join('') + '</div>';
+            }
+            if (response.options) {
+                html += '<div class="chatbot-options">' +
+                    response.options.map(opt => `<button class="chatbot-option" data-value="${opt.value}">${opt.text}</button>`).join('') +
+                    '</div>';
+            }
+
+            messageDiv.innerHTML = html;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function sendMessage(input, window) {
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messages = window.querySelector('.chatbot-messages');
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chatbot-message user-message';
+            userMsg.textContent = message;
+            messages.appendChild(userMsg);
+
+            // Clear input
+            input.value = '';
+
+            // Add bot response
+            setTimeout(() => {
+                addBotMessage({
+                    text: "Thanks for your message! For immediate assistance:",
+                    list: [
+                        "📧 Email: exrevolution8@gmail.com",
+                        "📞 Call: +255 744 622 649"
+                    ],
+                    options: [
+                        { text: "Get a quote", value: "quote" },
+                        { text: "View services", value: "services" }
+                    ]
+                }, messages);
+            }, 500);
+        }
+    </script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

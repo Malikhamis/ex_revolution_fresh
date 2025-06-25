@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Layout Test - Ex Revolution Admin</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Mobile Responsive CSS -->
+    <link href="assets/css/admin-mobile.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .test-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .fill-height {
+            min-height: 200px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="mobile-title">Mobile Layout Test</h1>
+        <div></div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" style="max-width: 100%;">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+            <li><a href="contacts.html"><i class="fas fa-envelope"></i> <span>Contact Requests</span></a></li>
+            <li><a href="quotes.html"><i class="fas fa-file-invoice-dollar"></i> <span>Quote Requests</span></a></li>
+            <li><a href="newsletter.html"><i class="fas fa-newspaper"></i> <span>Newsletter</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Mobile Layout Test</h1>
+            <button class="btn btn-primary">
+                <i class="fas fa-test"></i> Test Button
+            </button>
+        </div>
+
+        <div class="alert alert-success" role="alert">
+            <i class="fas fa-check-circle"></i>
+            <strong>Mobile Layout Test:</strong> This page tests the mobile layout optimization.
+        </div>
+
+        <div class="row stats-row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number">100%</h3>
+                        <p class="stat-label">Screen Usage</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number">0px</h3>
+                        <p class="stat-label">Wasted Space</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number">✓</h3>
+                        <p class="stat-label">Optimized</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h3 class="stat-number">📱</h3>
+                        <p class="stat-label">Mobile Ready</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-mobile-alt me-2"></i>Mobile Layout Test Results
+            </div>
+            <div class="card-body">
+                <div class="test-content">
+                    <h5>✅ Header Optimization</h5>
+                    <p>Mobile header reduced to 60px height for more content space.</p>
+                </div>
+
+                <div class="test-content">
+                    <h5>✅ Padding Optimization</h5>
+                    <p>Content padding reduced to 8px for maximum width utilization.</p>
+                </div>
+
+                <div class="test-content">
+                    <h5>✅ Flexbox Layout</h5>
+                    <p>Content uses flexbox to expand and fill available screen space.</p>
+                </div>
+
+                <div class="fill-height">
+                    <div class="text-center">
+                        <h4>🎯 This content should fill the remaining screen space</h4>
+                        <p>If you see this taking up the full height, the mobile layout is working!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- API Configuration -->
+    <script src="assets/js/api-config.js"></script>
+
+    <!-- Mobile JS -->
+    <script src="assets/js/admin-mobile.js"></script>
+</body>
+</html>

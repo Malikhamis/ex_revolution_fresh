@@ -1,0 +1,164 @@
+/**
+ * Mission & Vision Styles
+ * Enhanced styling for mission and vision sections with theme adaptation
+ */
+
+/* Mission & Vision Container */
+.mission-vision {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+/* Base Card Styles */
+.mission-card,
+.vision-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Card Hover Effects */
+.mission-card:hover,
+.vision-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon Container Styles */
+.mission-icon,
+.vision-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Icon Styles */
+.mission-icon i,
+.vision-icon i {
+    font-size: 32px;
+    transition: all 0.3s ease;
+}
+
+/* Mission Icon - Compass */
+.mission-icon i {
+    transform: rotate(0deg);
+}
+
+.mission-card:hover .mission-icon i {
+    transform: rotate(15deg);
+}
+
+/* Vision Icon - Binoculars */
+.vision-icon i {
+    transform: scale(1);
+}
+
+.vision-card:hover .vision-icon i {
+    transform: scale(1.1);
+}
+
+/* Card Title Styles */
+.mission-card h3,
+.vision-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+}
+
+/* Card Text Styles */
+.mission-card p,
+.vision-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Light Theme Styles */
+body:not(.dark-theme) .mission-card,
+body:not(.dark-theme) .vision-card {
+    background-color: var(--light-bg-card);
+    border-color: var(--light-border-color);
+}
+
+body:not(.dark-theme) .mission-card h3,
+body:not(.dark-theme) .vision-card h3 {
+    color: var(--light-text-primary);
+}
+
+body:not(.dark-theme) .mission-card p,
+body:not(.dark-theme) .vision-card p {
+    color: var(--light-text-secondary);
+}
+
+body:not(.dark-theme) .mission-icon,
+body:not(.dark-theme) .vision-icon {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Dark Theme Styles */
+body.dark-theme .mission-card,
+body.dark-theme .vision-card {
+    background-color: var(--dark-bg-card);
+    border-color: var(--dark-border-color);
+}
+
+body.dark-theme .mission-card h3,
+body.dark-theme .vision-card h3 {
+    color: var(--dark-text-primary);
+}
+
+body.dark-theme .mission-card p,
+body.dark-theme .vision-card p {
+    color: var(--dark-text-secondary);
+}
+
+body.dark-theme .mission-icon,
+body.dark-theme .vision-icon {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: var(--dark-bg-primary);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .mission-vision {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-card,
+    .vision-card {
+        padding: 1.5rem;
+    }
+    
+    .mission-icon,
+    .vision-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .mission-icon i,
+    .vision-icon i {
+        font-size: 28px;
+    }
+}

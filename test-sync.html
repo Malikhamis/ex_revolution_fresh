@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies Sync Test - Ex Revolution Technology</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .case-study-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f9f9f9;
+        }
+        
+        .case-study-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .case-study-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .case-study-excerpt {
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .status-published {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-draft {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .refresh-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        
+        .refresh-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 0.9em;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .instructions {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔄 Case Studies Real-Time Sync Test</h1>
+        <p>Test the synchronization between admin panel and main website</p>
+    </div>
+
+    <div class="instructions">
+        <h3>📋 How to Test:</h3>
+        <ol>
+            <li><strong>Open Admin Panel:</strong> <a href="admin/case-studies.html" target="_blank">Admin Case Studies</a></li>
+            <li><strong>Add/Edit/Delete</strong> a case study in the admin panel</li>
+            <li><strong>Watch this page</strong> update automatically (within 2 seconds)</li>
+            <li><strong>Check the main</strong> <a href="case-studies.html" target="_blank">Case Studies Page</a> too</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 Current Case Studies</h2>
+        <button class="refresh-btn" onclick="manualRefresh()">🔄 Manual Refresh</button>
+        <button class="refresh-btn" onclick="clearLog()">🗑️ Clear Log</button>
+        
+        <div id="case-studies-container">
+            <p>Loading case studies...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📝 Sync Activity Log</h2>
+        <div id="sync-log" class="log">
+            <div>Initializing sync test...</div>
+        </div>
+    </div>
+
+    <!-- Content Manager -->
+    <script src="js/content-manager.js"></script>
+
+    <script>
+        let logContainer;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            logContainer = document.getElementById('sync-log');
+            
+            // Override console.log to capture sync messages
+            const originalLog = console.log;
+            console.log = function(...args) {
+                originalLog.apply(console, args);
+                
+                // Capture content manager messages
+                const message = args.join(' ');
+                if (message.includes('🔄') || message.includes('✅') || message.includes('Content')) {
+                    addLogEntry(message);
+                }
+            };
+            
+            // Set up real-time sync
+            window.contentManager.setupRealTimeSync();
+            
+            // Initial load
+            loadCaseStudies();
+            
+            addLogEntry('✅ Sync test initialized - waiting for admin changes...');
+        });
+        
+        async function loadCaseStudies() {
+            try {
+                const response = await fetch('/api/public/case-studies');
+                const caseStudies = await response.json();
+                
+                displayCaseStudies(caseStudies);
+                addLogEntry(`📚 Loaded ${caseStudies.length} case studies`);
+            } catch (error) {
+                addLogEntry(`❌ Error loading case studies: ${error.message}`);
+            }
+        }
+        
+        function displayCaseStudies(caseStudies) {
+            const container = document.getElementById('case-studies-container');
+            
+            if (caseStudies.length === 0) {
+                container.innerHTML = '<p>No case studies found.</p>';
+                return;
+            }
+            
+            container.innerHTML = caseStudies.map(cs => `
+                <div class="case-study-card">
+                    <div class="case-study-title">${cs.title}</div>
+                    <div class="case-study-meta">
+                        <span class="status-indicator status-${cs.status}">${cs.status}</span>
+                        Client: ${cs.client} | Industry: ${cs.industry}
+                        ${cs.featured ? ' | ⭐ Featured' : ''}
+                    </div>
+                    <div class="case-study-excerpt">${cs.excerpt}</div>
+                </div>
+            `).join('');
+        }
+        
+        function addLogEntry(message) {
+            if (!logContainer) return;
+            
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        async function manualRefresh() {
+            addLogEntry('🔄 Manual refresh triggered');
+            await loadCaseStudies();
+        }
+        
+        function clearLog() {
+            logContainer.innerHTML = '<div>Log cleared...</div>';
+        }
+        
+        // Override content manager refresh to capture updates
+        const originalRefresh = window.contentManager.refreshContent;
+        window.contentManager.refreshContent = async function() {
+            addLogEntry('🔄 Content manager refresh triggered');
+            await originalRefresh.call(this);
+            await loadCaseStudies();
+            addLogEntry('✅ Content synchronized successfully');
+        };
+    </script>
+</body>
+</html>

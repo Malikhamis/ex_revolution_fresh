@@ -1,0 +1,88 @@
+/**
+ * Main CSS
+ * Imports all CSS files and provides additional global styles
+ */
+
+/* Import CSS Variables */
+@import url('variables.css');
+
+/* Import Reset CSS */
+@import url('reset.css');
+
+/* Import Base CSS */
+@import url('base.css');
+
+/* Import Layout CSS */
+@import url('layout.css');
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Additional Global Styles */
+
+/* Animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dark Mode (for future implementation) */
+body.dark-mode {
+    --bg-primary: var(--dark-bg-primary);
+    --bg-secondary: var(--dark-bg-secondary);
+    --bg-tertiary: var(--dark-bg-tertiary);
+    --bg-card: var(--dark-bg-card);
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+    --text-tertiary: var(--dark-text-tertiary);
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .footer,
+    .cta-section,
+    .mobile-toggle,
+    .cta-button,
+    .mobile-cta {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background-color: #fff;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+    
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+    
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+}

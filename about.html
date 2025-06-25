@@ -1,0 +1,1227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Learn about Ex Revolution Technology, our mission, values, and the dedicated team behind our innovative IT solutions.">
+    <meta name="keywords" content="about Ex Revolution, IT company, tech team, IT mission, technology values">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="css/theme-switcher.css">
+
+    <!-- Mission & Vision Stylesheet -->
+    <link rel="stylesheet" href="css/mission-vision.css">
+
+    <!-- Buttons Stylesheet -->
+    <link rel="stylesheet" href="css/buttons.css">
+
+    <style>
+        /* Page-specific styles */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .about-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .about-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-hero h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .about-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Ensure icon container is visible in both themes */
+        .about-hero .icon-container {
+            position: relative;
+            z-index: 2;
+            background-color: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 119, 204, 0.3);
+            margin-bottom: var(--spacing-md);
+            animation: float 3s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .about-hero .icon-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+        }
+
+        .about-hero .company-icon {
+            color: var(--primary);
+        }
+
+        .about-section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .values-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .value-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-section {
+            padding: var(--spacing-xxl) 0;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.02) 0%, rgba(0, 119, 230, 0.05) 100%);
+            position: relative;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 80%, rgba(0, 102, 204, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(0, 119, 230, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .team-member {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+        }
+
+        /* Dark mode adaptations */
+        [data-theme="dark"] .team-member {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 119, 230, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #0077e6, #004c99);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .team-member:hover {
+            box-shadow: 0 20px 40px rgba(0, 119, 230, 0.2), 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .team-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .team-member:hover .team-image {
+            transform: scale(1.05);
+        }
+
+        .team-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.4) 0%, rgba(0, 119, 230, 0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Dark mode overlay */
+        [data-theme="dark"] .team-overlay {
+            background: linear-gradient(135deg, rgba(0, 119, 230, 0.5) 0%, rgba(0, 102, 204, 0.4) 100%);
+        }
+
+        .team-member:hover .team-overlay {
+            opacity: 1;
+        }
+
+        .team-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dark mode skill badges */
+        [data-theme="dark"] .skill-badge {
+            background: rgba(30, 30, 30, 0.9);
+            color: #0077e6;
+            border: 1px solid rgba(0, 119, 230, 0.3);
+        }
+
+        .team-member:hover .skill-badge {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .skill-badge:nth-child(1) { transition-delay: 0.1s; }
+        .skill-badge:nth-child(2) { transition-delay: 0.2s; }
+        .skill-badge:nth-child(3) { transition-delay: 0.3s; }
+        .skill-badge:nth-child(4) { transition-delay: 0.4s; }
+
+        .team-content {
+            padding: 30px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .team-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .team-name::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0066cc, #0077e6);
+            transition: width 0.3s ease;
+        }
+
+        .team-member:hover .team-name::after {
+            width: 60px;
+        }
+
+        .team-position {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .team-position::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -8px;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 1px;
+            background: var(--primary);
+            opacity: 0.5;
+        }
+
+        .team-bio {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 102, 204, 0.1);
+        }
+
+        /* Dark mode team stats */
+        [data-theme="dark"] .team-stats {
+            border-top: 1px solid rgba(0, 119, 230, 0.2);
+        }
+
+        .team-stat {
+            text-align: center;
+        }
+
+        .team-stat-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .team-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .team-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .professional-badge {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #0077e6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .professional-badge:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Dark mode professional badge hover */
+        [data-theme="dark"] .professional-badge:hover {
+            box-shadow: 0 5px 15px rgba(0, 119, 230, 0.4);
+        }
+
+        .professional-badge::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Dark mode tooltip */
+        [data-theme="dark"] .professional-badge::after {
+            background: rgba(30, 30, 30, 0.95);
+            border: 1px solid rgba(0, 119, 230, 0.3);
+        }
+
+        .professional-badge:hover::after {
+            opacity: 1;
+        }
+
+        /* Additional styles for the content from the previous project */
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .company-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .about-content {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .story-card, .values-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-header i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-right: var(--spacing-sm);
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .story-text {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-sm);
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .values-list {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .value-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-sm);
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .value-content {
+            flex: 1;
+        }
+
+        .value-content h3 {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-md);
+        }
+
+        .value-content p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .mission-card, .vision-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .mission-icon, .vision-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .mission-card h3, .vision-card h3 {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-lg);
+        }
+
+        .mission-card p, .vision-card p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Enhanced Section Header Styles */
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #0066cc, #0077e6);
+            border-radius: 2px;
+        }
+
+        /* Animation for team cards on scroll */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .team-member {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .team-member:nth-child(1) { animation-delay: 0.1s; }
+        .team-member:nth-child(2) { animation-delay: 0.2s; }
+        .team-member:nth-child(3) { animation-delay: 0.3s; }
+
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .team-image {
+                height: 280px;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
+            .team-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .team-stat {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 0;
+            }
+
+            .team-stat-number {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .about-section,
+            .values-section,
+            .team-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .team-content {
+                padding: 20px 15px;
+            }
+
+            .team-name {
+                font-size: 1.2rem;
+            }
+
+            .team-position {
+                font-size: 0.9rem;
+            }
+
+            .team-bio {
+                font-size: 0.9rem;
+            }
+
+            .team-badges {
+                gap: 8px;
+            }
+
+            .professional-badge {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+
+            .skill-badge {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .team-image {
+                height: 250px;
+            }
+
+            .team-skills {
+                padding: 15px;
+                gap: 6px;
+            }
+
+            .skill-badge {
+                font-size: 0.65rem;
+                padding: 3px 6px;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header .lead {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Bootstrap-like grid for team section */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .g-4 {
+            margin-right: -1.5rem;
+            margin-left: -1.5rem;
+            row-gap: 1.5rem !important;
+        }
+
+        .col-md-4 {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-5 {
+            margin-bottom: 3rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-4 {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="case-studies.html">Case Studies</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button (only visible on mobile) -->
+
+            </nav>
+
+            <!-- Desktop CTA Button (only visible on desktop) -->
+            <a href="quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- About Hero Section -->
+        <div class="about-hero">
+            <div class="container">
+                <div class="icon-container">
+                    <i class="fas fa-building company-icon"></i>
+                </div>
+                <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">About Ex Revolution</h1>
+                <p class="lead" style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Leading Digital Innovation in Tanzania</p>
+            </div>
+        </div>
+
+        <!-- About Content Section -->
+        <section class="about-content">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="story-card">
+                        <div class="card-header">
+                            <i class="fas fa-history"></i>
+                            <h2>Our Story</h2>
+                        </div>
+                        <p class="story-text">Ex Revolution Technology stands at the forefront of digital transformation in Tanzania, delivering innovative solutions that empower businesses to thrive in the digital age. Founded in 2024 by Shirhan Shermohamed, our company has quickly established itself as a trusted partner for businesses seeking to leverage technology for growth.</p>
+                        <p class="story-text">With a team of skilled professionals and a passion for excellence, we've helped numerous businesses across various industries transform their operations, enhance their online presence, and achieve their goals through cutting-edge technology solutions.</p>
+
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <div class="stat-icon" >
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 class="stat-number">100+</h3>
+                                    <p class="stat-label">Projects Completed</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-smile"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 class="stat-number">50+</h3>
+                                    <p class="stat-label">Happy Clients</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 class="stat-number">15+</h3>
+                                    <p class="stat-label">Team Members</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3 class="stat-number">5+</h3>
+                                    <p class="stat-label">Years Experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="values-card">
+                        <div class="card-header">
+                            <i class="fas fa-star"></i>
+                            <h2>Our Values</h2>
+                        </div>
+                        <div class="values-list">
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h3 style="color: #ffffff !important;">Innovation</h3>
+                                    <p>We constantly push boundaries with creative solutions, staying ahead of technological trends to provide our clients with cutting-edge services that drive results.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h3 style="color: #ffffff !important;">Integrity</h3>
+                                    <p>We build trust through transparent practices, honest communication, and ethical business conduct, ensuring our clients can rely on us as a trusted partner.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h3 style="color: #ffffff !important;">Excellence</h3>
+                                    <p>We are committed to delivering quality in every project, maintaining high standards in our work, and continuously improving our skills and processes.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h3 style="color: #ffffff !important;">Collaboration</h3>
+                                    <p>We believe in working closely with our clients, understanding their unique needs, and fostering partnerships that lead to mutual success and growth.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h3 style="color: #ffffff !important;">Impact</h3>
+                                    <p>We measure our success by the positive impact we create for our clients, helping them achieve tangible results and sustainable growth through technology.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission & Vision Section -->
+                <div class="mission-vision">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Our Mission</h3>
+                        <p>To empower businesses in Tanzania and beyond with innovative technology solutions that drive growth, enhance efficiency, and create competitive advantages in the digital landscape.</p>
+                    </div>
+                    <div class="vision-card">
+                        <div class="vision-icon">
+                            <i class="fas fa-binoculars"></i>
+                        </div>
+                        <h3 style="color: #ffffff !important;">Our Vision</h3>
+                        <p>To be the leading technology partner for businesses in East Africa, recognized for our excellence, innovation, and commitment to delivering transformative digital solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Team Section -->
+                <div class="team-section">
+                    <div class="section-header text-center mb-5">
+                        <h2>Our Leadership Team</h2>
+                        <p class="lead">Meet the dedicated professionals behind Ex Revolution Technology who are committed to your success</p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="team-member">
+                                <div class="team-image-container">
+                                    <img src="assets/images/team/shirhan.png" alt="Shirhan Shermohamed" class="team-image" onerror="this.src='https://via.placeholder.com/300x300?text=Shirhan+Shermohamed'">
+                                    <div class="team-overlay">
+                                        <div class="team-skills">
+                                            <span class="skill-badge">Leadership</span>
+                                            <span class="skill-badge">Strategy</span>
+                                            <span class="skill-badge">Innovation</span>
+                                            <span class="skill-badge">Business</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-content">
+                                    <h3 class="team-name">Shirhan Shermohamed</h3>
+                                    <p class="team-position">Founder & CEO</p>
+                                    <p class="team-bio">Visionary leader with extensive experience in technology and business strategy, driving innovation at Ex Revolution.</p>
+
+                                    <div class="team-badges">
+                                        <div class="professional-badge" data-tooltip="Leadership">
+                                            <i class="fas fa-crown"></i>
+                                        </div>
+                                        <div class="professional-badge" data-tooltip="Strategy">
+                                            <i class="fas fa-chess"></i>
+                                        </div>
+                                        <div class="professional-badge" data-tooltip="Innovation">
+                                            <i class="fas fa-lightbulb"></i>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="team-member">
+                                <div class="team-image-container">
+                                    <img src="assets/images/team/malik.jpg" alt="Malik Khamis" class="team-image" onerror="this.src='https://via.placeholder.com/300x300?text=Malik+Khamis'">
+                                    <div class="team-overlay">
+                                        <div class="team-skills">
+                                            <span class="skill-badge">Full-Stack</span>
+                                            <span class="skill-badge">Architecture</span>
+                                            <span class="skill-badge">DevOps</span>
+                                            <span class="skill-badge">AI/ML</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-content">
+                                    <h3 class="team-name">Malik Khamis</h3>
+                                    <p class="team-position">Chief Technology Officer</p>
+                                    <p class="team-bio">Technology expert with deep knowledge in software development and system architecture, leading our technical initiatives.</p>
+
+                                    <div class="team-badges">
+                                        <div class="professional-badge" data-tooltip="Development">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+                                        <div class="professional-badge" data-tooltip="Architecture">
+                                            <i class="fas fa-sitemap"></i>
+                                        </div>
+                                        <div class="professional-badge" data-tooltip="Cloud">
+                                            <i class="fas fa-cloud"></i>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="team-member">
+                                <div class="team-image-container">
+                                    <img src="assets/images/team/raymond.jpg" alt="Mr. Raymond" class="team-image" onerror="this.src='https://via.placeholder.com/300x300?text=Mr.+Raymond'">
+                                    <div class="team-overlay">
+                                        <div class="team-skills">
+                                            <span class="skill-badge">Digital Marketing</span>
+                                            <span class="skill-badge">SEO/SEM</span>
+                                            <span class="skill-badge">Analytics</span>
+                                            <span class="skill-badge">Branding</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-content">
+                                    <h3 class="team-name">Mr. Raymond</h3>
+                                    <p class="team-position">Marketing Director</p>
+                                    <p class="team-bio">Marketing strategist with a passion for digital innovation, helping businesses grow their online presence and reach.</p>
+
+                                    <div class="team-badges">
+                                        <div class="professional-badge" data-tooltip="Marketing">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                        <div class="professional-badge" data-tooltip="Analytics">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="professional-badge" data-tooltip="Branding">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container text-center">
+                <h2 style="color: #ffffff !important;">Ready to Work With Us?</h2>
+                <p  style="color: #ffffff !important;">Let's discuss how Ex Revolution can help you achieve your business goals through innovative technology solutions.</p>
+                <a href="contact.html" class="btn btn-primary mt-4">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="services/software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="services/digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="services/it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="services/branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/direct-mobile-menu.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Chatbot Integration -->
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

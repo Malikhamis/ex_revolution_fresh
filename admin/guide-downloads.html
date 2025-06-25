@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Downloads - Ex Revolution Admin</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Mobile Responsive CSS -->
+    <link href="assets/css/admin-mobile.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            width: 250px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-header img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin: 0;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .page-header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .stat-card h3 {
+            margin: 10px 0 5px 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .downloads-table {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+        }
+
+        .table-responsive {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .status-new {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-contacted {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .status-converted {
+            background: #e8f5e8;
+            color: #388e3c;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .page-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="btn btn-primary d-md-none" id="mobile-menu-toggle" style="position: fixed; top: 10px; left: 10px; z-index: 1001;">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+            <li><a href="contacts.html"><i class="fas fa-envelope"></i> <span>Contact Requests</span></a></li>
+            <li><a href="quotes.html"><i class="fas fa-file-invoice-dollar"></i> <span>Quote Requests</span></a></li>
+            <li><a href="guide-downloads.html" class="active"><i class="fas fa-download"></i> <span>Guide Downloads</span></a></li>
+            <li><a href="newsletter.html"><i class="fas fa-newspaper"></i> <span>Newsletter</span></a></li>
+            <li><a href="case-studies.html"><i class="fas fa-briefcase"></i> <span>Case Studies</span></a></li>
+            <li><a href="blog-posts.html"><i class="fas fa-blog"></i> <span>Blog Posts</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1><i class="fas fa-download"></i> Guide Downloads</h1>
+            <button class="btn btn-success" id="export-btn">
+                <i class="fas fa-file-excel"></i> Export Data
+            </button>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <i class="fas fa-download text-primary"></i>
+                <h3 id="total-downloads">0</h3>
+                <p>Total Downloads</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-calendar-day text-success"></i>
+                <h3 id="today-downloads">0</h3>
+                <p>Today's Downloads</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line text-warning"></i>
+                <h3 id="conversion-rate">0%</h3>
+                <p>Conversion Rate</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users text-info"></i>
+                <h3 id="unique-leads">0</h3>
+                <p>Unique Leads</p>
+            </div>
+        </div>
+
+        <!-- Downloads Table -->
+        <div class="downloads-table">
+            <div class="table-header">
+                <h3><i class="fas fa-list"></i> Recent Guide Downloads</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Guide</th>
+                            <th>Download Date</th>
+                            <th>IP Address</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="downloads-tbody">
+                        <tr>
+                            <td colspan="7" class="text-center py-4">
+                                <i class="fas fa-spinner fa-spin"></i> Loading guide downloads...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- API Configuration -->
+    <script src="assets/js/api-config.js"></script>
+
+    <!-- Mobile JS -->
+    <script src="assets/js/admin-mobile.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Load guide downloads
+            loadGuideDownloads();
+
+            // Event listeners
+            document.getElementById('logout-btn').addEventListener('click', logout);
+            document.getElementById('export-btn').addEventListener('click', exportData);
+        });
+
+        async function loadGuideDownloads() {
+            try {
+                const response = await fetch('/api/guides/downloads', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to load guide downloads');
+                }
+
+                const downloads = await response.json();
+                displayGuideDownloads(downloads);
+                updateStatistics(downloads);
+
+            } catch (error) {
+                console.error('Error loading guide downloads:', error);
+                document.getElementById('downloads-tbody').innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center py-4 text-danger">
+                            <i class="fas fa-exclamation-triangle"></i> Failed to load guide downloads
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function displayGuideDownloads(downloads) {
+            const tbody = document.getElementById('downloads-tbody');
+
+            if (downloads.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center py-4">
+                            <i class="fas fa-inbox"></i> No guide downloads yet
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = downloads.map(download => `
+                <tr>
+                    <td>${download.id}</td>
+                    <td>${download.email}</td>
+                    <td><span class="badge bg-primary">${download.guide}</span></td>
+                    <td>${new Date(download.downloadedAt || download.createdAt).toLocaleDateString()}</td>
+                    <td>${download.ipAddress || 'N/A'}</td>
+                    <td><span class="status-badge status-${download.status}">${download.status}</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="contactLead('${download.email}')">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-success" onclick="markAsConverted(${download.id})">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateStatistics(downloads) {
+            const today = new Date().toDateString();
+            const todayDownloads = downloads.filter(d =>
+                new Date(d.downloadedAt || d.createdAt).toDateString() === today
+            );
+
+            document.getElementById('total-downloads').textContent = downloads.length;
+            document.getElementById('today-downloads').textContent = todayDownloads.length;
+            document.getElementById('unique-leads').textContent = new Set(downloads.map(d => d.email)).size;
+
+            // Calculate conversion rate (placeholder)
+            const converted = downloads.filter(d => d.status === 'converted').length;
+            const conversionRate = downloads.length > 0 ? Math.round((converted / downloads.length) * 100) : 0;
+            document.getElementById('conversion-rate').textContent = `${conversionRate}%`;
+        }
+
+        function contactLead(email) {
+            window.location.href = `mailto:${email}?subject=Thank you for downloading our Digital Marketing Guide`;
+        }
+
+        async function markAsConverted(id) {
+            try {
+                const response = await fetch(`/api/guides/downloads/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify({ status: 'converted' })
+                });
+
+                if (response.ok) {
+                    loadGuideDownloads(); // Reload data
+                    alert('Lead marked as converted!');
+                }
+            } catch (error) {
+                console.error('Error updating lead status:', error);
+                alert('Failed to update lead status');
+            }
+        }
+
+        function exportData() {
+            // Simple CSV export
+            const table = document.querySelector('table');
+            let csv = [];
+            const rows = table.querySelectorAll('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = [], cols = rows[i].querySelectorAll('td, th');
+                for (let j = 0; j < cols.length - 1; j++) { // Exclude actions column
+                    row.push(cols[j].innerText);
+                }
+                csv.push(row.join(','));
+            }
+
+            const csvFile = new Blob([csv.join('\n')], { type: 'text/csv' });
+            const downloadLink = document.createElement('a');
+            downloadLink.download = 'guide-downloads.csv';
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.click();
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

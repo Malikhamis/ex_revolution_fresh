@@ -1,0 +1,1118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Quote - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Request a free quote for your project. We offer custom software development, digital marketing, IT consulting, and branding services.">
+    <meta name="keywords" content="request quote, free quote, software development quote, digital marketing quote, IT consulting quote">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="css/theme-switcher.css">
+
+    <style>
+        /* Page-specific styles */
+        /* Hero Section with enhanced styling */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .quote-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .quote-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .quote-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .quote-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .quote-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+            font-weight: var(--font-weight-bold);
+            letter-spacing: -0.01em;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .quote-hero h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .quote-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Hero animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Multi-step form styles */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-lg);
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .btn-prev {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-prev:hover {
+            background-color: var(--bg-tertiary);
+        }
+
+        .btn-next {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-next::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn-next:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-next:hover::before {
+            left: 100%;
+        }
+
+        .quote-section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .quote-form {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .quote-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        }
+
+        .quote-form:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quote-form h2 {
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            display: inline-block;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .quote-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .quote-form:hover h2::after {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-group.focus-within label {
+            color: var(--primary);
+            transform: translateY(-5px);
+            font-size: 0.85em;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateX(3px);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-tertiary);
+            opacity: 0.7;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+            transition: transform 0.2s ease;
+        }
+
+        .form-check:hover {
+            transform: translateX(3px);
+        }
+
+        .form-check-input {
+            margin-right: var(--spacing-sm);
+            margin-top: 5px;
+            position: relative;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--light-gray);
+            border-radius: 3px;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .form-check-input:checked::after {
+            content: 'âœ“';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+        }
+
+        .form-check-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .form-check-label a {
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .form-check-label a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .form-check-label a:hover::after {
+            width: 100%;
+        }
+
+        .form-submit {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm) var(--spacing-xl);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .form-submit:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-submit:hover::before {
+            left: 100%;
+        }
+
+        .form-submit:active {
+            transform: translateY(1px);
+        }
+
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .budget-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .radio-card {
+            position: relative;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: border-color var(--transition-fast), background-color var(--transition-fast);
+            text-align: center;
+        }
+
+        .radio-card:hover {
+            border-color: var(--primary);
+        }
+
+        .radio-card input[type="checkbox"],
+        .radio-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .radio-card input[type="checkbox"]:checked + .radio-label,
+        .radio-card input[type="radio"]:checked + .radio-label {
+            color: var(--primary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .radio-card input[type="checkbox"]:checked ~ .radio-card,
+        .radio-card input[type="radio"]:checked ~ .radio-card {
+            border-color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        .radio-card input[type="checkbox"]:focus + .radio-label,
+        .radio-card input[type="radio"]:focus + .radio-label {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .radio-label {
+            display: block;
+            cursor: pointer;
+        }
+
+        .quote-info {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .quote-info h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-item h3 {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-lg);
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item h3 i {
+            color: var(--primary);
+            margin-right: var(--spacing-sm);
+        }
+
+        .info-item p {
+            color: var(--text-secondary);
+        }
+
+        .faq-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 992px) {
+            .quote-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .quote-info {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .quote-hero {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .quote-section,
+            .faq-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .quote-form,
+            .quote-info {
+                padding: var(--spacing-lg);
+            }
+
+            .service-options,
+            .budget-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="case-studies.html">Case Studies</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button (only visible on mobile) -->
+
+            </nav>
+
+            <!-- Desktop CTA Button (only visible on desktop) -->
+            <a href="quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="quote-hero">
+            <div class="container">
+                <h1 style="color: #ffffff !important;">Request a Free Quote</h1>
+                <p style="color: #ffffff !important;">Tell us about your project, and we'll provide you with a customized quote tailored to your specific needs and budget.</p>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <div class="container">
+                <div class="quote-grid">
+                    <div class="quote-form">
+                        <h2>Project Details</h2>
+
+                        <!-- Step Indicator -->
+                        <div class="step-indicator">
+                            <div class="step-dot active" data-step="1"></div>
+                            <div class="step-dot" data-step="2"></div>
+                            <div class="step-dot" data-step="3"></div>
+                        </div>
+
+                        <!-- Success message (hidden by default) -->
+                        <div id="formSuccess" class="alert alert-success" style="display: none; background-color: #d4edda; color: #155724; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+                            Thank you for your quote request! We'll prepare a customized quote for your project as soon as possible.
+                        </div>
+
+                        <!-- Error message (hidden by default) -->
+                        <div id="formError" class="alert alert-danger" style="display: none; background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+                            An error occurred. Please try again.
+                        </div>
+
+                        <form id="quoteForm" action="#" method="POST">
+                            <!-- Step 1: Personal Information -->
+                            <div class="form-step active" id="step1">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Your Name *</label>
+                                    <input type="text" id="name" name="name" class="form-control" required autocomplete="name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-control" required autocomplete="email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="company" class="form-label">Company Name</label>
+                                    <input type="text" id="company" name="company" class="form-control" autocomplete="organization">
+                                </div>
+
+                                <div class="form-navigation">
+                                    <div></div> <!-- Empty div for spacing -->
+                                    <button type="button" class="btn-next" data-next="2">Next Step</button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Project Requirements -->
+                            <div class="form-step" id="step2">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <div class="form-group">
+                                    <label class="form-label" id="services-label" for="service-software">Services You're Interested In *</label>
+                                    <div class="service-options">
+                                        <div class="radio-card">
+                                            <input type="checkbox" id="service-software" name="services[]" value="Software Development" autocomplete="off">
+                                            <label for="service-software" class="radio-label">Software Development</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="checkbox" id="service-digital" name="services[]" value="Digital Marketing" autocomplete="off">
+                                            <label for="service-digital" class="radio-label">Digital Marketing</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="checkbox" id="service-consulting" name="services[]" value="IT Consulting" autocomplete="off">
+                                            <label for="service-consulting" class="radio-label">IT Consulting</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="checkbox" id="service-branding" name="services[]" value="Branding Kit" autocomplete="off">
+                                            <label for="service-branding" class="radio-label">Branding Kit</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" id="budget-label" for="budget-1">Estimated Budget *</label>
+                                    <div class="budget-options">
+                                        <div class="radio-card">
+                                            <input type="radio" id="budget-1" name="budget" value="TSHS 2,125,000 - TSHS 10,625,000" required autocomplete="off">
+                                            <label for="budget-1" class="radio-label">TSHS 2.1M - TSHS 10.6M</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="radio" id="budget-2" name="budget" value="TSHS 10,625,000 - TSHS 21,250,000" autocomplete="off">
+                                            <label for="budget-2" class="radio-label">TSHS 10.6M - TSHS 21.3M</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="radio" id="budget-3" name="budget" value="TSHS 21,250,000 - TSHS 53,125,000" autocomplete="off">
+                                            <label for="budget-3" class="radio-label">TSHS 21.3M - TSHS 53.1M</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="radio" id="budget-4" name="budget" value="TSHS 53,125,000 - TSHS 106,250,000" autocomplete="off">
+                                            <label for="budget-4" class="radio-label">TSHS 53.1M - TSHS 106.3M</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="radio" id="budget-5" name="budget" value="TSHS 106,250,000 - TSHS 212,500,000" autocomplete="off">
+                                            <label for="budget-5" class="radio-label">TSHS 106.3M - TSHS 212.5M</label>
+                                        </div>
+                                        <div class="radio-card">
+                                            <input type="radio" id="budget-6" name="budget" value="TSHS 212,500,000+" autocomplete="off">
+                                            <label for="budget-6" class="radio-label">TSHS 212.5M+</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="timeline" class="form-label">Project Timeline *</label>
+                                    <select id="timeline" name="timeline" class="form-control" required autocomplete="off">
+                                        <option value="">Select Timeline</option>
+                                        <option value="Less than 1 month">Less than 1 month</option>
+                                        <option value="1-3 months">1-3 months</option>
+                                        <option value="3-6 months">3-6 months</option>
+                                        <option value="6-12 months">6-12 months</option>
+                                        <option value="More than 12 months">More than 12 months</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <button type="button" class="btn-prev" data-prev="1">Previous Step</button>
+                                    <button type="button" class="btn-next" data-next="3">Next Step</button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Project Details and Submission -->
+                            <div class="form-step" id="step3">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <div class="form-group">
+                                    <label for="project-details" class="form-label">Project Details *</label>
+                                    <textarea id="project-details" name="projectDetails" class="form-control" placeholder="Please describe your project, goals, and any specific requirements." required autocomplete="off"></textarea>
+                                </div>
+
+                                <div class="form-check">
+                                    <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required autocomplete="off">
+                                    <label for="privacy" class="form-check-label">I agree to the <a href="privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a> and consent to having my data processed as outlined.</label>
+                                </div>
+
+                                <div class="form-navigation">
+                                    <button type="button" class="btn-prev" data-prev="2">Previous Step</button>
+                                    <button type="submit" class="form-submit">Submit Quote Request</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="quote-info">
+                        <h2>What to Expect</h2>
+
+                        <div class="info-item">
+                            <h3><i class="fas fa-check-circle"></i> Free Consultation</h3>
+                            <p>We offer a free initial consultation to understand your project requirements and goals.</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3><i class="fas fa-clock"></i> Quick Response</h3>
+                            <p>We'll respond to your quote request within 24-48 business hours.</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3><i class="fas fa-file-alt"></i> Detailed Proposal</h3>
+                            <p>You'll receive a comprehensive proposal outlining the scope, timeline, and cost of your project.</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3><i class="fas fa-handshake"></i> No Obligation</h3>
+                            <p>Our quotes are provided with no obligation, giving you time to review and make an informed decision.</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3><i class="fas fa-shield-alt"></i> Confidentiality</h3>
+                            <p>All information shared with us is kept strictly confidential and protected.</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3><i class="fas fa-question-circle"></i> Have Questions?</h3>
+                            <p>If you have any questions before submitting your quote request, feel free to <a href="contact.html">contact us</a> directly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How long does it take to receive a quote?</h3>
+                    <p class="faq-answer">We typically respond to quote requests within 24-48 business hours. For more complex projects, we may need additional time to prepare a comprehensive proposal.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What information do I need to provide for an accurate quote?</h3>
+                    <p class="faq-answer">The more details you can provide about your project, the more accurate our quote will be. Important information includes project scope, desired features, timeline, and budget constraints.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Are there any hidden costs in your quotes?</h3>
+                    <p class="faq-answer">No, our quotes are transparent and include all costs associated with your project. If any additional costs arise during the project, we'll discuss them with you before proceeding.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can you work with my budget?</h3>
+                    <p class="faq-answer">We strive to work within our clients' budgets and can often suggest alternative approaches or phased implementations to accommodate budget constraints while still achieving your goals.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What happens after I accept the quote?</h3>
+                    <p class="faq-answer">Once you accept the quote, we'll schedule a kickoff meeting to discuss the project in detail, establish milestones, and begin the development process according to the agreed-upon timeline.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="services/software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="services/digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="services/it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="services/branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/direct-mobile-menu.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- API Integration -->
+    <script src="js/api-service.js"></script>
+    <script src="js/quote-form-handler.js"></script>
+
+    <!-- Chatbot Integration -->
+    <script src="js/chatbot.js"></script>
+
+    <!-- Form Validation and Multi-step Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const quoteForm = document.getElementById('quoteForm');
+            const formSteps = document.querySelectorAll('.form-step');
+            const stepDots = document.querySelectorAll('.step-dot');
+            const nextButtons = document.querySelectorAll('.btn-next');
+            const prevButtons = document.querySelectorAll('.btn-prev');
+
+            // Form input elements for focus effects
+            const formInputs = document.querySelectorAll('.form-control');
+
+            // Add focus-within class to parent when input is focused
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.closest('.form-group').classList.add('focus-within');
+                });
+
+                input.addEventListener('blur', function() {
+                    this.closest('.form-group').classList.remove('focus-within');
+                });
+            });
+
+            // Handle multi-step form navigation
+            function goToStep(stepNumber) {
+                // Hide all steps
+                formSteps.forEach(step => {
+                    step.classList.remove('active');
+                });
+
+                // Update step indicators
+                stepDots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+
+                // Show the current step
+                document.getElementById('step' + stepNumber).classList.add('active');
+
+                // Update the active dot
+                document.querySelector(`.step-dot[data-step="${stepNumber}"]`).classList.add('active');
+
+                // Scroll to top of form
+                quoteForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            // Next button click handler
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextStep = this.getAttribute('data-next');
+
+                    // Validate current step before proceeding
+                    const currentStep = parseInt(nextStep) - 1;
+                    const currentStepElement = document.getElementById('step' + currentStep);
+                    const requiredFields = currentStepElement.querySelectorAll('[required]');
+
+                    let isValid = true;
+
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.classList.add('invalid');
+
+                            // Add shake animation for invalid fields
+                            field.style.animation = 'none';
+                            setTimeout(() => {
+                                field.style.animation = 'shake 0.5s ease-in-out';
+                            }, 10);
+
+                            // Add event listener to remove invalid class when user starts typing
+                            field.addEventListener('input', function() {
+                                this.classList.remove('invalid');
+                            }, { once: true });
+                        }
+                    });
+
+                    // Special validation for step 2 (services)
+                    if (currentStep === 2) {
+                        // Check if at least one service is selected
+                        const serviceCheckboxes = document.querySelectorAll('input[name="services[]"]');
+                        let serviceSelected = false;
+
+                        serviceCheckboxes.forEach(checkbox => {
+                            if (checkbox.checked) {
+                                serviceSelected = true;
+                            }
+                        });
+
+                        if (!serviceSelected) {
+                            isValid = false;
+                            alert('Please select at least one service you are interested in.');
+                        }
+                    }
+
+                    if (isValid) {
+                        goToStep(nextStep);
+                    }
+                });
+            });
+
+            // Previous button click handler
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevStep = this.getAttribute('data-prev');
+                    goToStep(prevStep);
+                });
+            });
+
+            // Form validation before submission
+            quoteForm.addEventListener('submit', function(e) {
+                // Check if at least one service is selected
+                const serviceCheckboxes = document.querySelectorAll('input[name="services[]"]');
+                let serviceSelected = false;
+
+                serviceCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        serviceSelected = true;
+                    }
+                });
+
+                if (!serviceSelected) {
+                    alert('Please select at least one service you are interested in.');
+                    goToStep(2); // Go back to services step
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Check privacy policy agreement
+                if (!document.getElementById('privacy').checked) {
+                    alert('Please agree to the Privacy Policy to continue.');
+                    e.preventDefault();
+                    return false;
+                }
+
+                // The actual form submission is handled by quote-form-handler.js
+            });
+
+            // Enhance radio card functionality
+            const radioCards = document.querySelectorAll('.radio-card');
+
+            radioCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const input = this.querySelector('input');
+
+                    if (input.type === 'checkbox') {
+                        input.checked = !input.checked;
+                    } else if (input.type === 'radio') {
+                        input.checked = true;
+                    }
+
+                    // Trigger change event
+                    const event = new Event('change');
+                    input.dispatchEvent(event);
+
+                    // Add pulse animation to selected card
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = 'pulse 0.3s ease-in-out';
+                    }, 10);
+                });
+            });
+
+            // Add keyframe animations
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    20%, 60% { transform: translateX(-5px); }
+                    40%, 80% { transform: translateX(5px); }
+                }
+
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
+                }
+
+                .form-control.invalid {
+                    border-color: var(--error);
+                    background-color: rgba(239, 68, 68, 0.05);
+                }
+            `;
+            document.head.appendChild(styleSheet);
+        });
+    </script>
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

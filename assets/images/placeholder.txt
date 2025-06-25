@@ -1,0 +1,30 @@
+This is a placeholder file for the images directory.
+
+In a real implementation, you would need to add the following images:
+
+1. logo.jpg - Company logo
+2. favicon.ico - Website favicon
+3. about-hero.jpg - Hero image for About page
+4. about-story.jpg - Image for About page story section
+5. team-1.jpg, team-2.jpg, team-3.jpg - Team member photos
+6. services-hero.jpg - Hero image for Services page
+7. software-dev-hero.jpg - Hero image for Software Development service page
+8. software-dev-overview.jpg - Image for Software Development overview section
+9. digital-marketing-hero.jpg - Hero image for Digital Marketing service page
+10. digital-marketing-overview.jpg - Image for Digital Marketing overview section
+11. it-consulting-hero.jpg - Hero image for IT Consulting service page
+12. branding-kit-hero.jpg - Hero image for Branding Kit service page
+13. contact-hero.jpg - Hero image for Contact page
+14. mobile-app-trends-hero.jpg - Hero image for Mobile App Trends blog post
+15. mobile-app-trends-main.jpg - Main image for Mobile App Trends blog post
+16. author-sarah.jpg - Author photo for blog posts
+17. blog-thumb-1.jpg, blog-thumb-2.jpg, blog-thumb-3.jpg - Thumbnail images for blog posts
+18. testimonial-1.jpg, testimonial-2.jpg, testimonial-3.jpg - Testimonial author photos
+19. case-study-1.jpg, case-study-2.jpg, case-study-3.jpg - Case study images
+
+For a production website, you would need to:
+1. Use properly sized and optimized images
+2. Ensure all images are responsive
+3. Include proper alt text for accessibility
+4. Consider using WebP format for better performance
+5. Implement lazy loading for images below the fold

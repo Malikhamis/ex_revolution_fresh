@@ -1,0 +1,271 @@
+/**
+ * Button Styles
+ * Redesigned buttons for a more modern and attractive look
+ */
+
+/* Base button styles */
+.btn,
+.service-link,
+.case-study-link,
+.blog-post-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA button - respects responsive display rules */
+.cta-button {
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* display property is handled by layout.css for responsive behavior */
+}
+
+/* Primary button */
+.btn-primary,
+.cta-button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white !important;
+}
+
+.btn-primary:hover,
+.cta-button:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active,
+.cta-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Outline button */
+.btn-outline {
+    background: transparent;
+    color: white !important;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Service link button */
+.service-link {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white !important;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+.service-link:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service-link i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.service-link:hover i {
+    transform: translateX(4px);
+}
+
+/* Case study link button */
+.case-study-link {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white !important;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.case-study-link:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.case-study-link i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.case-study-link:hover i {
+    transform: translateX(4px);
+}
+
+/* Blog post link button */
+.blog-post-link {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white !important;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.blog-post-link:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blog-post-link i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.blog-post-link:hover i {
+    transform: translateX(4px);
+}
+
+/* Blog post tag */
+.blog-post-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.blog-post-tag:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Pagination buttons */
+.pagination-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.pagination-item:hover {
+    background-color: var(--primary-light);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.pagination-item.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Dark mode styles */
+body.dark-theme .btn-primary,
+body.dark-theme .service-link,
+body.dark-theme .case-study-link,
+body.dark-theme .blog-post-link,
+body.dark-theme .cta-button {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .btn-outline {
+    border-color: var(--dark-text-primary);
+    color: var(--dark-text-primary) !important;
+}
+
+body.dark-theme .blog-post-tag {
+    background-color: rgba(var(--primary-rgb), 0.2);
+}
+
+body.dark-theme .pagination-item {
+    background-color: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+}
+
+body.dark-theme .pagination-item:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Mobile CTA button styles */
+.mobile-cta {
+    display: none; /* Hidden by default, shown in mobile view via layout.css */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white !important;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.mobile-cta:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .btn,
+    .service-link,
+    .case-study-link,
+    .blog-post-link,
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}

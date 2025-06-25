@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Quote Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Quote Submission</h1>
+        <p>This page tests the quote submission functionality to ensure it works with the admin panel.</p>
+        
+        <form id="testQuoteForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="Test Customer" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="customer@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" value="+1-555-0999">
+            </div>
+            
+            <div class="form-group">
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company" value="Test Company LLC">
+            </div>
+            
+            <div class="form-group">
+                <label for="serviceType">Service Type:</label>
+                <select id="serviceType" name="serviceType" required>
+                    <option value="">Select a service...</option>
+                    <option value="Web Development" selected>Web Development</option>
+                    <option value="Mobile App Development">Mobile App Development</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Branding">Branding</option>
+                    <option value="Consulting">Consulting</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="budget">Budget:</label>
+                <select id="budget" name="budget" required>
+                    <option value="">Select budget range...</option>
+                    <option value="Under $2,000">Under $2,000</option>
+                    <option value="$2,000 - $5,000" selected>$2,000 - $5,000</option>
+                    <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                    <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+                    <option value="$25,000+">$25,000+</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="timeline">Timeline:</label>
+                <select id="timeline" name="timeline" required>
+                    <option value="">Select timeline...</option>
+                    <option value="ASAP">ASAP</option>
+                    <option value="1-2 months" selected>1-2 months</option>
+                    <option value="2-3 months">2-3 months</option>
+                    <option value="3-6 months">3-6 months</option>
+                    <option value="6+ months">6+ months</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="projectDetails">Project Details:</label>
+                <textarea id="projectDetails" name="projectDetails" rows="4" required>I need a professional website for my business. Looking for modern design, mobile responsiveness, and SEO optimization. Please include contact forms and social media integration.</textarea>
+            </div>
+            
+            <button type="submit">Submit Test Quote</button>
+        </form>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('testQuoteForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            const submitButton = this.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+            resultDiv.style.display = 'none';
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                serviceType: document.getElementById('serviceType').value,
+                budget: document.getElementById('budget').value,
+                timeline: document.getElementById('timeline').value,
+                projectDetails: document.getElementById('projectDetails').value
+            };
+            
+            console.log('Submitting quote:', formData);
+            
+            try {
+                // Submit to the quote endpoint
+                const response = await fetch('/api/quote', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                console.log('Response:', result);
+                
+                if (result.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <strong>Success!</strong><br>
+                        ${result.message}<br>
+                        <small>Quote ID: ${result.data.id}</small>
+                    `;
+                    this.reset();
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `<strong>Error:</strong> ${result.message}`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `<strong>Network Error:</strong> ${error.message}`;
+            } finally {
+                // Restore button state
+                submitButton.textContent = 'Submit Test Quote';
+                submitButton.disabled = false;
+                resultDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

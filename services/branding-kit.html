@@ -1,0 +1,786 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branding Kit Services - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Professional branding kit services including logo design, brand identity, style guides, and marketing materials to establish a strong brand presence.">
+    <meta name="keywords" content="branding kit, logo design, brand identity, style guide, marketing materials, brand presence">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="../css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="../css/theme-switcher.css">
+
+    <!-- Additional styles for adaptive font colors -->
+    <style>
+        /* Ensure text is readable in both light and dark modes */
+        body.dark-theme .service-content h2,
+        body.dark-theme .feature-content h3 {
+            color: var(--dark-text-primary);
+        }
+
+        body.dark-theme .service-content p,
+        body.dark-theme .feature-content p {
+            color: var(--dark-text-secondary);
+        }
+
+        body.dark-theme .feature-icon {
+            background-color: var(--dark-bg-secondary);
+            color: var(--primary-light);
+        }
+
+        /* Hero section uses gradient primary in both themes */
+
+        /* Ensure links are visible in dark mode */
+        body.dark-theme a:not(.btn):not(.cta-button) {
+            color: var(--primary-light);
+        }
+
+        body.dark-theme a:not(.btn):not(.cta-button):hover {
+            color: var(--primary);
+        }
+    </style>
+
+    <style>
+        /* Page-specific styles */
+        :root {
+            --accent: #e74c3c;
+            --accent-light: #f75f4f;
+            --accent-dark: #c0392b;
+            --gradient-accent: linear-gradient(45deg, #e74c3c, #f75f4f);
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .service-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .service-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .service-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-overview {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .service-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .service-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-features {
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-secondary);
+            color: var(--accent);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex-grow: 1;
+        }
+
+        .feature-content h3 {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+
+        .portfolio-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            aspect-ratio: 1 / 1;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-title {
+            color: var(--white);
+            margin-bottom: var(--spacing-sm);
+            text-align: center;
+        }
+
+        .portfolio-category {
+            color: #0066cc !important; /* Blue color to match other pages */
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .process-section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: #0066cc !important; /* Blue color to match other pages */
+            color: var(--white);
+            border-radius: var(--border-radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: var(--spacing-lg);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-title {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-xl);
+        }
+
+        .packages-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .package-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #0066cc !important; /* Blue color to match other pages */
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            font-size: 0.75rem;
+            border-bottom-left-radius: var(--border-radius-sm);
+        }
+
+        .package-header {
+            background-color: #0066cc !important; /* Blue background to match other pages */
+            color: var(--white);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+
+        .package-header h3 {
+            margin: 0;
+            color: var(--white);
+        }
+
+        .package-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0066cc !important; /* Blue color to match other pages */
+            margin-bottom: var(--spacing-xs);
+            text-align: center;
+        }
+
+        .pricing-note {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-lg);
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .package-features li i {
+            color: #0066cc !important; /* Blue color to match other pages */
+            margin-right: var(--spacing-sm);
+            margin-top: 5px;
+        }
+
+        .package-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue text color */
+            border: 2px solid #0066cc;
+        }
+
+        .btn-white:hover {
+            background-color: #0066cc;
+            color: #ffffff !important; /* White text on hover */
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-white:hover {
+            background-color: var(--white);
+            color: #0066cc !important; /* Blue color to match other pages */
+        }
+
+        @media (max-width: 992px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-image {
+                order: -1;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-step {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                margin-right: 0;
+                margin-bottom: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .service-overview,
+            .portfolio-section,
+            .process-section,
+            .packages-section,
+            .cta-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../services.html" class="active">Services</a></li>
+                    <li><a href="../case-studies.html">Case Studies</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button -->
+                <a href="../quote.html" class="btn btn-primary mobile-cta">Request a Quote</a>
+            </nav>
+
+            <a href="../quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="service-hero">
+            <div class="container">
+                <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Branding Kit Services</h1>
+                <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Establish a strong brand identity with our comprehensive branding kit services, designed to make your business stand out in the market.</p>
+            </div>
+        </section>
+
+        <!-- Service Overview Section -->
+        <section class="service-overview">
+            <div class="container">
+                <div class="service-grid">
+                    <div class="service-content">
+                        <h2>Comprehensive Branding Solutions</h2>
+                        <p>At Ex Revolution Technology, we understand that a strong brand is essential for business success. Our branding kit services are designed to help you create a cohesive and memorable brand identity that resonates with your target audience and sets you apart from competitors.</p>
+                        <p>Our team of experienced designers and brand strategists work closely with you to understand your business values, goals, and target market. We then create a comprehensive branding kit that includes everything you need to establish a consistent brand presence across all touchpoints.</p>
+                    </div>
+                    <div class="service-image">
+                        <img src="../assets/images/branding-overview.jpg" alt="Branding Design Process">
+                    </div>
+                </div>
+
+                <div class="service-features">
+                    <h2 class="text-center mb-5">Our Branding Kit Services</h2>
+                    <div class="grid grid-2">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We create unique, memorable logos that capture the essence of your brand and make a strong first impression. Our logo designs are versatile, scalable, and work well across all platforms and materials.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We develop a comprehensive brand identity that includes color palettes, typography, imagery style, and other visual elements that reflect your brand personality and create a cohesive look and feel.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We create detailed brand style guides that outline how your brand elements should be used, ensuring consistency across all marketing materials and touchpoints.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We design professional business cards, letterheads, envelopes, and other stationery items that reflect your brand identity and make a lasting impression.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We create branded marketing materials such as brochures, flyers, posters, and social media templates that help you promote your business effectively.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #ffffff !important;">Services</h3>
+                                <p>We design websites that align with your brand identity, providing a seamless online experience for your customers and reinforcing your brand message.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="packages-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Branding Packages</h2>
+                <div class="grid grid-3">
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                        </div>
+                        <div class="package-content">
+                            <div class="package-price">TZS 250,000</div>
+                            <ul class="package-features">
+                                <li><i class="fas fa-check"></i> Logo design (2 concepts)</li>
+                                <li><i class="fas fa-check"></i> Basic color palette</li>
+                                <li><i class="fas fa-check"></i> Typography selection</li>
+                                <li><i class="fas fa-check"></i> Business card design</li>
+                                <li><i class="fas fa-check"></i> Social media profile images</li>
+                                <li><i class="fas fa-check"></i> Basic brand guidelines</li>
+                                <li><i class="fas fa-times"></i> Stationery design</li>
+                                <li><i class="fas fa-times"></i> Social media templates</li>
+                                <li><i class="fas fa-times"></i> Brand messaging</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary" style="background-color: #0066cc !important;">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="package-card featured">
+                        <div class="popular-tag">Most Popular</div>
+                        <div class="package-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                        </div>
+                        <div class="package-content">
+                            <div class="package-price">TZS 500,000</div>
+                            <ul class="package-features">
+                                <li><i class="fas fa-check"></i> Logo design (4 concepts)</li>
+                                <li><i class="fas fa-check"></i> Comprehensive color palette</li>
+                                <li><i class="fas fa-check"></i> Typography system</li>
+                                <li><i class="fas fa-check"></i> Complete stationery design</li>
+                                <li><i class="fas fa-check"></i> Social media profile & cover images</li>
+                                <li><i class="fas fa-check"></i> 3 social media post templates</li>
+                                <li><i class="fas fa-check"></i> Email signature design</li>
+                                <li><i class="fas fa-check"></i> Comprehensive brand guidelines</li>
+                                <li><i class="fas fa-check"></i> Basic brand messaging</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary" style="background-color: #0066cc !important;">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3 style="color: #ffffff !important;">Services</h3>
+                        </div>
+                        <div class="package-content">
+                            <div class="package-price">TZS 1,500,000</div>
+                            <ul class="package-features">
+                                <li><i class="fas fa-check"></i> Logo design (unlimited concepts)</li>
+                                <li><i class="fas fa-check"></i> Complete brand identity system</li>
+                                <li><i class="fas fa-check"></i> Extended typography system</li>
+                                <li><i class="fas fa-check"></i> Full stationery package</li>
+                                <li><i class="fas fa-check"></i> Complete social media kit</li>
+                                <li><i class="fas fa-check"></i> 10 social media post templates</li>
+                                <li><i class="fas fa-check"></i> Website design (up to 10 pages)</li>
+                                <li><i class="fas fa-check"></i> Marketing materials design</li>
+                                <li><i class="fas fa-check"></i> Comprehensive brand messaging</li>
+                            </ul>
+                            <a href="../contact.html" class="btn btn-primary" style="background-color: #0066cc !important;">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <p>All prices are approximate market rates in Tanzanian Shillings (TZS). Actual pricing may vary based on project requirements.</p>
+                    <p>Need a custom package? Contact us for a tailored solution that meets your specific needs and budget.</p>
+                    <a href="../contact.html" class="btn btn-outline" style="background-color: #0066cc !important; color: #ffffff !important;">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="color: #ffffff !important;">Ready to Build Your Brand Identity?</h2>
+                <p style="color: #ffffff !important;">Contact us today to discuss how our branding kit services can help your business establish a strong and memorable brand presence.</p>
+                <div class="cta-buttons">
+                    <a href="../quote.html" class="btn btn-white">Request a Quote</a>
+                    <a href="../contact.html" class="btn btn-outline-white">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="../case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="../blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="../contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="../privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="../terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="../sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/direct-mobile-menu.js"></script>
+    <script src="../js/theme-switcher.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/newsletter-handler.js"></script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Chatbot Integration -->
+    <script src="../js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

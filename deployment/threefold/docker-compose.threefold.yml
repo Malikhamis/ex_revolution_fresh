@@ -1,0 +1,361 @@
+# Docker Compose for ThreeFold Deployment
+# Optimized for decentralized infrastructure
+
+version: '3.8'
+
+services:
+  # Main Application - Optimized for ThreeFold
+  app:
+    build:
+      context: ../../
+      dockerfile: deployment/threefold/Dockerfile.threefold
+    container_name: exrev-app-threefold
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # Core application settings
+      - NODE_ENV=production
+      - PORT=3000
+      - DEPLOYMENT_PLATFORM=threefold
+      
+      # ThreeFold specific settings
+      - THREEFOLD_NODE_ID=${THREEFOLD_NODE_ID}
+      - THREEFOLD_FARM_ID=${THREEFOLD_FARM_ID}
+      - THREEFOLD_REGION=${THREEFOLD_REGION:-global}
+      - THREEFOLD_GATEWAY_URL=${THREEFOLD_GATEWAY_URL}
+      
+      # Database configuration
+      - MONGODB_URI=${MONGODB_URI:-mongodb://mongo:27017/exrevolution}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      
+      # Authentication
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@exrevolution.com}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      
+      # Performance optimizations for ThreeFold
+      - EDGE_CACHING_ENABLED=true
+      - EDGE_TTL=3600
+      - CACHE_STRATEGY=edge
+      - DISTRIBUTED_MONITORING=true
+      
+      # CDN configuration for ThreeFold
+      - CDN_ENABLED=true
+      - CDN_PROVIDER=threefold
+      - CDN_BASE_URL=${THREEFOLD_CDN_URL}
+      
+      # Monitoring
+      - MONITORING_ENABLED=true
+      - NODE_HEALTH_CHECK_INTERVAL=30000
+      - SENTRY_DSN=${SENTRY_DSN}
+      
+      # Backup configuration
+      - BACKUP_ENABLED=true
+      - BACKUP_DISTRIBUTED=true
+      - THREEFOLD_BACKUP_NODES=${THREEFOLD_BACKUP_NODES}
+    
+    volumes:
+      - app_uploads:/app/uploads
+      - app_logs:/app/logs
+      - app_backups:/app/backups
+      - threefold_config:/app/config/threefold
+    
+    networks:
+      - threefold-network
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health/threefold"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+      placement:
+        constraints:
+          - node.labels.threefold.region==${THREEFOLD_REGION:-global}
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  # MongoDB - Configured for ThreeFold distributed deployment
+  mongo:
+    image: mongo:6.0
+    container_name: exrev-mongo-threefold
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_DATABASE=exrevolution
+      - THREEFOLD_NODE_ID=${THREEFOLD_NODE_ID}
+    
+    volumes:
+      - mongo_data:/data/db
+      - mongo_config:/data/configdb
+      - ../../scripts/mongo-init-threefold.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    
+    networks:
+      - threefold-network
+    
+    command: >
+      mongod 
+      --auth 
+      --replSet rs0 
+      --bind_ip_all 
+      --keyFile /data/configdb/mongodb-keyfile
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+      placement:
+        constraints:
+          - node.labels.threefold.storage==ssd
+
+  # Redis - Optimized for ThreeFold edge caching
+  redis:
+    image: redis:7-alpine
+    container_name: exrev-redis-threefold
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    environment:
+      - THREEFOLD_NODE_ID=${THREEFOLD_NODE_ID}
+    
+    volumes:
+      - redis_data:/data
+      - ./redis-threefold.conf:/usr/local/etc/redis/redis.conf:ro
+    
+    networks:
+      - threefold-network
+    
+    command: redis-server /usr/local/etc/redis/redis.conf
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+
+  # Nginx - ThreeFold Gateway Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: exrev-nginx-threefold
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - THREEFOLD_GATEWAY_URL=${THREEFOLD_GATEWAY_URL}
+      - THREEFOLD_NODE_ID=${THREEFOLD_NODE_ID}
+    
+    volumes:
+      - ./nginx-threefold.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx-sites:/etc/nginx/sites-available:ro
+      - threefold_ssl:/etc/ssl/certs:ro
+      - nginx_logs:/var/log/nginx
+    
+    networks:
+      - threefold-network
+    
+    depends_on:
+      - app
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # ThreeFold Monitoring Agent
+  monitoring:
+    image: prom/node-exporter:latest
+    container_name: exrev-monitoring-threefold
+    restart: unless-stopped
+    ports:
+      - "9100:9100"
+    environment:
+      - THREEFOLD_NODE_ID=${THREEFOLD_NODE_ID}
+      - THREEFOLD_FARM_ID=${THREEFOLD_FARM_ID}
+    
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    
+    networks:
+      - threefold-network
+    
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+      - '--collector.textfile.directory=/var/lib/node_exporter/textfile_collector'
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+
+  # ThreeFold Backup Service
+  backup:
+    build:
+      context: ../../
+      dockerfile: deployment/threefold/Dockerfile.threefold
+    container_name: exrev-backup-threefold
+    restart: "no"
+    environment:
+      - NODE_ENV=production
+      - DEPLOYMENT_PLATFORM=threefold
+      - MONGODB_URI=${MONGODB_URI:-mongodb://mongo:27017/exrevolution}
+      - THREEFOLD_NODE_ID=${THREEFOLD_NODE_ID}
+      - BACKUP_DISTRIBUTED=true
+      - THREEFOLD_BACKUP_NODES=${THREEFOLD_BACKUP_NODES}
+    
+    volumes:
+      - app_uploads:/app/uploads:ro
+      - app_logs:/app/logs:ro
+      - app_backups:/app/backups
+      - threefold_backup_storage:/backups
+    
+    networks:
+      - threefold-network
+    
+    depends_on:
+      - mongo
+    
+    command: ["node", "scripts/backup-system.js", "create", "threefold"]
+    
+    profiles:
+      - backup
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+
+  # ThreeFold Load Balancer (for multi-node deployment)
+  loadbalancer:
+    image: haproxy:alpine
+    container_name: exrev-lb-threefold
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "8404:8404"  # HAProxy stats
+    environment:
+      - THREEFOLD_NODES=${THREEFOLD_CLUSTER_NODES}
+    
+    volumes:
+      - ./haproxy-threefold.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    
+    networks:
+      - threefold-network
+    
+    profiles:
+      - cluster
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+# Named Volumes for ThreeFold
+volumes:
+  mongo_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${THREEFOLD_STORAGE_PATH}/mongo_data
+  
+  mongo_config:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${THREEFOLD_STORAGE_PATH}/mongo_config
+  
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${THREEFOLD_STORAGE_PATH}/redis_data
+  
+  app_uploads:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${THREEFOLD_STORAGE_PATH}/app_uploads
+  
+  app_logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${THREEFOLD_STORAGE_PATH}/app_logs
+  
+  app_backups:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${THREEFOLD_STORAGE_PATH}/app_backups
+  
+  nginx_logs:
+    driver: local
+  
+  threefold_config:
+    driver: local
+  
+  threefold_ssl:
+    driver: local
+  
+  threefold_backup_storage:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${THREEFOLD_BACKUP_PATH}
+
+# Networks for ThreeFold
+networks:
+  threefold-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: threefold-br0
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/16
+          gateway: 172.30.0.1
+    labels:
+      - "threefold.network=true"
+      - "threefold.node_id=${THREEFOLD_NODE_ID}"

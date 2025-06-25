@@ -1,0 +1,970 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Explore our blog for insights on software development, digital marketing, IT consulting, and technology trends.">
+    <meta name="keywords" content="tech blog, software development blog, digital marketing insights, IT consulting tips">
+    <meta name="author" content="Ex Revolution Technology">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://exrevolution.com/blog.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Blog - Ex Revolution Technology">
+    <meta property="og:description" content="Insights, tips, and trends in software development, digital marketing, and IT consulting from our expert team.">
+    <meta property="og:image" content="https://exrevolution.com/assets/images/blog-og.jpg">
+    <meta property="og:url" content="https://exrevolution.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ex Revolution Technology">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog - Ex Revolution Technology">
+    <meta name="twitter:description" content="Expert insights on software development, digital marketing, and IT consulting.">
+    <meta name="twitter:image" content="https://exrevolution.com/assets/images/blog-twitter.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="css/theme-switcher.css">
+
+    <!-- Buttons Stylesheet -->
+    <link rel="stylesheet" href="css/buttons.css">
+
+    <style>
+        /* Page-specific styles */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .blog-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .blog-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .blog-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .blog-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .blog-hero h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .blog-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-content {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .blog-post {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .blog-post:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-post-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .blog-post-content {
+            padding: var(--spacing-lg);
+        }
+
+        .blog-post-title {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-xl);
+        }
+
+        .blog-post-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .blog-post-title a:hover {
+            color: var(--primary);
+        }
+
+        .blog-post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .blog-post-meta-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .blog-post-meta-item i {
+            margin-right: var(--spacing-xs);
+        }
+
+        .blog-post-excerpt {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .blog-post-tag {
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-sm);
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .blog-post-tag:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .blog-post-link {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff !important;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .blog-post-link:hover {
+            background-color: var(--primary-dark);
+            color: #ffffff !important;
+            transform: translateY(-2px);
+        }
+
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-xl);
+        }
+
+        .pagination-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--border-radius-md);
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .pagination-item:hover,
+        .pagination-item.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .blog-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .sidebar-widget {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .sidebar-widget h3 {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .search-form {
+            display: flex;
+            gap: var(--spacing-xs);
+        }
+
+        .search-input {
+            flex-grow: 1;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .search-button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+        }
+
+        .search-button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-xs) 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-name {
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+        }
+
+        .category-name:hover {
+            color: var(--primary);
+        }
+
+        .category-count {
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            border-radius: var(--border-radius-circle);
+            font-size: var(--font-size-xs);
+        }
+
+        .recent-posts {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .recent-post {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .recent-post-image {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--border-radius-sm);
+            object-fit: cover;
+        }
+
+        .recent-post-content {
+            flex-grow: 1;
+        }
+
+        .recent-post-title {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-sm);
+            line-height: 1.4;
+        }
+
+        .recent-post-date {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        @media (max-width: 992px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .blog-content {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .blog-post-image {
+                height: 200px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                border-radius: 5px;
+            }
+        }
+
+        .newsletter-section {
+            background-color: var(--bg-secondary);
+            padding: 60px 0;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            margin-bottom: 15px;
+        }
+
+        .newsletter-content p {
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px 0 0 5px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: var(--primary);
+            color: var(--white);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="case-studies.html">Case Studies</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button (only visible on mobile) -->
+
+            </nav>
+
+            <!-- Desktop CTA Button (only visible on desktop) -->
+            <a href="quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Our Blog</h1>
+                <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Insights, tips, and trends in software development, digital marketing, and IT consulting.</p>
+            </div>
+        </section>
+
+        <!-- Blog Content Section -->
+        <section class="blog-content">
+            <div class="container blog-container">
+                <div class="blog-main">
+                    <div class="blog-posts">
+                        <article class="blog-post">
+                            <img src="assets/images/blog1.jpg" alt="AI Transforming Business" class="blog-post-image" loading="lazy">
+                            <div class="blog-post-content">
+                                <h2 class="blog-post-title"><a href="blog/ai-transforming-business.html">How AI is Transforming Business Operations in 2025</a></h2>
+                                <div class="blog-post-meta">
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <span>May 15, 2025</span>
+                                    </div>
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-user"></i>
+                                        <span>By Shirhan Shermohamed</span>
+                                    </div>
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-folder"></i>
+                                        <span>Artificial Intelligence</span>
+                                    </div>
+                                </div>
+                                <div class="blog-post-tags">
+                                    <a href="#" class="blog-post-tag">Artificial Intelligence</a>
+                                    <a href="#" class="blog-post-tag">Business Operations</a>
+                                    <a href="#" class="blog-post-tag">Digital Transformation</a>
+                                </div>
+                                <p class="blog-post-excerpt">Discover how artificial intelligence is revolutionizing business operations in 2025, from automated customer service to predictive analytics and beyond.</p>
+                                <a href="blog/ai-transforming-business.html" class="blog-post-link" style="color: #ffffff !important;">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <img src="assets/images/blog3.jpg" alt="Custom vs Off-the-Shelf Software" class="blog-post-image" loading="lazy">
+                            <div class="blog-post-content">
+                                <h2 class="blog-post-title"><a href="blog/custom-vs-off-the-shelf.html">Custom vs Off-the-Shelf Software: Which is Right for Your Business?</a></h2>
+                                <div class="blog-post-meta">
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <span>April 28, 2025</span>
+                                    </div>
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-user"></i>
+                                        <span>By ExRevolution</span>
+                                    </div>
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-folder"></i>
+                                        <span>Software Development</span>
+                                    </div>
+                                </div>
+                                <div class="blog-post-tags">
+                                    <a href="#" class="blog-post-tag">Software Development</a>
+                                    <a href="#" class="blog-post-tag">Business Solutions</a>
+                                    <a href="#" class="blog-post-tag">ROI</a>
+                                </div>
+                                <p class="blog-post-excerpt">A comprehensive comparison of custom and off-the-shelf software solutions, helping you make the right choice for your business needs and budget.</p>
+                                <a href="blog/custom-vs-off-the-shelf.html" class="blog-post-link" style="color: #ffffff !important;">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <img src="assets/images/blog2.jpg" alt="Data Visualization Techniques" class="blog-post-image" loading="lazy">
+                            <div class="blog-post-content">
+                                <h2 class="blog-post-title"><a href="blog/data-visualization-techniques.html">Advanced Data Visualization Techniques for Business Insights</a></h2>
+                                <div class="blog-post-meta">
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <span>April 15, 2025</span>
+                                    </div>
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-user"></i>
+                                        <span>By ExRevolution</span>
+                                    </div>
+                                    <div class="blog-post-meta-item">
+                                        <i class="far fa-folder"></i>
+                                        <span>Data Analytics</span>
+                                    </div>
+                                </div>
+                                <div class="blog-post-tags">
+                                    <a href="#" class="blog-post-tag">Data Analytics</a>
+                                    <a href="#" class="blog-post-tag">Visualization</a>
+                                    <a href="#" class="blog-post-tag">Business Intelligence</a>
+                                </div>
+                                <p class="blog-post-excerpt">Learn about the latest data visualization techniques that can help your business extract meaningful insights from complex datasets.</p>
+                                <a href="blog/data-visualization-techniques.html" class="blog-post-link" style="color: #ffffff !important;">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="blog-pagination">
+                        <a href="blog.html" class="pagination-item active">1</a>
+                        <a href="blog-page-2.html" class="pagination-item">2</a>
+                        <a href="blog-page-3.html" class="pagination-item">3</a>
+                        <a href="blog-page-2.html" class="pagination-item"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3>Search Blog</h3>
+                        <form class="search-form">
+                            <input type="text" class="search-input" placeholder="Search blog...">
+                            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Categories section removed as it's not functional -->
+
+                    <div class="sidebar-widget">
+                        <h3>Recent Posts</h3>
+                        <div class="recent-posts">
+                            <div class="recent-post">
+                                <img src="assets/images/blog6.jpg" alt="Mobile App Trends" class="recent-post-image" loading="lazy">
+                                <div class="recent-post-content">
+                                    <h4 class="recent-post-title"><a href="blog/mobile-app-trends.html">Top Mobile App Development Trends for 2023</a></h4>
+                                    <p class="recent-post-date">May 15, 2023</p>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="assets/images/blog3.jpg" alt="Custom vs Off-the-Shelf Software" class="recent-post-image" loading="lazy">
+                                <div class="recent-post-content">
+                                    <h4 class="recent-post-title"><a href="blog/custom-vs-off-the-shelf.html">Custom vs Off-the-Shelf Software: Which is Right for Your Business?</a></h4>
+                                    <p class="recent-post-date">April 28, 2023</p>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="assets/images/blog4.jpg" alt="Digital Marketing Strategies" class="recent-post-image" loading="lazy">
+                                <div class="recent-post-content">
+                                    <h4 class="recent-post-title"><a href="blog/digital-marketing-strategies.html">5 Digital Marketing Strategies That Actually Work in 2023</a></h4>
+                                    <p class="recent-post-date">April 15, 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3>Popular Tags</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="blog-post-tag">Software Development</a>
+                            <a href="#" class="blog-post-tag">Mobile Apps</a>
+                            <a href="#" class="blog-post-tag">Web Design</a>
+                            <a href="#" class="blog-post-tag">AI</a>
+                            <a href="#" class="blog-post-tag">Machine Learning</a>
+                            <a href="#" class="blog-post-tag">Digital Marketing</a>
+                            <a href="#" class="blog-post-tag">SEO</a>
+                            <a href="#" class="blog-post-tag">UX/UI</a>
+                            <a href="#" class="blog-post-tag">Cloud Computing</a>
+                            <a href="#" class="blog-post-tag">Cybersecurity</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Subscribe to Our Newsletter</h2>
+                    <p>Stay updated with the latest insights, tips, and trends in technology and digital marketing.</p>
+                    <form class="newsletter-form">
+                        <input type="email" name="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="services/software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="services/digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="services/it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="services/branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Content Manager -->
+    <script src="js/content-manager.js"></script>
+
+    <!-- JavaScript -->
+    <script src="js/direct-mobile-menu.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/newsletter-handler.js"></script>
+
+    <!-- Blog Posts Dynamic Loading -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Enable real-time content synchronization
+            window.contentManager.setupRealTimeSync();
+
+            // Load dynamic blog posts for page 1 (posts 1-3)
+            try {
+                await loadBlogPostsForPage(1);
+                console.log('✅ Dynamic blog posts loaded for page 1');
+            } catch (error) {
+                console.warn('⚠️ Failed to load dynamic blog posts, using static content:', error);
+            }
+        });
+
+        async function loadBlogPostsForPage(pageNumber) {
+            try {
+                // Use page-specific API endpoint
+                const response = await fetch(`/api/public/blog-posts/page/${pageNumber}`);
+                const pagePosts = await response.json();
+
+                // Update the blog posts container
+                const blogPostsContainer = document.querySelector('.blog-posts');
+                if (blogPostsContainer) {
+                    if (pagePosts.length > 0) {
+                        blogPostsContainer.innerHTML = pagePosts.map(post => generateBlogPostHTML(post)).join('');
+                    } else {
+                        blogPostsContainer.innerHTML = `
+                            <div class="no-posts-message" style="text-align: center; padding: 40px;">
+                                <h3>No blog posts for this page</h3>
+                                <p>No posts have been assigned to this page yet.</p>
+                            </div>
+                        `;
+                    }
+                }
+
+                // Get all posts for recent posts sidebar
+                const allResponse = await fetch('/api/public/blog-posts');
+                const allBlogPosts = await allResponse.json();
+                allBlogPosts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+                updateRecentPosts(allBlogPosts.slice(0, 3));
+
+            } catch (error) {
+                console.error('Error loading blog posts:', error);
+            }
+        }
+
+        function generateBlogPostHTML(post) {
+            const publishedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            const tagsHTML = post.tags ? post.tags.map(tag =>
+                `<a href="#" class="blog-post-tag">${tag}</a>`
+            ).join('') : '';
+
+            return `
+                <article class="blog-post">
+                    <img src="${post.image}" alt="${post.title}" class="blog-post-image" loading="lazy">
+                    <div class="blog-post-content">
+                        <h2 class="blog-post-title"><a href="blog/${post.slug}.html">${post.title}</a></h2>
+                        <div class="blog-post-meta">
+                            <div class="blog-post-meta-item">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>${publishedDate}</span>
+                            </div>
+                            <div class="blog-post-meta-item">
+                                <i class="far fa-user"></i>
+                                <span>By ${post.author}</span>
+                            </div>
+                            <div class="blog-post-meta-item">
+                                <i class="far fa-folder"></i>
+                                <span>${post.category}</span>
+                            </div>
+                        </div>
+                        <div class="blog-post-tags">
+                            ${tagsHTML}
+                        </div>
+                        <p class="blog-post-excerpt">${post.excerpt}</p>
+                        <a href="blog/${post.slug}.html" class="blog-post-link" style="color: #ffffff !important;">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            `;
+        }
+
+        function updateRecentPosts(recentPosts) {
+            const recentPostsContainer = document.querySelector('.recent-posts');
+            if (recentPostsContainer && recentPosts.length > 0) {
+                recentPostsContainer.innerHTML = recentPosts.map(post => {
+                    const publishedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    return `
+                        <div class="recent-post">
+                            <img src="${post.image}" alt="${post.title}" class="recent-post-image" loading="lazy">
+                            <div class="recent-post-content">
+                                <h4 class="recent-post-title"><a href="blog/${post.slug}.html">${post.title}</a></h4>
+                                <p class="recent-post-date">${publishedDate}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Enhanced real-time sync monitoring with page switch detection
+        let lastUpdateCheck = localStorage.getItem('contentUpdated') || '0';
+        let lastPageSwitchCheck = localStorage.getItem('pageSwitch') || '{}';
+        let lastPostCount = 0;
+
+        // Check for updates every 1 second (more frequent)
+        setInterval(async () => {
+            const currentUpdate = localStorage.getItem('contentUpdated') || '0';
+            const currentPageSwitch = localStorage.getItem('pageSwitch') || '{}';
+
+            // Check for general content updates
+            if (currentUpdate !== lastUpdateCheck) {
+                console.log('🔄 Blog content update detected via localStorage, refreshing...');
+                await loadBlogPostsForPage(1);
+                lastUpdateCheck = currentUpdate;
+            }
+
+            // Check for page switch events (enhanced detection)
+            if (currentPageSwitch !== lastPageSwitchCheck) {
+                try {
+                    const pageSwitchData = JSON.parse(currentPageSwitch);
+                    if (pageSwitchData.postId && pageSwitchData.fromPage && pageSwitchData.toPage) {
+                        console.log('📄 Page switch detected for Page 1:', {
+                            postId: pageSwitchData.postId,
+                            fromPage: pageSwitchData.fromPage,
+                            toPage: pageSwitchData.toPage,
+                            affectsThisPage: pageSwitchData.fromPage === '1' || pageSwitchData.toPage === '1'
+                        });
+
+                        // Force refresh since this page might be affected
+                        console.log('🔄 Refreshing Page 1 due to page switch...');
+                        await loadBlogPostsForPage(1);
+                        lastPageSwitchCheck = currentPageSwitch;
+                    }
+                } catch (error) {
+                    // Invalid JSON, ignore
+                }
+            }
+
+            // Also check if post count changed (backup method)
+            try {
+                const response = await fetch('/api/public/blog-posts/page/1');
+                const posts = await response.json();
+                if (posts.length !== lastPostCount) {
+                    console.log('🔄 Post count changed, refreshing...', `${lastPostCount} → ${posts.length}`);
+                    await loadBlogPostsForPage(1);
+                    lastPostCount = posts.length;
+                }
+            } catch (error) {
+                // Ignore errors in background check
+            }
+        }, 1000);
+
+        // Listen for direct messages from admin panel
+        window.addEventListener('message', async (event) => {
+            if (event.origin === window.location.origin && event.data.type === 'CONTENT_UPDATED') {
+                console.log('🔄 Direct blog update signal received, refreshing...');
+                await loadBlogPostsForPage(1);
+            }
+        });
+
+        // Listen for storage events (cross-tab communication)
+        window.addEventListener('storage', async (event) => {
+            if (event.key === 'contentUpdated') {
+                console.log('🔄 Blog content update via storage event, refreshing...');
+                await loadBlogPostsForPage(1);
+            } else if (event.key === 'pageSwitch') {
+                console.log('📄 Page switch event detected via storage, refreshing...');
+                await loadBlogPostsForPage(1);
+            }
+        });
+
+        // Force refresh every 5 seconds as backup
+        setInterval(async () => {
+            console.log('🔄 Periodic refresh (backup sync)...');
+            await loadBlogPostsForPage(1);
+        }, 5000);
+    </script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Chatbot Integration -->
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

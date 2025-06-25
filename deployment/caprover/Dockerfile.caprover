@@ -1,0 +1,76 @@
+# CapRover Dockerfile for Ex Revolution
+# Optimized for CapRover deployment on ThreeFold infrastructure
+
+# Use Node.js 18 Alpine for smaller image size
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies including build tools
+RUN apk add --no-cache \
+    curl \
+    tini \
+    ca-certificates \
+    tzdata \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/cache/apk/*
+
+# Create app user for security
+RUN addgroup -g 1001 -S appgroup && \
+    adduser -S appuser -u 1001 -G appgroup
+
+# Copy package files first for better Docker layer caching
+COPY package*.json ./
+
+# Install dependencies with better error handling
+RUN npm config set registry https://registry.npmjs.org/ && \
+    npm cache clean --force && \
+    npm install --production --no-optional --legacy-peer-deps || \
+    npm install --production --no-optional
+
+# Copy application source code
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p uploads logs backups && \
+    chown -R appuser:appgroup uploads logs backups
+
+# Set environment variables for CapRover
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV DEPLOYMENT_PLATFORM=caprover-threefold
+ENV NPM_CONFIG_LOGLEVEL=warn
+
+# CapRover specific optimizations
+ENV CAPROVER_DEPLOYMENT=true
+ENV CONTAINER_OPTIMIZED=true
+
+# Performance optimizations
+ENV NODE_OPTIONS="--max-old-space-size=1024"
+ENV UV_THREADPOOL_SIZE=4
+
+# Expose port 3000 (CapRover standard)
+EXPOSE 3000
+
+# Health check for CapRover
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/api/health || exit 1
+
+# Switch to non-root user
+USER appuser
+
+# Use tini as init system for better signal handling
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Start the application
+CMD ["npm", "start"]
+
+# Metadata
+LABEL maintainer="Ex Revolution <exrevolution8@gmail.com>"
+LABEL version="2.0.0-caprover"
+LABEL description="Ex Revolution - Enterprise Web Application for CapRover on ThreeFold"
+LABEL caprover.optimized="true"
+LABEL threefold.compatible="true"

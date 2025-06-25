@@ -1,0 +1,669 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Ex Revolution Technology</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Explore our case studies showcasing successful projects in software development, digital marketing, and IT consulting.">
+    <meta name="keywords" content="case studies, success stories, software development projects, digital marketing results, IT consulting solutions">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Direct Mobile Menu Stylesheet -->
+    <link rel="stylesheet" href="css/direct-mobile-menu.css">
+
+    <!-- Theme Switcher Stylesheet -->
+    <link rel="stylesheet" href="css/theme-switcher.css">
+
+    <style>
+        /* Page-specific styles */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .case-studies-hero {
+            position: relative;
+            background-color: #0066cc; /* Base blue color */
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+
+        /* Animated gradient background */
+        .case-studies-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0066cc, #004c99, #0077e6, #003d80);
+            background-size: 400% 400%;
+            opacity: 0.8;
+            z-index: 1;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Subtle diagonal stripes */
+        .case-studies-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            z-index: 2;
+        }
+
+        .case-studies-hero .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .case-studies-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .case-studies-hero h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .case-studies-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #ffffff !important; /* Force white text in all themes */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .case-studies-intro {
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+        }
+
+        .case-studies-intro p {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .case-study-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .case-study-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .case-study-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-study-title {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-xl);
+        }
+
+        .case-study-category {
+            color: var(--primary);
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+        }
+
+        .case-study-description {
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1;
+        }
+
+        .case-study-results {
+            margin-bottom: var(--spacing-md);
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+        }
+
+        .case-study-results h4 {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-md);
+        }
+
+        .case-study-results ul {
+            list-style: disc;
+            padding-left: var(--spacing-lg);
+            margin-bottom: 0;
+        }
+
+        .case-study-link {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            transition: background-color var(--transition-fast);
+            text-decoration: none;
+            font-weight: 500;
+            align-self: flex-start;
+        }
+
+        .case-study-link:hover {
+            background-color: var(--primary-light);
+            color: var(--white);
+        }
+
+        .case-study-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            padding: var(--spacing-xs) var(--spacing-md);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Dark theme specific styles for filter buttons */
+        body.dark-theme .filter-button {
+            background-color: var(--dark-bg-secondary);
+            color: var(--dark-text-primary);
+            border: 1px solid var(--dark-border);
+        }
+
+        body.dark-theme .filter-button:hover,
+        body.dark-theme .filter-button.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Light theme specific styles for filter buttons */
+        body:not(.dark-theme) .filter-button {
+            background-color: var(--light-bg-secondary);
+            color: var(--light-text-primary);
+            border: 1px solid var(--light-border);
+        }
+
+        body:not(.dark-theme) .filter-button:hover,
+        body:not(.dark-theme) .filter-button.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .testimonial-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .testimonial-text {
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius-circle);
+            margin-right: var(--spacing-sm);
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0;
+            font-size: var(--font-size-md);
+        }
+
+        .testimonial-company {
+            color: var(--primary);
+            font-size: var(--font-size-sm);
+        }
+
+        @media (max-width: 768px) {
+            .case-studies-hero,
+            .case-studies-intro,
+            .testimonial-section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .case-study-image {
+                height: 200px;
+            }
+
+            .case-study-filters {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: var(--spacing-sm);
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/logo.jpg" alt="Ex Revolution Technology" class="logo logo-light">
+                <img src="assets/images/logo1.jpg" alt="Ex Revolution Technology" class="logo logo-dark">
+            </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="case-studies.html" class="active">Case Studies</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Mobile CTA Button (only visible on mobile) -->
+
+            </nav>
+
+            <!-- Desktop CTA Button (only visible on desktop) -->
+            <a href="quote.html" class="cta-button">Request a Quote</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="case-studies-hero">
+            <div class="container">
+                <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Our Success Stories</h1>
+                <p style="color: #ffffff !important; font-weight: 500 !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;">Explore how we've helped businesses across various industries achieve their goals through innovative technology solutions.</p>
+            </div>
+        </section>
+
+        <!-- Case Studies Intro Section -->
+        <section class="case-studies-intro">
+            <div class="container">
+                <h2>Real Results for Real Businesses</h2>
+                <p>At Ex Revolution Technology, we measure our success by the success of our clients. Browse through our case studies to see how our solutions have helped businesses overcome challenges, improve efficiency, and drive growth.</p>
+
+                <div class="case-study-filters">
+                    <button class="filter-button active" data-filter="all">All</button>
+                    <button class="filter-button" data-filter="website-development">Website Development</button>
+                    <button class="filter-button" data-filter="branding">Branding</button>
+                </div>
+
+                <div class="grid grid-3" id="case-studies-container">
+                    <div class="case-study-card" data-category="website-development">
+                        <img src="assets/images/digital_marketing_concept.webp" alt="Usangu Logistics Website" class="case-study-image">
+                        <div class="case-study-content">
+                            <p class="case-study-category">Website Development</p>
+                            <h3 class="case-study-title">Custom Website for Usangu Logistics</h3>
+                            <p class="case-study-description">We designed and developed a modern, responsive website for Usangu Logistics that showcases their transportation and logistics services, making it easier for potential clients to learn about their offerings and request quotes.</p>
+                            <div class="case-study-results">
+                                <h4>Results:</h4>
+                                <ul>
+                                    <li>Increased online visibility in the logistics sector</li>
+                                    <li>Improved lead generation through the website</li>
+                                    <li>Enhanced brand credibility with professional web presence</li>
+                                </ul>
+                            </div>
+                            <a href="case-studies/usangu-logistics.html" class="case-study-link" style="color: #ffffff !important;">View Case Study</a>
+                        </div>
+                    </div>
+
+                    <div class="case-study-card" data-category="website-development">
+                        <img src="assets/images/web.jpg" alt="Man Haulage Company Website" class="case-study-image">
+                        <div class="case-study-content">
+                            <p class="case-study-category">Website Development</p>
+                            <h3 class="case-study-title">Corporate Website for Man Haulage Company Ltd</h3>
+                            <p class="case-study-description">We created a comprehensive corporate website for Man Haulage Company Ltd that effectively communicates their transportation services, company values, and competitive advantages to potential clients in Tanzania and beyond.</p>
+                            <div class="case-study-results">
+                                <h4>Results:</h4>
+                                <ul>
+                                    <li>40% increase in online inquiries</li>
+                                    <li>Improved user experience with intuitive navigation</li>
+                                    <li>Mobile-responsive design reaching more potential clients</li>
+                                </ul>
+                            </div>
+                            <a href="case-studies/man-haulage.html" class="case-study-link" style="color: #ffffff !important;">View Case Study</a>
+                        </div>
+                    </div>
+
+                    <div class="case-study-card" data-category="branding">
+                        <img src="assets/images/branding1.jpg" alt="Epic Haulage Branding" class="case-study-image">
+                        <div class="case-study-content">
+                            <p class="case-study-category">Branding</p>
+                            <h3 class="case-study-title">Branding Kit for Epic Haulage</h3>
+                            <p class="case-study-description">We developed a complete branding package for Epic Haulage, including logo design, company profile creation, and brand guidelines that established a strong, professional identity in the competitive transportation industry.</p>
+                            <div class="case-study-results">
+                                <h4>Results:</h4>
+                                <ul>
+                                    <li>Distinctive brand identity that stands out in the market</li>
+                                    <li>Professional company profile enhancing credibility with clients</li>
+                                    <li>Consistent brand application across all touchpoints</li>
+                                </ul>
+                            </div>
+                            <a href="case-studies/epic-haulage-branding.html" class="case-study-link" style="color: #ffffff !important;">View Case Study</a>
+                        </div>
+                    </div>
+
+                    <div class="case-study-card" data-category="website-development">
+                        <img src="assets/images/code_screen.jpeg" alt="Sprinkle Sprout School Website" class="case-study-image">
+                        <div class="case-study-content">
+                            <p class="case-study-category">Website Development</p>
+                            <h3 class="case-study-title">Educational Website for Sprinkle Sprout Primary School</h3>
+                            <p class="case-study-description">We designed and developed an engaging, user-friendly website for Sprinkle Sprout Primary School that effectively communicates their educational philosophy, curriculum, and school activities to parents and the community.</p>
+                            <div class="case-study-results">
+                                <h4>Results:</h4>
+                                <ul>
+                                    <li>Improved communication between school and parents</li>
+                                    <li>Increased enrollment inquiries from prospective families</li>
+                                    <li>Enhanced showcase of school activities and achievements</li>
+                                </ul>
+                            </div>
+                            <a href="case-studies/sprinkle-sprout-school.html" class="case-study-link" style="color: #ffffff !important;">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonial-section">
+            <div class="container">
+                <h2 class="text-center mb-5">What Our Clients Say</h2>
+                <div class="grid grid-3">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">Ex Revolution Technology created an outstanding website for our logistics company. Their team understood our needs perfectly and delivered a professional site that has significantly improved our online presence.</p>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-1.jpg" alt="Usangu Logistics" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>Management Team</h4>
+                                <p class="testimonial-company">Usangu Logistics</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">The branding package developed by Ex Revolution Technology has transformed our company's image. The logo design and company profile they created perfectly capture our vision and have helped us stand out in the market.</p>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-2.jpg" alt="Epic Haulage" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>Director</h4>
+                                <p class="testimonial-company">Epic Haulage</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="testimonial-text">Our school website developed by Ex Revolution Technology has been a game-changer for our communication with parents and the community. The design is child-friendly yet professional, and it's easy for our staff to update.</p>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-3.jpg" alt="Sprinkle Sprout Primary School" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>School Administrator</h4>
+                                <p class="testimonial-company">Sprinkle Sprout Primary School</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container text-center">
+                <h2 style="color: #ffffff !important;">Ready to Achieve Similar Results?</h2>
+                <p style="color: #ffffff !important;">Contact us today to discuss your project and how our services can help your business grow.</p>
+                <a href="quote.html" class="btn btn-primary mt-4" style="color: #ffffff !important;">Request a Free Quote</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Ex Revolution Technology</h3><p style="color: #ffffff !important;">Innovative IT solutions for businesses of all sizes. We help you transform through technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-facebook-f" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="Twitter" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-twitter" style="color: #ffffff !important;"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-linkedin-in" style="color: #ffffff !important;"></i></a>
+                        <a href="https://www.instagram.com/exrevolution.tz?igsh=bXlocWo3dGFlMjBr" target="_blank" aria-label="Instagram" style="background-color: rgba(0, 102, 204, 0.8) !important;"><i class="fab fa-instagram" style="color: #ffffff !important;"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Services</h3>
+                    <div class="footer-links">
+                        <a href="services/software-development.html" style="color: #ffffff !important;">Software Development</a>
+                        <a href="services/digital-marketing.html" style="color: #ffffff !important;">Digital Marketing</a>
+                        <a href="services/it-consulting.html" style="color: #ffffff !important;">IT Consulting</a>
+                        <a href="services/data-analytics.html" style="color: #ffffff !important;">Data Analytics</a>
+                        <a href="services/branding-kit.html" style="color: #ffffff !important;">Branding Kit</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Company</h3><div class="footer-links"><a href="../about.html" style="color: #ffffff !important;">About Us</a>
+                        <a href="case-studies.html" style="color: #ffffff !important;">Case Studies</a>
+                        <a href="blog.html" style="color: #ffffff !important;">Blog</a>
+                        <a href="contact.html" style="color: #ffffff !important;">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 style="color: #ffffff !important;">Contact Us</h3><div class="footer-links"><a href="tel:+255744622649" style="color: #ffffff !important;"><i class="fas fa-phone-alt mr-2"></i> +255 744 622 649</a>
+                        <a href="mailto:exrevolution8@gmail.com" style="color: #ffffff !important;"><i class="fas fa-envelope mr-2"></i> exrevolution8@gmail.com</a>
+                        <a href="https://maps.google.com" target="_blank" style="color: #ffffff !important;"><i class="fas fa-map-marker-alt mr-2"></i> PSSSF Samora House,
+Junction of Samora and Morogoro Rd,
+Dar es Salaam, Tanzania</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" style="color: #ffffff !important;">&copy; 2024 Ex Revolution Technology. All rights reserved.</p>
+                <div class="footer-nav">
+                    <a href="privacy-policy.html" style="color: #ffffff !important;">Privacy Policy</a>
+                    <a href="terms-of-service.html" style="color: #ffffff !important;">Terms of Service</a>
+                    <a href="sitemap.html" style="color: #ffffff !important;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Content Manager -->
+    <script src="js/content-manager.js"></script>
+
+    <!-- JavaScript -->
+    <script src="js/direct-mobile-menu.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Case Study Filter Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Enable real-time content synchronization
+            window.contentManager.setupRealTimeSync();
+
+            // Load dynamic case studies first
+            try {
+                await window.contentManager.renderCaseStudiesGrid('case-studies-container');
+                console.log('✅ Dynamic case studies loaded successfully');
+            } catch (error) {
+                console.warn('⚠️ Failed to load dynamic case studies, using static content:', error);
+            }
+
+            // Set up filter functionality
+            const filterButtons = document.querySelectorAll('.filter-button');
+
+            function setupFilters() {
+                const caseStudyCards = document.querySelectorAll('.case-study-card');
+
+                // Add click event to filter buttons
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                        // Add active class to clicked button
+                        this.classList.add('active');
+
+                        // Get filter value
+                        const filterValue = this.getAttribute('data-filter');
+
+                        // Show/hide case study cards based on filter
+                        caseStudyCards.forEach(card => {
+                            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Setup filters after a short delay to ensure dynamic content is loaded
+            setTimeout(setupFilters, 500);
+
+            // Listen for content updates from admin panel
+            let lastUpdateCheck = localStorage.getItem('contentUpdated') || '0';
+
+            // Check for updates every 10 seconds
+            setInterval(() => {
+                const currentUpdate = localStorage.getItem('contentUpdated') || '0';
+                if (currentUpdate !== lastUpdateCheck) {
+                    console.log('🔄 Content update detected, refreshing...');
+                    window.contentManager.refreshContent().then(() => {
+                        setTimeout(setupFilters, 500);
+                    });
+                    lastUpdateCheck = currentUpdate;
+                }
+            }, 10000);
+
+            // Listen for direct messages from admin panel
+            window.addEventListener('message', function(event) {
+                if (event.origin === window.location.origin && event.data.type === 'CONTENT_UPDATED') {
+                    console.log('🔄 Direct content update signal received, refreshing...');
+                    window.contentManager.refreshContent().then(() => {
+                        setTimeout(setupFilters, 500);
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Chatbot Container -->
+    <div class="chatbot-container"></div>
+
+    <!-- Chatbot Integration -->
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

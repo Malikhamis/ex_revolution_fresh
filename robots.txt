@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private directories
+Disallow: /admin/
+Disallow: /api/
+Disallow: /backend/
+Disallow: /node_modules/
+Disallow: /*.ps1$
+Disallow: /*.log$
+Disallow: /*.tmp$
+
+# Allow important files
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /images/
+
+# Sitemap location
+Sitemap: https://exrevolution.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
