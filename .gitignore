@@ -22,8 +22,8 @@ coverage/
 
 # Build output
 build/
+dist/
 # Ignore all dist except blog HTML
-/dist/
 !dist/blog/
 !dist/blog/*.html
 

@@ -16,6 +16,7 @@ New-Item -ItemType Directory -Path "dist/css" -Force | Out-Null
 New-Item -ItemType Directory -Path "dist/js" -Force | Out-Null
 New-Item -ItemType Directory -Path "dist/services" -Force | Out-Null
 New-Item -ItemType Directory -Path "dist/case-studies" -Force | Out-Null
+New-Item -ItemType Directory -Path "dist/blog" -Force | Out-Null
 
 # Copy main HTML files
 Write-Host "📄 Copying HTML files..." -ForegroundColor Blue
@@ -67,6 +68,15 @@ if (Test-Path "case-studies") {
     }
 }
 
+# Copy blog HTML files
+Write-Host "📝 Copying blog HTML files..." -ForegroundColor Blue
+if (Test-Path "blog") {
+    Get-ChildItem -Path "blog" -Filter "*.html" | ForEach-Object {
+        Copy-Item $_.FullName -Destination "dist/blog" -ErrorAction SilentlyContinue
+        Write-Host "  ✓ Copied blog/$($_.Name)" -ForegroundColor Gray
+    }
+}
+
 # Copy Netlify configuration files
 Write-Host "⚙️  Copying configuration files..." -ForegroundColor Blue
 if (Test-Path "_redirects") {
@@ -104,3 +114,11 @@ Write-Host "  Ready for deployment! 🚀" -ForegroundColor Green
 Write-Host ""
 Write-Host "📋 Main files in dist:" -ForegroundColor Yellow
 Get-ChildItem -Path "dist" -File | Select-Object Name, @{Name="Size(KB)"; Expression={[math]::Round($_.Length/1KB, 2)}}, LastWriteTime | Format-Table -AutoSize
+
+# List blog files in dist/blog
+if (Test-Path "dist/blog") {
+    Write-Host "\n📝 Blog files in dist/blog:" -ForegroundColor Yellow
+    Get-ChildItem -Path "dist/blog" -File | Select-Object Name, @{Name="Size(KB)"; Expression={[math]::Round($_.Length/1KB, 2)}}, LastWriteTime | Format-Table -AutoSize
+} else {
+    Write-Host "\n⚠️  dist/blog directory does not exist!" -ForegroundColor Red
+}

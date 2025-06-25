@@ -12,6 +12,7 @@ mkdir "dist\css"
 mkdir "dist\js"
 mkdir "dist\services"
 mkdir "dist\case-studies"
+mkdir "dist\blog"
 
 REM Copy HTML files
 echo Copying HTML files...
@@ -36,6 +37,10 @@ if exist "services" copy "services\*.html" "dist\services\" >nul 2>&1
 REM Copy case studies
 echo Copying case studies...
 if exist "case-studies" copy "case-studies\*.html" "dist\case-studies\" >nul 2>&1
+
+REM Copy blog HTML files
+echo Copying blog HTML files...
+if exist "blog" copy "blog\*.html" "dist\blog\" >nul 2>&1
 
 REM Copy configuration files
 if exist "_redirects" copy "_redirects" "dist\" >nul 2>&1
