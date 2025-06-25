@@ -129,6 +129,18 @@ Sitemap: https://exrevolution.com/sitemap.xml`;
 
 fs.writeFileSync('dist/robots.txt', robotsContent);
 
+// Copy blog HTML files
+console.log('📝 Copying blog HTML files...');
+if (fs.existsSync('blog')) {
+    const blogFiles = fs.readdirSync('blog').filter(file => file.endsWith('.html'));
+    if (!fs.existsSync('dist/blog')) {
+        fs.mkdirSync('dist/blog', { recursive: true });
+    }
+    blogFiles.forEach(file => {
+        copyFile(path.join('blog', file), path.join('dist/blog', file));
+    });
+}
+
 // Show build summary
 console.log('✅ Build complete! Files ready in dist/ folder');
 
