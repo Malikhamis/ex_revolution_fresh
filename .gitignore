@@ -238,3 +238,11 @@ build/
 # Temporary files
 *.tmp
 *.temp
+
+# Ignore compressed and large binary files
+*.tar.gz
+*.zip
+*.gz
+
+# Ignore Netlify build output (if any)
+.netlify/

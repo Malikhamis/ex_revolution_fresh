@@ -1,4 +1,6 @@
 // Blog Management Function for Netlify Functions
+const { verifyToken } = require('./auth-verify');
+
 let blogPosts = [
     {
         id: 1,
@@ -67,6 +69,16 @@ exports.handler = async (event, context) => {
 
     if (event.httpMethod === 'OPTIONS') {
         return { statusCode: 200, headers, body: '' };
+    }
+
+    // Require authentication for all methods except OPTIONS
+    const user = verifyToken(event);
+    if (!user) {
+        return {
+            statusCode: 401,
+            headers,
+            body: JSON.stringify({ error: 'Unauthorized' }),
+        };
     }
 
     const pathSegments = event.path.split('/').filter(segment => segment);

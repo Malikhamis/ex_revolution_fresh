@@ -45,7 +45,8 @@ function initContactForm() {
             const apiResponse = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': window.apiConfig.getToken() ? `Bearer ${window.apiConfig.getToken()}` : ''
                 },
                 body: JSON.stringify(formDataObj)
             });

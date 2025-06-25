@@ -1,4 +1,5 @@
 // Quote Request Handler for Netlify Functions
+const { verifyToken } = require('./auth-verify');
 let quotes = [];
 
 exports.handler = async (event, context) => {
@@ -10,6 +11,16 @@ exports.handler = async (event, context) => {
 
     if (event.httpMethod === 'OPTIONS') {
         return { statusCode: 200, headers, body: '' };
+    }
+
+    // Require authentication for all methods except OPTIONS
+    const user = verifyToken(event);
+    if (!user) {
+        return {
+            statusCode: 401,
+            headers,
+            body: JSON.stringify({ error: 'Unauthorized' }),
+        };
     }
 
     try {
