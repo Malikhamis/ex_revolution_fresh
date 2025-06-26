@@ -194,13 +194,11 @@
             <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
         </div>
         <ul class="sidebar-menu">
-            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-            <li><a href="contacts.html"><i class="fas fa-envelope"></i> <span>Contact Requests</span></a></li>
-            <li><a href="quotes.html"><i class="fas fa-file-invoice-dollar"></i> <span>Quote Requests</span></a></li>
-            <li><a href="newsletter.html"><i class="fas fa-newspaper"></i> <span>Newsletter</span></a></li>
-            <li><a href="case-studies.html"><i class="fas fa-briefcase"></i> <span>Case Studies</span></a></li>
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> <span>Dashboard</span></a></li>
             <li><a href="blog-posts.html" class="active"><i class="fas fa-blog"></i> <span>Blog Posts</span></a></li>
-            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="case-studies.html"><i class="fas fa-briefcase"></i> <span>Case Studies</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Site Settings</span></a></li>
+            <li><a href="#" id="forms-link"><i class="fas fa-external-link-alt"></i> <span>View Forms</span></a></li>
             <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
         </ul>
     </div>
@@ -289,6 +287,14 @@
                 localStorage.removeItem('adminUser');
                 window.location.href = 'login.html';
             });
+
+            // Forms link functionality
+            const formsLink = document.getElementById('forms-link');
+            if (formsLink) {
+                const netlifyUrl = `https://app.netlify.com/sites/${getSiteId()}/forms`;
+                formsLink.href = netlifyUrl;
+                formsLink.target = '_blank';
+            }
         });
 
         async function loadBlogPosts() {
@@ -1120,6 +1126,14 @@
                 });
             }
         });
+
+        function getSiteId() {
+            // Try to extract from URL or return a placeholder
+            if (window.location.hostname.includes('netlify.app')) {
+                return window.location.hostname.split('.')[0];
+            }
+            return 'your-site-name'; // User will need to update this
+        }
     </script>
 </body>
 </html>
