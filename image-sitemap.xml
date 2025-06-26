@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Homepage Images -->
+    <url>
+        <loc>https://exrevolution.com/</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/logo.jpg</image:loc>
+            <image:caption>Ex Revolution Technology Logo</image:caption>
+            <image:title>Ex Revolution Technology</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/hero-image.jpg</image:loc>
+            <image:caption>Innovative Software Solutions</image:caption>
+            <image:title>Software Development Services</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/about-home.jpg</image:loc>
+            <image:caption>Ex Revolution Technology Team</image:caption>
+            <image:title>Our Expert Team</image:title>
+        </image:image>
+    </url>
+
+    <!-- Services Page Images -->
+    <url>
+        <loc>https://exrevolution.com/services.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/code_screen.jpeg</image:loc>
+            <image:caption>Software Development Services</image:caption>
+            <image:title>Custom Software Solutions</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/digital1.jpg</image:loc>
+            <image:caption>Digital Marketing Services</image:caption>
+            <image:title>Digital Marketing Strategies</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/developer_laptop.jpeg</image:loc>
+            <image:caption>IT Consulting Services</image:caption>
+            <image:title>Expert IT Consulting</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/data_analytics_team.webp</image:loc>
+            <image:caption>Data Analytics Services</image:caption>
+            <image:title>Data Analytics Solutions</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/branding.jpg</image:loc>
+            <image:caption>Branding Kit Services</image:caption>
+            <image:title>Professional Branding Solutions</image:title>
+        </image:image>
+    </url>
+
+    <!-- Case Studies Images -->
+    <url>
+        <loc>https://exrevolution.com/case-studies.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/digital_marketing_concept.webp</image:loc>
+            <image:caption>Usangu Logistics Website Development</image:caption>
+            <image:title>Website Development Case Study</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/branding2.jpg</image:loc>
+            <image:caption>Epic Haulage Branding Project</image:caption>
+            <image:title>Branding Case Study</image:title>
+        </image:image>
+    </url>
+
+    <!-- About Page Images -->
+    <url>
+        <loc>https://exrevolution.com/about.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/about-hero.jpg</image:loc>
+            <image:caption>About Ex Revolution Technology</image:caption>
+            <image:title>Our Company Story</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/team-work.jpg</image:loc>
+            <image:caption>Our Professional Team at Work</image:caption>
+            <image:title>Team Collaboration</image:title>
+        </image:image>
+    </url>
+
+    <!-- Blog Page Images -->
+    <url>
+        <loc>https://exrevolution.com/blog.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/blog-ai.jpg</image:loc>
+            <image:caption>AI Transforming Business</image:caption>
+            <image:title>Artificial Intelligence in Business</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/blog-software.jpg</image:loc>
+            <image:caption>Custom vs Off-the-Shelf Software</image:caption>
+            <image:title>Software Development Guide</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/blog-data.jpg</image:loc>
+            <image:caption>Data Visualization Techniques</image:caption>
+            <image:title>Data Analytics Guide</image:title>
+        </image:image>
+    </url>
+
+    <!-- Contact Page Images -->
+    <url>
+        <loc>https://exrevolution.com/contact.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/contact-hero.jpg</image:loc>
+            <image:caption>Contact Ex Revolution Technology</image:caption>
+            <image:title>Get in Touch with Us</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/office-location.jpg</image:loc>
+            <image:caption>Our Office in Dar es Salaam</image:caption>
+            <image:title>Ex Revolution Technology Office</image:title>
+        </image:image>
+    </url>
+
+    <!-- Service Detail Pages -->
+    <url>
+        <loc>https://exrevolution.com/services/software-development.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/software-dev-overview.jpg</image:loc>
+            <image:caption>Software Development Overview</image:caption>
+            <image:title>Custom Software Development</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://exrevolution.com/services/digital-marketing.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/digital-marketing-overview.jpg</image:loc>
+            <image:caption>Digital Marketing Services Overview</image:caption>
+            <image:title>Comprehensive Digital Marketing</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://exrevolution.com/services/it-consulting.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/it-consulting-overview.jpg</image:loc>
+            <image:caption>IT Consulting Services Overview</image:caption>
+            <image:title>Expert IT Consulting</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://exrevolution.com/services/data-analytics.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/data-analytics-overview.jpg</image:loc>
+            <image:caption>Data Analytics Services Overview</image:caption>
+            <image:title>Professional Data Analytics</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://exrevolution.com/services/branding-kit.html</loc>
+        <image:image>
+            <image:loc>https://exrevolution.com/assets/images/branding-overview.jpg</image:loc>
+            <image:caption>Branding Services Overview</image:caption>
+            <image:title>Complete Branding Solutions</image:title>
+        </image:image>
+    </url>
+
+</urlset>

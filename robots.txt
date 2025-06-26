@@ -18,6 +18,7 @@ Allow: /images/
 
 # Sitemap location
 Sitemap: https://exrevolution.com/sitemap.xml
+Sitemap: https://exrevolution.com/image-sitemap.xml
 
 # Crawl delay (optional - helps prevent server overload)
 Crawl-delay: 1

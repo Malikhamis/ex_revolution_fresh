@@ -494,6 +494,104 @@
             }
         }
     </style>
+
+    <!-- Structured Data (JSON-LD) - Service Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Branding Kit Services",
+        "description": "Comprehensive branding solutions to establish a strong, consistent brand identity across all digital and physical touchpoints.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Ex Revolution Technology",
+            "url": "https://exrevolution.com",
+            "logo": "https://exrevolution.com/assets/images/logo.jpg",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "PSSSF Samora House, Junction of Samora and Morogoro Rd",
+                "addressLocality": "Dar es Salaam",
+                "addressCountry": "Tanzania"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+255744622649",
+                "contactType": "customer service",
+                "email": "exrevolution8@gmail.com"
+            }
+        },
+        "serviceType": "Branding",
+        "category": "Creative Services",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Tanzania"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter Package",
+                "description": "Logo design (2 concepts), Basic color palette, Typography selection, Business card design, Social media profile images, Basic brand guidelines",
+                "price": "70000",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Professional Package",
+                "description": "Logo design (4 concepts), Comprehensive color palette, Typography system, Complete stationery design, Social media profile & cover images, 3 social media post templates, Email signature design, Comprehensive brand guidelines, Basic brand messaging",
+                "price": "150000",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Premium Package",
+                "description": "Logo design (unlimited concepts), Complete brand identity system, Extended typography system, Full stationery package, Complete social media kit, 10 social media post templates, Website design (up to 10 pages), Brand strategy document, Marketing materials design, Brand implementation guide",
+                "price": "500000",
+                "priceCurrency": "TZS"
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Branding Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Logo Design & Brand Identity"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Brand Strategy Development"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Brand Guidelines"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Marketing Collateral Design"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Website Design & Development"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to Content Link for Accessibility -->

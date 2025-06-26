@@ -487,6 +487,106 @@
             }
         }
     </style>
+
+    <!-- Structured Data (JSON-LD) - Service Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "IT Consulting Services",
+        "description": "Expert IT consulting services to help you make informed technology decisions and implement effective IT strategies.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Ex Revolution Technology",
+            "url": "https://exrevolution.com",
+            "logo": "https://exrevolution.com/assets/images/logo.jpg",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "PSSSF Samora House, Junction of Samora and Morogoro Rd",
+                "addressLocality": "Dar es Salaam",
+                "addressCountry": "Tanzania"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+255744622649",
+                "contactType": "customer service",
+                "email": "exrevolution8@gmail.com"
+            }
+        },
+        "serviceType": "IT Consulting",
+        "category": "Technology Consulting",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Tanzania"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Basic Assessment",
+                "description": "Comprehensive IT assessment, Gap analysis report, Security evaluation, Technology recommendations, Initial consultation",
+                "price": "0",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Comprehensive Strategy",
+                "description": "Comprehensive IT assessment, Detailed gap analysis, Technology roadmap, Implementation planning, Security audit, Performance optimization, 3 months follow-up support",
+                "price": "1500000",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Enterprise Package",
+                "description": "Enterprise-level IT assessment, Comprehensive strategic planning, Digital transformation roadmap, Change management support, Executive reporting, Ongoing consultation, Priority support",
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "description": "Custom pricing based on scope and requirements"
+                }
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "IT Consulting Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "IT Strategy Development"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Technology Assessment"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Digital Transformation"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "IT Infrastructure Planning"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Cybersecurity Consulting"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to Content Link for Accessibility -->

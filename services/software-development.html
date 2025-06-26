@@ -509,6 +509,106 @@
             }
         }
     </style>
+
+    <!-- Structured Data (JSON-LD) - Service Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Software Development Services",
+        "description": "Custom software solutions tailored to your business needs, from web applications to mobile apps and enterprise systems.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Ex Revolution Technology",
+            "url": "https://exrevolution.com",
+            "logo": "https://exrevolution.com/assets/images/logo.jpg",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "PSSSF Samora House, Junction of Samora and Morogoro Rd",
+                "addressLocality": "Dar es Salaam",
+                "addressCountry": "Tanzania"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+255744622649",
+                "contactType": "customer service",
+                "email": "exrevolution8@gmail.com"
+            }
+        },
+        "serviceType": "Software Development",
+        "category": "Technology Services",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Tanzania"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Basic Package",
+                "description": "Requirements analysis, Basic UI/UX design, Core functionality development, Standard testing, 1 month support",
+                "price": "500000",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Professional Package",
+                "description": "Comprehensive requirements analysis, Advanced UI/UX design, Full feature development, Thorough testing & QA, API integrations, 3 months support, Performance optimization",
+                "price": "1500000",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Enterprise Package",
+                "description": "Enterprise-grade architecture, Premium UI/UX design, Complex feature development, Comprehensive testing suite, Multiple API integrations, 12 months support, Advanced security measures, Scalability planning",
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "description": "Custom pricing based on requirements"
+                }
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Software Development Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Web Applications"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Mobile App Development"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Enterprise Software Solutions"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "E-commerce Platforms"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "API Development & Integration"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to Content Link for Accessibility -->

@@ -495,6 +495,106 @@
             }
         }
     </style>
+
+    <!-- Structured Data (JSON-LD) - Service Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Data Analytics Services",
+        "description": "Transform your raw data into actionable insights with our comprehensive data analytics services to drive informed business decisions.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Ex Revolution Technology",
+            "url": "https://exrevolution.com",
+            "logo": "https://exrevolution.com/assets/images/logo.jpg",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "PSSSF Samora House, Junction of Samora and Morogoro Rd",
+                "addressLocality": "Dar es Salaam",
+                "addressCountry": "Tanzania"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+255744622649",
+                "contactType": "customer service",
+                "email": "exrevolution8@gmail.com"
+            }
+        },
+        "serviceType": "Data Analytics",
+        "category": "Data Services",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Tanzania"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Basic Package",
+                "description": "Data collection & cleaning, Basic statistical analysis, Standard visualizations, Monthly reports, Email support",
+                "price": "800000",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Professional Package",
+                "description": "Comprehensive data integration, Advanced statistical analysis, Interactive visualizations, Predictive modeling, Automated reporting, Business intelligence dashboard, Priority support",
+                "price": "1500000",
+                "priceCurrency": "TZS"
+            },
+            {
+                "@type": "Offer",
+                "name": "Enterprise Package",
+                "description": "Enterprise data integration, Advanced machine learning, Real-time analytics, Custom algorithms, Executive dashboards, AI-powered insights, Dedicated support team",
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "description": "Custom pricing based on data volume and complexity"
+                }
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Data Analytics Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Business Intelligence"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Predictive Analytics"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Data Visualization"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Big Data Processing"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Machine Learning Solutions"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to Content Link for Accessibility -->

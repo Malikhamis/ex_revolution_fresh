@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -456,6 +456,119 @@
             }
         }
     </style>
+
+    <!-- Structured Data (JSON-LD) - Service Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Digital Marketing Services",
+        "description": "Comprehensive digital marketing strategies to increase your online presence, drive traffic, and convert leads into customers.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Ex Revolution Technology",
+            "url": "https://exrevolution.com",
+            "logo": "https://exrevolution.com/assets/images/logo.jpg",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "PSSSF Samora House, Junction of Samora and Morogoro Rd",
+                "addressLocality": "Dar es Salaam",
+                "addressCountry": "Tanzania"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+255744622649",
+                "contactType": "customer service",
+                "email": "exrevolution8@gmail.com"
+            }
+        },
+        "serviceType": "Digital Marketing",
+        "category": "Marketing Services",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Tanzania"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter Package",
+                "description": "Basic SEO optimization, Social media management (2 platforms), 4 blog posts per month, Basic Google Ads campaign, Monthly performance report",
+                "price": "250000",
+                "priceCurrency": "TZS",
+                "eligibleDuration": {
+                    "@type": "QuantitativeValue",
+                    "value": 1,
+                    "unitCode": "MON"
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": "Professional Package",
+                "description": "Advanced SEO optimization, Social media management (4 platforms), 8 blog posts per month, Comprehensive Google Ads campaign, Email marketing, Bi-weekly performance reports, Basic conversion optimization",
+                "price": "700000",
+                "priceCurrency": "TZS",
+                "eligibleDuration": {
+                    "@type": "QuantitativeValue",
+                    "value": 1,
+                    "unitCode": "MON"
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": "Enterprise Package",
+                "description": "Premium SEO optimization, Social media management (all platforms), 12 blog posts per month, Advanced Google Ads & PPC campaigns, Email marketing (4 campaigns/month), Weekly performance reports, Advanced conversion optimization, Competitor analysis & strategy",
+                "price": "1500000",
+                "priceCurrency": "TZS",
+                "eligibleDuration": {
+                    "@type": "QuantitativeValue",
+                    "value": 1,
+                    "unitCode": "MON"
+                }
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Digital Marketing Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Search Engine Optimization (SEO)"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Pay-Per-Click Advertising (PPC)"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Social Media Marketing"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Marketing"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Email Marketing Campaigns"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to Content Link for Accessibility -->

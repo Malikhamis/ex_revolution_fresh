@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,13 @@
     <meta name="author" content="Ex Revolution Technology">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
+
+    <!-- Geo Meta Tags for Local SEO -->
+    <meta name="geo.region" content="TZ-DSM">
+    <meta name="geo.placename" content="Dar es Salaam">
+    <meta name="geo.position" content="-6.8160;39.2803">
+    <meta name="ICBM" content="-6.8160, 39.2803">
+    <meta name="DC.title" content="Ex Revolution Technology - IT Solutions Dar es Salaam">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://exrevolution.com/">
@@ -37,6 +44,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="assets/images/logo.jpg" as="image">
+    <link rel="preload" href="assets/images/hero-image.jpg" as="image">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -66,33 +80,109 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": ["Organization", "LocalBusiness"],
         "name": "Ex Revolution Technology",
+        "alternateName": "Ex Revolution",
         "url": "https://exrevolution.com",
         "logo": "https://exrevolution.com/assets/images/logo.jpg",
         "description": "Ex Revolution Technology provides innovative IT solutions, software development, digital marketing, and IT consulting services for businesses of all sizes.",
+        "foundingDate": "2024",
+        "founder": {
+            "@type": "Person",
+            "name": "Shirhan Shermohamed"
+        },
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "PSSSF Samora House, Junction of Samora and Morogoro Rd",
             "addressLocality": "Dar es Salaam",
-            "addressCountry": "Tanzania"
+            "addressRegion": "Dar es Salaam",
+            "addressCountry": "Tanzania",
+            "postalCode": "11101"
         },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+255744622649",
-            "contactType": "customer service",
-            "email": "exrevolution8@gmail.com"
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-6.8160",
+            "longitude": "39.2803"
         },
-        "sameAs": [
-            "https://www.instagram.com/exrevolution.tz"
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "telephone": "+255744622649",
+                "contactType": "customer service",
+                "email": "exrevolution8@gmail.com",
+                "availableLanguage": ["en", "sw"]
+            },
+            {
+                "@type": "ContactPoint",
+                "telephone": "+255744622649",
+                "contactType": "sales",
+                "email": "exrevolution8@gmail.com"
+            }
         ],
-        "services": [
-            "Software Development",
-            "Digital Marketing",
-            "IT Consulting",
-            "Data Analytics",
-            "Branding Services"
-        ]
+        "sameAs": [
+            "https://www.instagram.com/exrevolution.tz",
+            "https://github.com/Malikhamis/ex_revolution_fresh"
+        ],
+        "serviceArea": {
+            "@type": "Country",
+            "name": "Tanzania"
+        },
+        "priceRange": "TZS 70,000 - TZS 1,500,000",
+        "openingHours": "Mo-Fr 08:00-17:00",
+        "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer"],
+        "currenciesAccepted": "TZS",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "IT Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Software Development",
+                        "description": "Custom software solutions tailored to your business needs"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Digital Marketing",
+                        "description": "Comprehensive digital marketing strategies"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "IT Consulting",
+                        "description": "Expert IT consulting services"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Data Analytics",
+                        "description": "Transform raw data into actionable insights"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Branding Services",
+                        "description": "Comprehensive branding solutions"
+                    }
+                }
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "50",
+            "bestRating": "5"
+        }
     }
     </script>
 
