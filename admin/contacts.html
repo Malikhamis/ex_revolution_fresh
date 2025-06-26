@@ -272,7 +272,7 @@
 
             try {
                 // Try direct fetch first for debugging
-                const directResponse = await fetch(window.apiConfig.contacts);
+                const directResponse = await fetch(window.apiConfig.contacts.list);
                 console.log('📊 Direct fetch response status:', directResponse.status);
 
                 if (directResponse.ok) {
