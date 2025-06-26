@@ -19,6 +19,12 @@ function initQuoteForm() {
     }
 
     quoteForm.addEventListener('submit', async function(e) {
+        // If Netlify forms are enabled, let the form submit naturally
+        if (quoteForm.hasAttribute('data-netlify')) {
+            console.log('Netlify quote form detected - allowing native submission');
+            return; // Let the form submit to Netlify
+        }
+        
         e.preventDefault();
 
         // Show loading state

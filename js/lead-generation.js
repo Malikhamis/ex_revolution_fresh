@@ -26,6 +26,12 @@ function initLeadCaptureForms() {
     leadForms.forEach(form => {
         // Enhanced form validation
         form.addEventListener('submit', function(e) {
+            // If Netlify forms are enabled, let the form submit naturally
+            if (form.hasAttribute('data-netlify')) {
+                console.log('Netlify lead form detected - allowing native submission');
+                return; // Let the form submit to Netlify
+            }
+            
             e.preventDefault();
 
             if (validateLeadForm(form)) {

@@ -36,6 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
  * @param {Event} event - Form submission event
  */
 async function handleNewsletterSubmission(event) {
+    const form = event.target;
+    
+    // If Netlify forms are enabled, let the form submit naturally
+    if (form.hasAttribute('data-netlify')) {
+        console.log('Netlify newsletter form detected - allowing native submission');
+        return; // Let the form submit to Netlify
+    }
+    
     event.preventDefault();
     
     const form = event.target;
