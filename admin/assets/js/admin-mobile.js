@@ -32,13 +32,12 @@ class AdminMobile {
             toggle: !!this.mobileToggle
         });
 
-        if (this.mobileToggle && this.sidebar && this.sidebarOverlay) {
+        if (this.mobileToggle && this.sidebar) {
             this.bindEvents();
             console.log('✅ Mobile navigation events bound successfully');
         } else {
-            console.warn('❌ Missing mobile navigation elements:', {
+            console.warn('❌ Missing required mobile navigation elements:', {
                 sidebar: !this.sidebar,
-                overlay: !this.sidebarOverlay,
                 toggle: !this.mobileToggle
             });
         }

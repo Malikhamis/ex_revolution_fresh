@@ -736,7 +736,7 @@
                         client: 'Usangu Logistics',
                         category: 'Web Development',
                         description: 'Complete e-commerce solution with inventory management, order tracking, and payment integration.',
-                        image: '../assets/images/case-studies/usangu-logistics.jpg',
+                        image: '../assets/images/placeholder.svg',
                         tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
                         url: 'https://usangulogistics.com',
                         duration: '4 months',
@@ -749,7 +749,7 @@
                         client: 'Sprinkle Sprout School',
                         category: 'Mobile App',
                         description: 'Educational mobile app with parent-teacher communication and student progress tracking.',
-                        image: '../assets/images/case-studies/sprinkle-sprout.jpg',
+                        image: '../assets/images/placeholder.svg',
                         tags: ['React Native', 'Firebase', 'Node.js'],
                         url: 'https://sprinklesprout.edu',
                         duration: '6 months',
@@ -762,7 +762,7 @@
                         client: 'Man Haulage',
                         category: 'Branding',
                         description: 'Complete brand identity design and responsive website development for logistics company.',
-                        image: '../assets/images/case-studies/man-haulage.jpg',
+                        image: '../assets/images/placeholder.svg',
                         tags: ['Branding', 'Web Design', 'WordPress'],
                         url: 'https://manhaulage.co.tz',
                         duration: '2 months',
@@ -799,7 +799,7 @@
                 <div class="cases-grid">
                     ${caseStudies.map(caseStudy => `
                         <div class="case-card">
-                            <img src="${caseStudy.image}" alt="${caseStudy.title}" class="case-image" onerror="this.src='../assets/images/placeholder.jpg'">
+                            <img src="${caseStudy.image}" alt="${caseStudy.title}" class="case-image" onerror="this.src='../assets/images/placeholder.svg'">
                             <div class="case-content">
                                 <h3 class="case-title">${caseStudy.title}</h3>
                                 <div class="case-client">
@@ -872,7 +872,7 @@
                 client: formData.get('client'),
                 category: formData.get('category'),
                 description: formData.get('description'),
-                image: formData.get('image') || '../assets/images/placeholder.jpg',
+                image: formData.get('image') || '../assets/images/placeholder.svg',
                 tags: formData.get('tags').split(',').map(tag => tag.trim()),
                 url: formData.get('url'),
                 duration: formData.get('duration'),
