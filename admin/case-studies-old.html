@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies Management - Ex Revolution Admin</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Mobile Responsive CSS -->
+    <link href="assets/css/admin-mobile.css" rel="stylesheet">
+
+    <!-- Quill Editor CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+            --secondary: #6c757d;
+            --dark: #343a40;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar-header img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: #fff;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e1e5eb;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .case-study-card {
+            transition: transform 0.2s ease;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .case-study-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .case-study-meta {
+            font-size: 0.9em;
+            color: var(--secondary);
+        }
+
+        .stats-row {
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .case-study-image {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
+        </div>
+        <div></div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> <span>Dashboard</span></a></li>
+            <li><a href="blog-posts.html"><i class="fas fa-blog"></i> <span>Blog Posts</span></a></li>
+            <li><a href="case-studies.html" class="active"><i class="fas fa-briefcase"></i> <span>Case Studies</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Site Settings</span></a></li>
+            <li><a href="#" id="forms-link"><i class="fas fa-external-link-alt"></i> <span>View Forms</span></a></li>
+            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Case Studies Management</h1>
+            <button class="btn btn-primary" onclick="showAddCaseStudyModal()">
+                <i class="fas fa-plus"></i> Add Case Study
+            </button>
+        </div>
+
+        <!-- Statistics Row -->
+        <div class="row stats-row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body stat-card">
+                        <div class="stat-number" id="total-case-studies">0</div>
+                        <div class="stat-label">Total Case Studies</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body stat-card">
+                        <div class="stat-number text-success" id="published-case-studies">0</div>
+                        <div class="stat-label">Published</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body stat-card">
+                        <div class="stat-number text-warning" id="draft-case-studies">0</div>
+                        <div class="stat-label">Drafts</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body stat-card">
+                        <div class="stat-number text-info" id="featured-case-studies">0</div>
+                        <div class="stat-label">Featured</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Studies Grid -->
+        <div class="row" id="case-studies-grid">
+            <!-- Case studies will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- API Configuration -->
+    <script src="assets/js/api-config.js"></script>
+
+    <!-- Mobile JavaScript -->
+    <script src="assets/js/admin-mobile.js"></script>
+
+    <!-- Quill Editor JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <script>
+        let caseStudies = [];
+        let quillEditor = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const token = localStorage.getItem('adminToken');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Load case studies
+            loadCaseStudies();
+
+            // Logout functionality
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('adminToken');
+                localStorage.removeItem('adminUser');
+                window.location.href = 'login.html';
+            });
+
+            // Forms link functionality
+            const formsLink = document.getElementById('forms-link');
+            if (formsLink) {
+                const netlifyUrl = `https://app.netlify.com/sites/${getSiteId()}/forms`;
+                formsLink.href = netlifyUrl;
+                formsLink.target = '_blank';
+            }
+        });
+
+        async function loadCaseStudies() {
+            try {
+                const response = await window.apiConfig.get(window.apiConfig.caseStudies);
+
+                if (response && response.ok) {
+                    caseStudies = await response.json();
+                } else {
+                    // Real case studies from main website
+                    caseStudies = [
+                        {
+                            id: 1,
+                            title: "Custom Website for Usangu Logistics",
+                            slug: "usangu-logistics",
+                            excerpt: "We designed and developed a modern, responsive website for Usangu Logistics that showcases their transportation and logistics services, making it easier for potential clients to learn about their offerings and request quotes.",
+                            content: "<p>Usangu Logistics needed a professional web presence to showcase their transportation and logistics services. We created a modern, responsive website that effectively communicates their capabilities and makes it easy for potential clients to request quotes.</p>",
+                            image: "/assets/images/digital_marketing_concept.webp",
+                            client: "Usangu Logistics",
+                            industry: "Transportation & Logistics",
+                            technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+                            status: "published",
+                            featured: true,
+                            publishedAt: "2024-01-15",
+                            createdAt: "2024-01-10"
+                        },
+                        {
+                            id: 2,
+                            title: "Corporate Website for Man Haulage Company Ltd",
+                            slug: "man-haulage",
+                            excerpt: "We created a comprehensive corporate website for Man Haulage Company Ltd that effectively communicates their transportation services, company values, and competitive advantages to potential clients in Tanzania and beyond.",
+                            content: "<p>Man Haulage Company Ltd required a comprehensive corporate website to establish their online presence and communicate their transportation services effectively. The website showcases their company values and competitive advantages.</p>",
+                            image: "/assets/images/web.jpg",
+                            client: "Man Haulage Company Ltd",
+                            industry: "Transportation & Logistics",
+                            technologies: ["HTML5", "CSS3", "JavaScript", "Mobile-First Design"],
+                            status: "published",
+                            featured: false,
+                            publishedAt: "2024-01-20",
+                            createdAt: "2024-01-15"
+                        },
+                        {
+                            id: 3,
+                            title: "Branding Kit for Epic Haulage",
+                            slug: "epic-haulage-branding",
+                            excerpt: "We developed a complete branding package for Epic Haulage, including logo design, company profile creation, and brand guidelines that established a strong, professional identity in the competitive transportation industry.",
+                            content: "<p>Epic Haulage needed a distinctive brand identity to stand out in the competitive transportation industry. We created a comprehensive branding package including logo design, company profile, and brand guidelines.</p>",
+                            image: "/assets/images/branding1.jpg",
+                            client: "Epic Haulage",
+                            industry: "Transportation & Logistics",
+                            technologies: ["Adobe Illustrator", "Adobe Photoshop", "Brand Strategy"],
+                            status: "published",
+                            featured: true,
+                            publishedAt: "2024-01-25",
+                            createdAt: "2024-01-20"
+                        },
+                        {
+                            id: 4,
+                            title: "Educational Website for Sprinkle Sprout Primary School",
+                            slug: "sprinkle-sprout-school",
+                            excerpt: "We designed and developed an engaging, user-friendly website for Sprinkle Sprout Primary School that effectively communicates their educational philosophy, curriculum, and school activities to parents and the community.",
+                            content: "<p>Sprinkle Sprout Primary School needed an engaging website to communicate with parents and the community. We created a user-friendly platform that showcases their educational philosophy and activities.</p>",
+                            image: "/assets/images/code_screen.jpeg",
+                            client: "Sprinkle Sprout Primary School",
+                            industry: "Education",
+                            technologies: ["HTML5", "CSS3", "JavaScript", "Content Management"],
+                            status: "published",
+                            featured: false,
+                            publishedAt: "2024-01-30",
+                            createdAt: "2024-01-25"
+                        }
+                    ];
+                }
+
+                displayCaseStudies(caseStudies);
+                updateStats(caseStudies);
+
+            } catch (error) {
+                console.error('Failed to load case studies:', error);
+                // Use mock data on error
+                caseStudies = [];
+                displayCaseStudies(caseStudies);
+                updateStats(caseStudies);
+            }
+        }
+
+        function displayCaseStudies(studies) {
+            const grid = document.getElementById('case-studies-grid');
+
+            if (studies.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-center py-5">
+                                <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+                                <h5 class="text-muted">No case studies found</h5>
+                                <p class="text-muted">Start by adding your first case study.</p>
+                                <button class="btn btn-primary" onclick="showAddCaseStudyModal()">
+                                    <i class="fas fa-plus"></i> Add Case Study
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = studies.map(study => `
+                <div class="col-md-4 mb-4">
+                    <div class="card case-study-card h-100">
+                        <img src="${study.image || '/assets/images/placeholder.jpg'}" class="case-study-image" alt="${study.title}">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge ${getStatusBadgeClass(study.status)}">${study.status}</span>
+                                ${study.featured ? '<span class="badge bg-warning">Featured</span>' : ''}
+                            </div>
+                            <h5 class="card-title">${study.title}</h5>
+                            <p class="card-text text-muted">${study.excerpt}</p>
+                            <div class="case-study-meta mb-3">
+                                <small><i class="fas fa-building"></i> ${study.client}</small><br>
+                                <small><i class="fas fa-industry"></i> ${study.industry}</small><br>
+                                <small><i class="fas fa-calendar"></i> ${formatDate(study.publishedAt || study.createdAt)}</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-primary" onclick="editCaseStudy(${study.id})">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="deleteCaseStudy(${study.id})">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                                <a href="../case-studies/${study.slug}.html" target="_blank" class="btn btn-sm btn-outline-info">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateStats(studies) {
+            const total = studies.length;
+            const published = studies.filter(s => s.status === 'published').length;
+            const drafts = studies.filter(s => s.status === 'draft').length;
+            const featured = studies.filter(s => s.featured).length;
+
+            document.getElementById('total-case-studies').textContent = total;
+            document.getElementById('published-case-studies').textContent = published;
+            document.getElementById('draft-case-studies').textContent = drafts;
+            document.getElementById('featured-case-studies').textContent = featured;
+        }
+
+        function getStatusBadgeClass(status) {
+            switch (status) {
+                case 'published': return 'bg-success';
+                case 'draft': return 'bg-warning';
+                default: return 'bg-secondary';
+            }
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString();
+        }
+
+        function showAddCaseStudyModal() {
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New Case Study</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add-case-study-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" class="form-control" name="title" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Client</label>
+                                            <input type="text" class="form-control" name="client" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Industry</label>
+                                            <input type="text" class="form-control" name="industry" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Status</label>
+                                            <select class="form-select" name="status" required>
+                                                <option value="draft">Draft</option>
+                                                <option value="published">Published</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Excerpt</label>
+                                    <textarea class="form-control" name="excerpt" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Technologies (comma-separated)</label>
+                                    <input type="text" class="form-control" name="technologies" placeholder="React, Node.js, MongoDB">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Image URL</label>
+                                    <input type="url" class="form-control" name="image" placeholder="https://example.com/image.jpg">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="featured" id="featured">
+                                        <label class="form-check-label" for="featured">
+                                            Featured Case Study
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Content</label>
+                                    <div id="add-case-study-editor" style="height: 200px;"></div>
+                                    <input type="hidden" name="content">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="saveCaseStudy()">
+                                <i class="fas fa-save"></i> Save Case Study
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+
+            // Initialize Quill editor
+            quillEditor = new Quill('#add-case-study-editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        ['link', 'blockquote'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['clean']
+                    ]
+                }
+            });
+
+            // Remove modal from DOM when hidden
+            modal.addEventListener('hidden.bs.modal', () => {
+                document.body.removeChild(modal);
+                quillEditor = null;
+            });
+        }
+
+        function editCaseStudy(id) {
+            const caseStudy = caseStudies.find(cs => cs.id == id);
+            if (!caseStudy) return;
+
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.innerHTML = `
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Case Study</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="edit-case-study-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" class="form-control" name="title" value="${caseStudy.title}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Client</label>
+                                            <input type="text" class="form-control" name="client" value="${caseStudy.client}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Industry</label>
+                                            <input type="text" class="form-control" name="industry" value="${caseStudy.industry}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Status</label>
+                                            <select class="form-select" name="status" required>
+                                                <option value="draft" ${caseStudy.status === 'draft' ? 'selected' : ''}>Draft</option>
+                                                <option value="published" ${caseStudy.status === 'published' ? 'selected' : ''}>Published</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Excerpt</label>
+                                    <textarea class="form-control" name="excerpt" rows="3" required>${caseStudy.excerpt}</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Technologies (comma-separated)</label>
+                                    <input type="text" class="form-control" name="technologies" value="${caseStudy.technologies ? caseStudy.technologies.join(', ') : ''}" placeholder="React, Node.js, MongoDB">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Image URL</label>
+                                    <input type="url" class="form-control" name="image" value="${caseStudy.image || ''}" placeholder="https://example.com/image.jpg">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="featured" id="edit-featured" ${caseStudy.featured ? 'checked' : ''}>
+                                        <label class="form-check-label" for="edit-featured">
+                                            Featured Case Study
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Content</label>
+                                    <div id="edit-case-study-editor" style="height: 200px;"></div>
+                                    <input type="hidden" name="content">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="updateCaseStudy(${id})">
+                                <i class="fas fa-save"></i> Update Case Study
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+
+            // Initialize Quill editor with existing content
+            quillEditor = new Quill('#edit-case-study-editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        ['link', 'blockquote'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['clean']
+                    ]
+                }
+            });
+
+            // Set existing content
+            quillEditor.root.innerHTML = caseStudy.content || '';
+
+            // Remove modal from DOM when hidden
+            modal.addEventListener('hidden.bs.modal', () => {
+                document.body.removeChild(modal);
+                quillEditor = null;
+            });
+        }
+
+        function deleteCaseStudy(id) {
+            const caseStudy = caseStudies.find(cs => cs.id == id);
+            if (!caseStudy) return;
+
+            if (!confirm(`Are you sure you want to delete "${caseStudy.title}"? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                // Immediately remove from UI for better UX
+                const caseStudyCard = document.querySelector(`[onclick="deleteCaseStudy(${id})"]`).closest('.col-md-4');
+                if (caseStudyCard) {
+                    caseStudyCard.style.opacity = '0.5';
+                    caseStudyCard.style.pointerEvents = 'none';
+                }
+
+                // Make API call
+                window.apiConfig.delete(`${window.apiConfig.caseStudies}/${id}`);
+
+                // Remove from local array
+                const index = caseStudies.findIndex(cs => cs.id == id);
+                if (index > -1) {
+                    caseStudies.splice(index, 1);
+                }
+
+                // Update UI
+                displayCaseStudies(caseStudies);
+                updateStats(caseStudies);
+
+                showNotification('Case study deleted successfully', 'success');
+
+                // Notify main website to refresh content
+                notifyMainWebsiteRefresh();
+
+            } catch (error) {
+                console.error('Error deleting case study:', error);
+                showNotification('Failed to delete case study', 'error');
+
+                // Restore the card if there was an error
+                const caseStudyCard = document.querySelector(`[onclick="deleteCaseStudy(${id})"]`).closest('.col-md-4');
+                if (caseStudyCard) {
+                    caseStudyCard.style.opacity = '1';
+                    caseStudyCard.style.pointerEvents = 'auto';
+                }
+            }
+        }
+
+        async function saveCaseStudy() {
+            const form = document.getElementById('add-case-study-form');
+            const formData = new FormData(form);
+
+            // Get content from Quill editor
+            const content = quillEditor.root.innerHTML;
+            formData.set('content', content);
+
+            const caseStudyData = {
+                title: formData.get('title'),
+                client: formData.get('client'),
+                industry: formData.get('industry'),
+                status: formData.get('status'),
+                excerpt: formData.get('excerpt'),
+                technologies: formData.get('technologies').split(',').map(t => t.trim()).filter(t => t),
+                image: formData.get('image'),
+                featured: formData.has('featured'),
+                content: content,
+                slug: generateSlug(formData.get('title')),
+                createdAt: new Date().toISOString(),
+                publishedAt: formData.get('status') === 'published' ? new Date().toISOString() : null
+            };
+
+            try {
+                const response = await window.apiConfig.post(window.apiConfig.caseStudies, caseStudyData);
+
+                // Create new case study locally
+                const newCaseStudy = {
+                    id: Date.now(),
+                    ...caseStudyData
+                };
+
+                // Add to local array
+                caseStudies.push(newCaseStudy);
+
+                // Update UI
+                displayCaseStudies(caseStudies);
+                updateStats(caseStudies);
+
+                showNotification('Case study created successfully', 'success');
+
+                // Notify main website to refresh content
+                notifyMainWebsiteRefresh();
+
+                // Close modal
+                const modal = document.querySelector('.modal.show');
+                if (modal) {
+                    bootstrap.Modal.getInstance(modal).hide();
+                }
+
+            } catch (error) {
+                console.error('Error creating case study:', error);
+                showNotification('Failed to create case study', 'error');
+            }
+        }
+
+        async function updateCaseStudy(id) {
+            const form = document.getElementById('edit-case-study-form');
+            const formData = new FormData(form);
+
+            // Get content from Quill editor
+            const content = quillEditor.root.innerHTML;
+            formData.set('content', content);
+
+            const updateData = {
+                title: formData.get('title'),
+                client: formData.get('client'),
+                industry: formData.get('industry'),
+                status: formData.get('status'),
+                excerpt: formData.get('excerpt'),
+                technologies: formData.get('technologies').split(',').map(t => t.trim()).filter(t => t),
+                image: formData.get('image'),
+                featured: formData.has('featured'),
+                content: content,
+                slug: generateSlug(formData.get('title')),
+                publishedAt: formData.get('status') === 'published' ? new Date().toISOString() : null
+            };
+
+            try {
+                const response = await window.apiConfig.put(`${window.apiConfig.caseStudies}/${id}`, updateData);
+
+                // Update local array
+                const index = caseStudies.findIndex(cs => cs.id == id);
+                if (index > -1) {
+                    caseStudies[index] = { ...caseStudies[index], ...updateData };
+                }
+
+                // Update UI
+                displayCaseStudies(caseStudies);
+                updateStats(caseStudies);
+
+                showNotification('Case study updated successfully', 'success');
+
+                // Notify main website to refresh content
+                notifyMainWebsiteRefresh();
+
+                // Close modal
+                const modal = document.querySelector('.modal.show');
+                if (modal) {
+                    bootstrap.Modal.getInstance(modal).hide();
+                }
+
+            } catch (error) {
+                console.error('Error updating case study:', error);
+                showNotification('Failed to update case study', 'error');
+            }
+        }
+
+        function generateSlug(title) {
+            return title.toLowerCase()
+                .replace(/[^a-z0-9 -]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .trim('-');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show position-fixed`;
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            document.body.appendChild(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
+        }
+
+        function notifyMainWebsiteRefresh() {
+            // Use localStorage to signal main website to refresh content
+            localStorage.setItem('contentUpdated', Date.now().toString());
+
+            // Also try to directly refresh if main website is open in another tab
+            try {
+                if (window.opener && !window.opener.closed) {
+                    window.opener.postMessage({ type: 'CONTENT_UPDATED' }, window.location.origin);
+                }
+            } catch (error) {
+                // Ignore cross-origin errors
+            }
+
+            console.log('📡 Notified main website to refresh content');
+        }
+
+        function getSiteId() {
+            // Try to extract from URL or return a placeholder
+            if (window.location.hostname.includes('netlify.app')) {
+                return window.location.hostname.split('.')[0];
+            }
+            return 'your-site-name'; // User will need to update this
+        }
+    </script>
+</body>
+</html>

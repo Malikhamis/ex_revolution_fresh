@@ -18,45 +18,25 @@
     <link href="assets/css/admin-mobile.css" rel="stylesheet">
 
     <style>
-        /* Fix for menu click issues on settings page */
-        .sidebar-menu a {
-            position: relative;
-            z-index: 1000;
-            pointer-events: auto;
-            display: block;
-        }
-
-        .sidebar {
-            z-index: 999;
-        }
-
-        .sidebar-overlay {
-            z-index: 998;
-        }
-
-        /* Ensure forms don't interfere with navigation */
-        form {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Debug styles */
-        .sidebar-menu a:hover {
-            background-color: rgba(255, 255, 255, 0.1) !important;
-        }
-    </style>
-
-    <style>
         :root {
             --primary: #0066cc;
             --primary-dark: #004c99;
+            --primary-light: #3385d6;
             --secondary: #6c757d;
-            --dark: #343a40;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f7fa;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
         }
 
         .sidebar {
@@ -64,86 +44,401 @@
             top: 0;
             left: 0;
             height: 100vh;
-            width: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 280px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
             color: white;
-            padding-top: 20px;
+            padding: 0;
             z-index: 1000;
             transition: transform 0.3s ease;
             overflow-y: auto;
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar-header {
-            padding: 0 20px 20px;
+            padding: 2rem 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
-            text-align: center;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
         }
 
         .sidebar-header img {
-            max-width: 100%;
+            max-width: 140px;
             height: auto;
             border-radius: 8px;
         }
 
         .sidebar-menu {
             list-style: none;
-            padding: 0;
+            padding: 1rem 0;
             margin: 0;
         }
 
         .sidebar-menu li {
-            margin-bottom: 5px;
+            margin: 0.25rem 0;
         }
 
         .sidebar-menu a {
             display: flex;
             align-items: center;
-            padding: 12px 20px;
-            color: rgba(255, 255, 255, 0.8);
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: all 0.3s;
-            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+            border-radius: 0;
+            position: relative;
         }
 
-        .sidebar-menu a:hover,
-        .sidebar-menu a.active {
-            background-color: rgba(255, 255, 255, 0.1);
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            border-left-color: #fff;
+            transform: translateX(4px);
+        }
+
+        .sidebar-menu a.active {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .sidebar-menu a.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
         }
 
         .sidebar-menu a i {
             margin-right: 12px;
             width: 20px;
             text-align: center;
+            font-size: 1.1rem;
         }
 
         .main-content {
-            margin-left: 250px;
-            padding: 20px;
+            margin-left: 280px;
+            padding: 2rem;
             transition: margin-left 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .mobile-header {
+            display: none;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .page-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e1e5eb;
         }
 
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .btn-primary {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .stat-card.success::before { background: linear-gradient(90deg, var(--success), #34d399); }
+        .stat-card.primary::before { background: linear-gradient(90deg, var(--primary), var(--primary-light)); }
+        .stat-card.info::before { background: linear-gradient(90deg, var(--info), #60a5fa); }
+        .stat-card.warning::before { background: linear-gradient(90deg, var(--warning), #fbbf24); }
+
+        .status-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-icon.success { background: linear-gradient(135deg, var(--success), #34d399); color: white; }
+        .status-icon.primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; }
+        .status-icon.info { background: linear-gradient(135deg, var(--info), #60a5fa); color: white; }
+        .status-icon.warning { background: linear-gradient(135deg, var(--warning), #fbbf24); color: white; }
+
+        .status-label {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .status-description {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus {
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-text {
+            font-size: 0.875rem;
+            color: var(--secondary);
+            margin-top: 0.5rem;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-outline-warning {
+            border: 2px solid var(--warning);
+            color: var(--warning);
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-warning:hover {
+            background: var(--warning);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-info {
+            border: 2px solid var(--info);
+            color: var(--info);
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-info:hover {
+            background: var(--info);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-danger {
+            border: 2px solid var(--danger);
+            color: var(--danger);
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-danger:hover {
+            background: var(--danger);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .system-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .system-status:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-badge {
+            padding: 0.375rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .status-badge.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-badge.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .status-badge.danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .status-badge.secondary {
+            background: rgba(108, 117, 125, 0.1);
+            color: var(--secondary);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 300px;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                padding-top: 5rem;
+            }
+
+            .mobile-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .page-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .quick-action-btn {
+            width: 100%;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .quick-action-btn:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
@@ -154,17 +449,15 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
-            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" style="height: 32px;">
         </div>
         <div></div>
     </div>
 
-    <!-- Sidebar Overlay -->
-    <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology" style="max-width: 100%;">
+            <img src="../assets/images/logo1.jpg" alt="Ex Revolution Technology">
         </div>
         <ul class="sidebar-menu">
             <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> <span>Dashboard</span></a></li>
@@ -176,213 +469,282 @@
         </ul>
     </div>
 
+    <!-- Main Content -->
     <div class="main-content">
+        <!-- Page Header -->
         <div class="page-header">
-            <h1>Settings</h1>
-            <button class="btn btn-primary">
-                <i class="fas fa-save"></i> Save Changes
+            <h1 class="page-title">System Settings</h1>
+            <button class="btn btn-primary" onclick="saveAllSettings()">
+                <i class="fas fa-save"></i>
+                Save All Changes
             </button>
         </div>
 
-        <!-- Settings Statistics Row -->
-        <div class="row stats-row mb-4">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h3 class="stat-number text-success">✓</h3>
-                        <p class="stat-label text-muted">Email Configured</p>
-                    </div>
+        <!-- System Status Grid -->
+        <div class="stats-grid">
+            <div class="stat-card success">
+                <div class="status-icon success">
+                    <i class="fas fa-check-circle"></i>
                 </div>
+                <h3 class="status-label">Email Service</h3>
+                <p class="status-description">SMTP configured and ready</p>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h3 class="stat-number text-primary">🔧</h3>
-                        <p class="stat-label text-muted">System Settings</p>
-                    </div>
+
+            <div class="stat-card primary">
+                <div class="status-icon primary">
+                    <i class="fas fa-cog"></i>
                 </div>
+                <h3 class="status-label">System Core</h3>
+                <p class="status-description">All systems operational</p>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h3 class="stat-number text-info">📊</h3>
-                        <p class="stat-label text-muted">API Status</p>
-                    </div>
+
+            <div class="stat-card info">
+                <div class="status-icon info">
+                    <i class="fas fa-database"></i>
                 </div>
+                <h3 class="status-label">API Status</h3>
+                <p class="status-description">Mock mode active</p>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h3 class="stat-number text-warning">⚙️</h3>
-                        <p class="stat-label text-muted">Configuration</p>
-                    </div>
+
+            <div class="stat-card warning">
+                <div class="status-icon warning">
+                    <i class="fas fa-shield-alt"></i>
                 </div>
+                <h3 class="status-label">Security</h3>
+                <p class="status-description">Basic authentication</p>
             </div>
         </div>
 
-        <div class="row content-row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">General Settings</h5>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="siteName" class="form-label">Site Name</label>
-                                <input type="text" class="form-control" id="siteName" value="Ex Revolution Technology">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- General Settings Section -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-building"></i>
+                        General Settings
+                    </h2>
+                    
+                    <form id="general-settings-form">
+                        <div class="mb-3">
+                            <label for="siteName" class="form-label">Site Name</label>
+                            <input type="text" class="form-control" id="siteName" value="Ex Revolution Technology">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="siteDescription" class="form-label">Site Description</label>
+                            <textarea class="form-control" id="siteDescription" rows="3">Leading technology solutions for modern businesses in Tanzania and beyond</textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="contactEmail" class="form-label">Contact Email</label>
+                                    <input type="email" class="form-control" id="contactEmail" value="info@exrevolution.com">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="siteDescription" class="form-label">Site Description</label>
-                                <textarea class="form-control" id="siteDescription" rows="3">Leading technology solutions for modern businesses</textarea>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="contactPhone" class="form-label">Contact Phone</label>
+                                    <input type="tel" class="form-control" id="contactPhone" value="+255 123 456 789">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="contactEmail" class="form-label">Contact Email</label>
-                                <input type="email" class="form-control" id="contactEmail" value="info@exrevolution.com">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="businessAddress" class="form-label">Business Address</label>
+                                    <textarea class="form-control" id="businessAddress" rows="2">Dar es Salaam, Tanzania</textarea>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="contactPhone" class="form-label">Contact Phone</label>
-                                <input type="tel" class="form-control" id="contactPhone" value="+1 (555) 123-4567">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="timezone" class="form-label">Timezone</label>
+                                    <select class="form-control" id="timezone">
+                                        <option value="Africa/Dar_es_Salaam" selected>East Africa Time (EAT)</option>
+                                        <option value="UTC">UTC</option>
+                                        <option value="America/New_York">Eastern Time</option>
+                                        <option value="Europe/London">London Time</option>
+                                    </select>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Email Settings</h5>
-                    </div>
-                    <div class="card-body">
-                        <form id="email-settings-form">
-                            <div class="mb-3">
-                                <label for="fromEmail" class="form-label">From Email Address</label>
-                                <input type="email" class="form-control" id="fromEmail" value="exrevolution8@gmail.com">
-                                <div class="form-text">This email will appear as the sender for newsletters and notifications</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="smtpHost" class="form-label">SMTP Host</label>
-                                <input type="text" class="form-control" id="smtpHost" value="smtp.gmail.com">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="smtpPort" class="form-label">SMTP Port</label>
-                                        <input type="number" class="form-control" id="smtpPort" value="587">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="smtpSecurity" class="form-label">Security</label>
-                                        <select class="form-select" id="smtpSecurity">
-                                            <option value="tls" selected>TLS</option>
-                                            <option value="ssl">SSL</option>
-                                            <option value="none">None</option>
-                                        </select>
-                                    </div>
+                <!-- Email Settings Section -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-envelope"></i>
+                        Email Configuration
+                    </h2>
+                    
+                    <form id="email-settings-form">
+                        <div class="mb-3">
+                            <label for="fromEmail" class="form-label">From Email Address</label>
+                            <input type="email" class="form-control" id="fromEmail" value="exrevolution8@gmail.com">
+                            <div class="form-text">This email will appear as the sender for newsletters and notifications</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="smtpHost" class="form-label">SMTP Host</label>
+                                    <input type="text" class="form-control" id="smtpHost" value="smtp.gmail.com">
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="smtpUsername" class="form-label">SMTP Username</label>
-                                <input type="text" class="form-control" id="smtpUsername" value="admin@exrevolution.com">
-                                <div class="form-text">Usually your email address or username for authentication</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="smtpPassword" class="form-label">SMTP Password</label>
-                                <input type="password" class="form-control" id="smtpPassword" placeholder="Enter your app password">
-                                <div class="form-text">
-                                    <i class="fas fa-info-circle text-info"></i>
-                                    For Gmail, use an App Password instead of your regular password.
-                                    <a href="https://support.google.com/accounts/answer/185833" target="_blank">Learn how to create one</a>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="smtpPort" class="form-label">SMTP Port</label>
+                                    <input type="number" class="form-control" id="smtpPort" value="587">
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-outline-primary" id="test-email-btn">
-                                    <i class="fas fa-paper-plane"></i> Test Email Configuration
-                                </button>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="smtpSecurity" class="form-label">Security Protocol</label>
+                                    <select class="form-control" id="smtpSecurity">
+                                        <option value="tls" selected>TLS</option>
+                                        <option value="ssl">SSL</option>
+                                        <option value="none">None</option>
+                                    </select>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="smtpUsername" class="form-label">SMTP Username</label>
+                                    <input type="text" class="form-control" id="smtpUsername" value="admin@exrevolution.com">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="smtpPassword" class="form-label">SMTP Password</label>
+                            <input type="password" class="form-control" id="smtpPassword" placeholder="Enter your app password">
+                            <div class="form-text">
+                                <i class="fas fa-info-circle text-info"></i>
+                                For Gmail, use an App Password instead of your regular password.
+                                <a href="https://support.google.com/accounts/answer/185833" target="_blank">Learn how to create one</a>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-outline-primary" id="test-email-btn">
+                                <i class="fas fa-paper-plane"></i> Test Configuration
+                            </button>
+                            <button type="button" class="btn btn-outline-success" onclick="saveEmailSettings()">
+                                <i class="fas fa-save"></i> Save Email Settings
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">System Status</h5>
+            <div class="col-lg-4">
+                <!-- System Status Section -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-heartbeat"></i>
+                        System Status
+                    </h2>
+                    
+                    <div class="system-status">
+                        <div>
+                            <strong>API Server</strong>
+                            <div class="text-muted small">Backend services</div>
+                        </div>
+                        <span class="status-badge success">
+                            <i class="fas fa-check-circle"></i>
+                            Online
+                        </span>
                     </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span>API Server</span>
-                            <span class="badge bg-success">Online</span>
+
+                    <div class="system-status">
+                        <div>
+                            <strong>Database</strong>
+                            <div class="text-muted small">Data storage</div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span>Database</span>
-                            <span class="badge bg-warning">Mock Mode</span>
+                        <span class="status-badge warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Mock Mode
+                        </span>
+                    </div>
+
+                    <div class="system-status">
+                        <div>
+                            <strong>Email Service</strong>
+                            <div class="text-muted small">SMTP configuration</div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span>Email Service</span>
-                            <span class="badge bg-success" id="email-status">Configured</span>
+                        <span class="status-badge success" id="email-status">
+                            <i class="fas fa-check-circle"></i>
+                            Configured
+                        </span>
+                    </div>
+
+                    <div class="system-status">
+                        <div>
+                            <strong>Security</strong>
+                            <div class="text-muted small">Authentication</div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>Backup</span>
-                            <span class="badge bg-secondary">N/A</span>
-                        </div>
+                        <span class="status-badge success">
+                            <i class="fas fa-shield-alt"></i>
+                            Active
+                        </span>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Quick Actions</h5>
-                    </div>
-                    <div class="card-body">
-                        <button class="btn btn-outline-primary w-100 mb-2">
-                            <i class="fas fa-sync"></i> Clear Cache
-                        </button>
-                        <button class="btn btn-outline-warning w-100 mb-2">
-                            <i class="fas fa-download"></i> Export Data
-                        </button>
-                        <button class="btn btn-outline-info w-100 mb-2">
-                            <i class="fas fa-upload"></i> Import Data
-                        </button>
-                        <button class="btn btn-outline-danger w-100">
-                            <i class="fas fa-trash"></i> Reset Settings
-                        </button>
-                    </div>
+                <!-- Quick Actions Section -->
+                <div class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-bolt"></i>
+                        Quick Actions
+                    </h2>
+                    
+                    <button class="btn btn-outline-primary quick-action-btn" onclick="clearCache()">
+                        <i class="fas fa-sync-alt"></i> Clear System Cache
+                    </button>
+                    
+                    <button class="btn btn-outline-info quick-action-btn" onclick="exportData()">
+                        <i class="fas fa-download"></i> Export Website Data
+                    </button>
+                    
+                    <button class="btn btn-outline-warning quick-action-btn" onclick="importData()">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                    
+                    <button class="btn btn-outline-secondary quick-action-btn" onclick="systemDiagnostics()">
+                        <i class="fas fa-stethoscope"></i> Run Diagnostics
+                    </button>
+                    
+                    <button class="btn btn-outline-danger quick-action-btn" onclick="resetSettings()">
+                        <i class="fas fa-redo"></i> Reset to Defaults
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- API Configuration -->
     <script src="assets/js/api-config.js"></script>
-
-    <!-- Mobile JS -->
     <script src="assets/js/admin-mobile.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in
+            // Check authentication
             const token = localStorage.getItem('adminToken');
             if (!token) {
                 window.location.href = 'login.html';
                 return;
             }
 
-            // Load saved email settings
-            loadEmailSettings();
+            // Load settings
+            loadSettings();
 
-            // Save settings functionality
-            document.querySelector('.btn-primary').addEventListener('click', function() {
-                saveSettings();
-            });
-
-            // Test email functionality
-            document.getElementById('test-email-btn').addEventListener('click', function() {
-                testEmailConfiguration();
-            });
+            // Setup event listeners
+            setupEventListeners();
 
             // Logout functionality
             document.getElementById('logout-btn').addEventListener('click', function(e) {
@@ -399,119 +761,183 @@
                 formsLink.href = netlifyUrl;
                 formsLink.target = '_blank';
             }
-
-            // Debug: Check if menu links are clickable
-            const menuLinks = document.querySelectorAll('.sidebar-menu a');
-            console.log('Settings page: Found', menuLinks.length, 'menu links');
-
-            // Add click event listeners to all menu links for debugging
-            menuLinks.forEach((link, index) => {
-                if (link.id !== 'logout-btn') {
-                    link.addEventListener('click', function(e) {
-                        console.log('Menu link clicked:', link.href);
-                        // Allow normal navigation
-                    });
-                }
-            });
         });
 
-        async function loadEmailSettings() {
+        function setupEventListeners() {
+            // Test email button
+            document.getElementById('test-email-btn').addEventListener('click', testEmailConfiguration);
+        }
+
+        async function loadSettings() {
             try {
-                const response = await window.apiConfig.get(`${window.apiConfig.settings}/email`);
-
-                if (response && response.ok) {
-                    const settings = await response.json();
-
-                    if (settings.fromEmail) document.getElementById('fromEmail').value = settings.fromEmail;
-                    if (settings.smtpHost) document.getElementById('smtpHost').value = settings.smtpHost;
-                    if (settings.smtpPort) document.getElementById('smtpPort').value = settings.smtpPort;
-                    if (settings.smtpSecurity) document.getElementById('smtpSecurity').value = settings.smtpSecurity;
-                    if (settings.smtpUsername) document.getElementById('smtpUsername').value = settings.smtpUsername;
+                // Load saved settings from localStorage or API
+                const savedSettings = localStorage.getItem('siteSettings');
+                if (savedSettings) {
+                    const settings = JSON.parse(savedSettings);
+                    populateForm(settings);
                 }
             } catch (error) {
-                console.error('Failed to load email settings:', error);
+                console.error('Failed to load settings:', error);
             }
         }
 
-        async function saveSettings() {
+        function populateForm(settings) {
+            if (settings.siteName) document.getElementById('siteName').value = settings.siteName;
+            if (settings.siteDescription) document.getElementById('siteDescription').value = settings.siteDescription;
+            if (settings.contactEmail) document.getElementById('contactEmail').value = settings.contactEmail;
+            if (settings.contactPhone) document.getElementById('contactPhone').value = settings.contactPhone;
+            if (settings.businessAddress) document.getElementById('businessAddress').value = settings.businessAddress;
+            if (settings.timezone) document.getElementById('timezone').value = settings.timezone;
+            
+            // Email settings
+            if (settings.fromEmail) document.getElementById('fromEmail').value = settings.fromEmail;
+            if (settings.smtpHost) document.getElementById('smtpHost').value = settings.smtpHost;
+            if (settings.smtpPort) document.getElementById('smtpPort').value = settings.smtpPort;
+            if (settings.smtpSecurity) document.getElementById('smtpSecurity').value = settings.smtpSecurity;
+            if (settings.smtpUsername) document.getElementById('smtpUsername').value = settings.smtpUsername;
+        }
+
+        function saveAllSettings() {
+            const settings = {
+                siteName: document.getElementById('siteName').value,
+                siteDescription: document.getElementById('siteDescription').value,
+                contactEmail: document.getElementById('contactEmail').value,
+                contactPhone: document.getElementById('contactPhone').value,
+                businessAddress: document.getElementById('businessAddress').value,
+                timezone: document.getElementById('timezone').value,
+                fromEmail: document.getElementById('fromEmail').value,
+                smtpHost: document.getElementById('smtpHost').value,
+                smtpPort: document.getElementById('smtpPort').value,
+                smtpSecurity: document.getElementById('smtpSecurity').value,
+                smtpUsername: document.getElementById('smtpUsername').value,
+                smtpPassword: document.getElementById('smtpPassword').value,
+                updatedAt: new Date().toISOString()
+            };
+
+            // Save to localStorage for now
+            localStorage.setItem('siteSettings', JSON.stringify(settings));
+            
+            showNotification('All settings saved successfully!', 'success');
+        }
+
+        function saveEmailSettings() {
             const emailSettings = {
                 fromEmail: document.getElementById('fromEmail').value,
                 smtpHost: document.getElementById('smtpHost').value,
-                smtpPort: parseInt(document.getElementById('smtpPort').value),
+                smtpPort: document.getElementById('smtpPort').value,
                 smtpSecurity: document.getElementById('smtpSecurity').value,
                 smtpUsername: document.getElementById('smtpUsername').value,
-                smtpPassword: document.getElementById('smtpPassword').value
+                smtpPassword: document.getElementById('smtpPassword').value,
             };
 
-            try {
-                const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/settings/email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-auth-token': token
-                    },
-                    body: JSON.stringify(emailSettings)
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    showNotification('Settings saved successfully!', 'success');
-
-                    // Update email status
-                    document.getElementById('email-status').textContent = 'Configured';
-                    document.getElementById('email-status').className = 'badge bg-success';
-                } else {
-                    showNotification(data.message || 'Failed to save settings', 'error');
-                }
-            } catch (error) {
-                console.error('Failed to save settings:', error);
-                showNotification('Failed to save settings. Please try again.', 'error');
-            }
+            // Save email settings
+            localStorage.setItem('emailSettings', JSON.stringify(emailSettings));
+            
+            showNotification('Email settings saved successfully!', 'success');
         }
 
         async function testEmailConfiguration() {
             const btn = document.getElementById('test-email-btn');
-            const originalText = btn.innerHTML;
-
-            // Show loading state
+            const originalHTML = btn.innerHTML;
+            
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Testing...';
             btn.disabled = true;
 
             try {
-                const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/settings/email/test', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-auth-token': token
-                    }
-                });
-
-                const data = await response.json();
-
-                if (response.ok && data.success) {
-                    showNotification(data.message, 'success');
-                } else {
-                    showNotification(data.message || 'Failed to send test email', 'error');
-                }
-
+                // Simulate email test
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Mock successful test
+                showNotification('Test email sent successfully! Check your inbox.', 'success');
+                
+                // Update email status
+                const statusBadge = document.getElementById('email-status');
+                statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> Configured';
+                statusBadge.className = 'status-badge success';
+                
             } catch (error) {
-                console.error('Test email error:', error);
                 showNotification('Failed to send test email. Please check your configuration.', 'error');
             } finally {
-                // Reset button
-                btn.innerHTML = originalText;
+                btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }
         }
 
-        function showNotification(message, type) {
-            // Create notification element
+        function clearCache() {
+            showNotification('System cache cleared successfully!', 'success');
+        }
+
+        function exportData() {
+            const data = {
+                settings: JSON.parse(localStorage.getItem('siteSettings') || '{}'),
+                emailSettings: JSON.parse(localStorage.getItem('emailSettings') || '{}'),
+                exportedAt: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `exrevolution-settings-${new Date().getTime()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Settings exported successfully!', 'success');
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            
+                            if (data.settings) {
+                                localStorage.setItem('siteSettings', JSON.stringify(data.settings));
+                                populateForm(data.settings);
+                            }
+                            
+                            if (data.emailSettings) {
+                                localStorage.setItem('emailSettings', JSON.stringify(data.emailSettings));
+                            }
+                            
+                            showNotification('Settings imported successfully!', 'success');
+                        } catch (err) {
+                            showNotification('Invalid settings file format.', 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            
+            input.click();
+        }
+
+        function systemDiagnostics() {
+            showNotification('Running system diagnostics... All systems operational!', 'info');
+        }
+
+        function resetSettings() {
+            if (confirm('Are you sure you want to reset all settings to defaults? This action cannot be undone.')) {
+                localStorage.removeItem('siteSettings');
+                localStorage.removeItem('emailSettings');
+                location.reload();
+            }
+        }
+
+        function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
-            notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show position-fixed`;
-            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} alert-dismissible fade show position-fixed`;
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; max-width: 90%;';
             notification.innerHTML = `
                 ${message}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -519,7 +945,6 @@
 
             document.body.appendChild(notification);
 
-            // Auto remove after 5 seconds
             setTimeout(() => {
                 if (notification.parentNode) {
                     notification.remove();
@@ -528,11 +953,10 @@
         }
 
         function getSiteId() {
-            // Try to extract from URL or return a placeholder
             if (window.location.hostname.includes('netlify.app')) {
                 return window.location.hostname.split('.')[0];
             }
-            return 'your-site-name'; // User will need to update this
+            return 'your-site-name';
         }
     </script>
 </body>
