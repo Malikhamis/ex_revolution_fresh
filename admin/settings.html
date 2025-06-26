@@ -367,7 +367,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Check if user is logged in
-            const token = localStorage.getItem('token');
+            const token = localStorage.getItem('adminToken');
             if (!token) {
                 window.location.href = 'login.html';
                 return;
@@ -389,7 +389,8 @@
             // Logout functionality
             document.getElementById('logout-btn').addEventListener('click', function(e) {
                 e.preventDefault();
-                localStorage.removeItem('token');
+                localStorage.removeItem('adminToken');
+                localStorage.removeItem('adminUser');
                 window.location.href = 'login.html';
             });
 
