@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -696,7 +696,8 @@
                 <div class="newsletter-content">
                     <h2>Subscribe to Our Newsletter</h2>
                     <p>Stay updated with the latest insights, tips, and trends in technology and digital marketing.</p>
-                    <form class="newsletter-form">
+                    <form class="newsletter-form" name="newsletter-subscription" method="POST" data-netlify="true" action="/thank-you.html">
+                        <input type="hidden" name="form-name" value="newsletter-subscription">
                         <input type="email" name="email" placeholder="Enter your email address" required>
                         <button type="submit" class="btn btn-primary">Subscribe</button>
                     </form>

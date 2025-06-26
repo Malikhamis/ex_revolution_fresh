@@ -1052,8 +1052,9 @@
                     <div class="guide-cta-content">
                         <h2>Free Digital Marketing Guide</h2>
                         <p>Download our comprehensive guide to learn how to boost your online presence and generate more leads for your business. This 25-page guide includes actionable strategies, case studies, and step-by-step instructions.</p>
-                        <form class="guide-cta-form">
-                            <input type="email" placeholder="Your Email Address" required>
+                        <form class="guide-cta-form" name="guide-download" method="POST" data-netlify="true" action="/thank-you.html">
+                            <input type="hidden" name="form-name" value="guide-download">
+                            <input type="email" name="email" placeholder="Your Email Address" required>
                             <button type="submit" class="btn btn-primary">Download Now</button>
                         </form>
                     </div>
@@ -1156,7 +1157,8 @@ Dar es Salaam, Tanzania</a>
             <button class="popup-close">&times;</button>
             <h3>Before You Go!</h3>
             <p>Get our free guide on "5 Ways to Boost Your Business with Technology" and receive a 15% discount on your first project.</p>
-            <form class="lead-form">
+            <form class="lead-form" name="lead-capture" method="POST" data-netlify="true" action="/thank-you.html">
+                <input type="hidden" name="form-name" value="lead-capture">
                 <div class="form-group">
                     <input type="email" name="email" placeholder="Your Email Address" required>
                 </div>

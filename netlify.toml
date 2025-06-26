@@ -1,9 +1,13 @@
 [build]
   publish = "dist"
-  command = "node build.js"
+  command = "build.bat"
 
 [build.environment]
   NODE_VERSION = "18"
+
+# Form notifications - Email all form submissions to exrevolution8@gmail.com
+[context.production.environment]
+  FORM_NOTIFICATION_EMAIL = "exrevolution8@gmail.com"
 
 # Security headers
 [[headers]]

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -663,7 +663,11 @@
                             An error occurred. Please try again.
                         </div>
 
-                        <form id="quoteForm" action="#" method="POST">
+                        <form id="quoteForm" name="quote-request" method="POST" data-netlify="true" action="/thank-you.html">
+                            <!-- Hidden fields for form submission -->
+                            <input type="hidden" name="form-name" value="quote-request">
+                            <input type="hidden" name="services-selected" id="servicesSelected">
+                            
                             <!-- Step 1: Personal Information -->
                             <div class="form-step active" id="step1">
                                 <h3 style="color: #ffffff !important;">Services</h3>
