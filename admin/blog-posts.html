@@ -601,6 +601,89 @@
         </div>
     </div>
 
+    <!-- Edit Blog Post Modal -->
+    <div class="modal fade" id="editBlogModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Blog Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editBlogForm">
+                        <input type="hidden" id="editPostId" name="id">
+                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="editPostTitle" class="form-label">Post Title</label>
+                                    <input type="text" class="form-control" id="editPostTitle" name="title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="editPostStatus" class="form-label">Status</label>
+                                    <select class="form-control" id="editPostStatus" name="status">
+                                        <option value="draft">Draft</option>
+                                        <option value="published">Published</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="editPostSlug" class="form-label">URL Slug</label>
+                                    <input type="text" class="form-control" id="editPostSlug" name="slug">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="editPostImage" class="form-label">Featured Image URL</label>
+                                    <input type="url" class="form-control" id="editPostImage" name="image" placeholder="https://example.com/image.jpg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editPostExcerpt" class="form-label">Excerpt</label>
+                            <textarea class="form-control" id="editPostExcerpt" name="excerpt" rows="3"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editPostTags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="editPostTags" name="tags" placeholder="technology, business, ai (comma separated)">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editPostCategory" class="form-label">Category</label>
+                            <select class="form-control" id="editPostCategory" name="category">
+                                <option value="Technology">Technology</option>
+                                <option value="Business">Business</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Development">Development</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Content</label>
+                            <div id="editEditor" style="min-height: 300px;"></div>
+                            <input type="hidden" id="editPostContent" name="content">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="updateBlogPost()">
+                        <i class="fas fa-save"></i>
+                        Update Post
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Add Blog Post Modal -->
     <div class="modal fade" id="addBlogModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
@@ -629,9 +712,19 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="postSlug" class="form-label">URL Slug</label>
-                            <input type="text" class="form-control" id="postSlug" name="slug" placeholder="auto-generated-from-title">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="postSlug" class="form-label">URL Slug</label>
+                                    <input type="text" class="form-control" id="postSlug" name="slug" placeholder="auto-generated-from-title">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="postImage" class="form-label">Featured Image URL</label>
+                                    <input type="url" class="form-control" id="postImage" name="image" placeholder="https://example.com/image.jpg">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -681,6 +774,7 @@
     <script>
         let blogPosts = [];
         let quillEditor = null;
+        let editQuillEditor = null;
 
         document.addEventListener('DOMContentLoaded', function() {
             // Check authentication
@@ -729,6 +823,20 @@
                     ]
                 }
             });
+
+            // Initialize edit editor
+            editQuillEditor = new Quill('#editEditor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{ 'header': [1, 2, 3, false] }],
+                        ['bold', 'italic', 'underline'],
+                        ['link', 'blockquote', 'code-block'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['clean']
+                    ]
+                }
+            });
         }
 
         function setupEventListeners() {
@@ -755,41 +863,44 @@
                         title: 'AI Transforming Business Operations',
                         slug: 'ai-transforming-business',
                         excerpt: 'How artificial intelligence is revolutionizing business processes across industries...',
-                        content: '<p>Full blog post content here...</p>',
+                        content: '<p>Artificial Intelligence is fundamentally changing how businesses operate, from automated customer service to predictive analytics.</p><p>Key areas of transformation include process automation, data analysis, and customer engagement.</p>',
                         author: 'Ex Revolution Team',
                         status: 'published',
                         publishedAt: new Date().toISOString(),
                         createdAt: new Date().toISOString(),
                         tags: ['AI', 'Business', 'Technology'],
                         category: 'Technology',
-                        views: 1250
+                        views: 1250,
+                        image: '../assets/images/code_screen.jpeg'
                     },
                     {
                         id: '2',
                         title: 'Digital Marketing Strategies for Tanzania',
                         slug: 'digital-marketing-tanzania',
                         excerpt: 'Effective digital marketing approaches for Tanzanian businesses...',
-                        content: '<p>Full blog post content here...</p>',
+                        content: '<p>Digital marketing in Tanzania requires understanding local culture, mobile-first approaches, and social media preferences.</p><p>Key strategies include WhatsApp marketing, mobile optimization, and localized content.</p>',
                         author: 'Ex Revolution Team',
                         status: 'published',
                         publishedAt: new Date().toISOString(),
                         createdAt: new Date().toISOString(),
                         tags: ['Marketing', 'Tanzania', 'Digital'],
                         category: 'Marketing',
-                        views: 890
+                        views: 890,
+                        image: '../assets/images/digital_marketing_concept.webp'
                     },
                     {
                         id: '3',
                         title: 'Cloud Computing Solutions Draft',
                         slug: 'cloud-computing-solutions',
                         excerpt: 'Exploring modern cloud infrastructure for businesses...',
-                        content: '<p>Draft content...</p>',
+                        content: '<p>Cloud computing provides scalable, cost-effective solutions for modern businesses.</p><p>This draft explores AWS, Azure, and Google Cloud options for different business needs.</p>',
                         author: 'Ex Revolution Team',
                         status: 'draft',
                         createdAt: new Date().toISOString(),
                         tags: ['Cloud', 'Infrastructure'],
                         category: 'Technology',
-                        views: 0
+                        views: 0,
+                        image: '../assets/images/developer_laptop.jpeg'
                     }
                 ];
 
@@ -821,6 +932,7 @@
                 <div class="posts-grid">
                     ${blogPosts.map(post => `
                         <div class="post-card">
+                            ${post.image ? `<img src="${post.image}" alt="${post.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px 12px 0 0; margin-bottom: 1rem;" onerror="this.src='../assets/images/placeholder.svg'">` : ''}
                             <div class="post-header">
                                 <h3 class="post-title">${post.title}</h3>
                                 <span class="post-status ${post.status}">
@@ -919,6 +1031,7 @@
                 status: formData.get('status'),
                 category: formData.get('category'),
                 tags: formData.get('tags').split(',').map(tag => tag.trim()),
+                image: formData.get('image') || '../assets/images/placeholder.svg',
                 createdAt: new Date().toISOString(),
                 views: 0
             };
@@ -947,8 +1060,64 @@
         function editPost(postId) {
             const post = blogPosts.find(p => p.id === postId);
             if (post) {
-                // For now, just show an alert
-                alert(`Edit functionality for "${post.title}" coming soon!`);
+                // Populate edit form
+                document.getElementById('editPostId').value = post.id;
+                document.getElementById('editPostTitle').value = post.title;
+                document.getElementById('editPostSlug').value = post.slug;
+                document.getElementById('editPostExcerpt').value = post.excerpt;
+                document.getElementById('editPostTags').value = post.tags.join(', ');
+                document.getElementById('editPostCategory').value = post.category;
+                document.getElementById('editPostStatus').value = post.status;
+                document.getElementById('editPostImage').value = post.image || '';
+                
+                // Set content in editor
+                editQuillEditor.root.innerHTML = post.content;
+                
+                // Show modal
+                const modal = new bootstrap.Modal(document.getElementById('editBlogModal'));
+                modal.show();
+            }
+        }
+
+        function updateBlogPost() {
+            const postId = document.getElementById('editPostId').value;
+            const form = document.getElementById('editBlogForm');
+            const formData = new FormData(form);
+            
+            // Get content from Quill editor
+            const content = editQuillEditor.root.innerHTML;
+            formData.set('content', content);
+
+            // Find and update the post
+            const postIndex = blogPosts.findIndex(p => p.id === postId);
+            if (postIndex !== -1) {
+                blogPosts[postIndex] = {
+                    ...blogPosts[postIndex],
+                    title: formData.get('title'),
+                    slug: formData.get('slug'),
+                    excerpt: formData.get('excerpt'),
+                    content: content,
+                    status: formData.get('status'),
+                    category: formData.get('category'),
+                    tags: formData.get('tags').split(',').map(tag => tag.trim()),
+                    image: formData.get('image') || blogPosts[postIndex].image,
+                    updatedAt: new Date().toISOString()
+                };
+
+                if (formData.get('status') === 'published' && !blogPosts[postIndex].publishedAt) {
+                    blogPosts[postIndex].publishedAt = new Date().toISOString();
+                }
+
+                // Re-render posts
+                renderBlogPosts();
+                updateStats();
+
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('editBlogModal'));
+                modal.hide();
+
+                // Show success message
+                showNotification('Blog post updated successfully!', 'success');
             }
         }
 
