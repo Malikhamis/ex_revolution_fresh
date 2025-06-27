@@ -11,60 +11,44 @@ class ContentManager {
     }
 
     /**
-     * Get case studies from API or cache
+     * Get case studies from localStorage (admin changes) or fallback
      */
     async getCaseStudies() {
-        const cacheKey = 'case-studies';
-        const cached = this.cache.get(cacheKey);
-
-        if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
-            return cached.data;
-        }
-
         try {
-            const response = await fetch(`${this.apiBase}/api/public/case-studies`);
-            if (response.ok) {
-                const data = await response.json();
-                this.cache.set(cacheKey, {
-                    data: data,
-                    timestamp: Date.now()
-                });
+            // First, try to get data from localStorage (where admin panel saves changes)
+            const adminCaseStudies = localStorage.getItem('adminCaseStudies');
+            if (adminCaseStudies) {
+                const data = JSON.parse(adminCaseStudies);
+                console.log('✅ Loaded case studies from admin panel:', data.length, 'items');
                 return data;
             }
         } catch (error) {
-            console.warn('Failed to load case studies from API, using fallback');
+            console.warn('Failed to load case studies from localStorage:', error);
         }
 
-        // Fallback to static data if API fails
+        // Fallback to static data if no admin data
+        console.log('📁 Using fallback case studies data');
         return this.getFallbackCaseStudies();
     }
 
     /**
-     * Get blog posts from API or cache
+     * Get blog posts from localStorage (admin changes) or fallback
      */
     async getBlogPosts() {
-        const cacheKey = 'blog-posts';
-        const cached = this.cache.get(cacheKey);
-
-        if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
-            return cached.data;
-        }
-
         try {
-            const response = await fetch(`${this.apiBase}/api/public/blog-posts`);
-            if (response.ok) {
-                const data = await response.json();
-                this.cache.set(cacheKey, {
-                    data: data,
-                    timestamp: Date.now()
-                });
-                return data;
+            // First, try to get data from localStorage (where admin panel saves changes)
+            const adminBlogPosts = localStorage.getItem('adminBlogPosts');
+            if (adminBlogPosts) {
+                const data = JSON.parse(adminBlogPosts);
+                console.log('✅ Loaded blog posts from admin panel:', data.length, 'items');
+                return data.filter(post => post.status === 'published'); // Only show published posts
             }
         } catch (error) {
-            console.warn('Failed to load blog posts from API, using fallback');
+            console.warn('Failed to load blog posts from localStorage:', error);
         }
 
-        // Fallback to static data if API fails
+        // Fallback to static data if no admin data
+        console.log('📁 Using fallback blog posts data');
         return this.getFallbackBlogPosts();
     }
 

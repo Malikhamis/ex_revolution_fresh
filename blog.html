@@ -781,13 +781,18 @@ Dar es Salaam, Tanzania</a>
 
         async function loadBlogPostsForPage(pageNumber) {
             try {
-                // Use page-specific API endpoint
-                const response = await fetch(`/api/public/blog-posts/page/${pageNumber}`);
-                const pagePosts = await response.json();
+                // Get all blog posts from content manager
+                const allPosts = await window.contentManager.getBlogPosts();
+                
+                // Calculate pagination
+                const postsPerPage = 3;
+                const startIndex = (pageNumber - 1) * postsPerPage;
+                const endIndex = startIndex + postsPerPage;
+                const pagePosts = allPosts.slice(startIndex, endIndex);
 
                 // Update the blog posts container
                 const blogPostsContainer = document.querySelector('.blog-posts');
-                if (blogPostsContainer) {
+                if (blogPostsContainer && pagePosts.length > 0) {
                     if (pagePosts.length > 0) {
                         blogPostsContainer.innerHTML = pagePosts.map(post => generateBlogPostHTML(post)).join('');
                     } else {
