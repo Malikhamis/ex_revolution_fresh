@@ -78,33 +78,59 @@ class ContentManager {
      */
     async renderCaseStudiesGrid(containerId, options = {}) {
         const container = document.getElementById(containerId);
-        if (!container) return;
+        if (!container) {
+            console.error('❌ Case studies container not found:', containerId);
+            return;
+        }
 
         const caseStudies = await this.getCaseStudies();
+        console.log('📊 Raw case studies data:', caseStudies);
+        console.log('📊 Case studies count:', caseStudies.length);
+        
         const filteredStudies = options.featured ?
             caseStudies.filter(cs => cs.featured && cs.status === 'published') :
             caseStudies.filter(cs => cs.status === 'published');
+            
+        console.log('📊 Filtered case studies count:', filteredStudies.length);
+        console.log('📊 Filtered case studies:', filteredStudies);
 
         const limit = options.limit || filteredStudies.length;
         const studiesToShow = filteredStudies.slice(0, limit);
 
-        container.innerHTML = studiesToShow.map(caseStudy => `
-            <div class="case-study-card" data-category="${caseStudy.industry.toLowerCase().replace(/\s+/g, '-')}">
-                <img src="${caseStudy.image}" alt="${caseStudy.title}" class="case-study-image" loading="lazy">
-                <div class="case-study-content">
-                    <p class="case-study-category">${caseStudy.industry}</p>
-                    <h3 class="case-study-title">${caseStudy.title}</h3>
-                    <p class="case-study-description">${caseStudy.excerpt}</p>
-                    <div class="case-study-results">
-                        <h4>Technologies:</h4>
-                        <ul>
-                            ${caseStudy.technologies.map(tech => `<li>${tech}</li>`).join('')}
-                        </ul>
+        console.log('📊 Studies to show:', studiesToShow.length);
+
+        if (studiesToShow.length === 0) {
+            container.innerHTML = '<p>No case studies found.</p>';
+            console.warn('⚠️ No case studies to display');
+            return;
+        }
+
+        try {
+            container.innerHTML = studiesToShow.map(caseStudy => {
+                console.log('🏗️ Rendering case study:', caseStudy.title, 'with fields:', Object.keys(caseStudy));
+                return `
+                <div class="case-study-card" data-category="${(caseStudy.industry || caseStudy.category || 'general').toLowerCase().replace(/\s+/g, '-')}">
+                    <img src="${caseStudy.image || '../assets/images/placeholder.svg'}" alt="${caseStudy.title}" class="case-study-image" loading="lazy">
+                    <div class="case-study-content">
+                        <p class="case-study-category">${caseStudy.industry || caseStudy.category || 'General'}</p>
+                        <h3 class="case-study-title">${caseStudy.title}</h3>
+                        <p class="case-study-description">${caseStudy.excerpt || caseStudy.description}</p>
+                        <div class="case-study-results">
+                            <h4>Technologies:</h4>
+                            <ul>
+                                ${(caseStudy.technologies || caseStudy.tags || []).map(tech => `<li>${tech}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <a href="case-studies/${caseStudy.slug || 'details'}.html" class="case-study-link" style="color: #ffffff !important;">View Case Study</a>
                     </div>
-                    <a href="case-studies/${caseStudy.slug}.html" class="case-study-link" style="color: #ffffff !important;">View Case Study</a>
                 </div>
-            </div>
-        `).join('');
+                `;
+            }).join('');
+            console.log('✅ Case studies rendered successfully');
+        } catch (error) {
+            console.error('❌ Error rendering case studies:', error);
+            container.innerHTML = '<p>Error loading case studies.</p>';
+        }
     }
 
     /**
