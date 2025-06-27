@@ -17,9 +17,11 @@ class ContentManager {
         try {
             // First, try to get data from localStorage (where admin panel saves changes)
             const adminCaseStudies = localStorage.getItem('adminCaseStudies');
+            console.log('🔍 Checking localStorage for adminCaseStudies:', adminCaseStudies ? 'Found data' : 'No data');
             if (adminCaseStudies) {
                 const data = JSON.parse(adminCaseStudies);
                 console.log('✅ Loaded case studies from admin panel:', data.length, 'items');
+                console.log('📄 Loaded data:', data);
                 return data;
             }
         } catch (error) {
@@ -38,10 +40,13 @@ class ContentManager {
         try {
             // First, try to get data from localStorage (where admin panel saves changes)
             const adminBlogPosts = localStorage.getItem('adminBlogPosts');
+            console.log('🔍 Checking localStorage for adminBlogPosts:', adminBlogPosts ? 'Found data' : 'No data');
             if (adminBlogPosts) {
                 const data = JSON.parse(adminBlogPosts);
                 console.log('✅ Loaded blog posts from admin panel:', data.length, 'items');
-                return data.filter(post => post.status === 'published'); // Only show published posts
+                const publishedPosts = data.filter(post => post.status === 'published');
+                console.log('📄 Published posts:', publishedPosts.length, 'of', data.length);
+                return publishedPosts;
             }
         } catch (error) {
             console.warn('Failed to load blog posts from localStorage:', error);
@@ -442,7 +447,36 @@ class ContentManager {
             }
         ];
     }
+    /**
+     * Debug function to check localStorage content
+     */
+    debugLocalStorage() {
+        console.log('🔍 Debug localStorage content:');
+        console.log('- adminCaseStudies:', localStorage.getItem('adminCaseStudies') ? 'EXISTS' : 'MISSING');
+        console.log('- adminBlogPosts:', localStorage.getItem('adminBlogPosts') ? 'EXISTS' : 'MISSING');
+        
+        if (localStorage.getItem('adminCaseStudies')) {
+            try {
+                const cases = JSON.parse(localStorage.getItem('adminCaseStudies'));
+                console.log('📄 Case Studies:', cases.length, 'items');
+            } catch (e) {
+                console.error('❌ Invalid case studies data');
+            }
+        }
+        
+        if (localStorage.getItem('adminBlogPosts')) {
+            try {
+                const posts = JSON.parse(localStorage.getItem('adminBlogPosts'));
+                console.log('📄 Blog Posts:', posts.length, 'items');
+            } catch (e) {
+                console.error('❌ Invalid blog posts data');
+            }
+        }
+    }
 }
 
 // Create global instance
 window.contentManager = new ContentManager();
+
+// Make debug function globally available
+window.debugContentSync = () => window.contentManager.debugLocalStorage();

@@ -1115,10 +1115,17 @@
         function saveCaseStudiesToStorage() {
             try {
                 localStorage.setItem('adminCaseStudies', JSON.stringify(caseStudies));
-                console.log('💾 Case studies saved to localStorage for main website sync');
+                console.log('💾 Case studies saved to localStorage for main website sync:', caseStudies.length, 'items');
+                console.log('📄 Saved data:', caseStudies);
             } catch (error) {
                 console.error('Failed to save case studies to localStorage:', error);
             }
+        }
+
+        function forceSyncToMainSite() {
+            saveCaseStudiesToStorage();
+            showNotification('Case studies synced to main website!', 'success');
+            console.log('🔄 Force sync completed for case studies');
         }
 
         function getSiteId() {
@@ -1127,6 +1134,10 @@
             }
             return 'your-site-name';
         }
+
+        // Make functions globally available for debugging
+        window.forceSyncToMainSite = forceSyncToMainSite;
+        window.saveCaseStudiesToStorage = saveCaseStudiesToStorage;
     </script>
 </body>
 </html>

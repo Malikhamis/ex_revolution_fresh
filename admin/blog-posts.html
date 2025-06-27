@@ -1178,10 +1178,17 @@
         function saveBlogPostsToStorage() {
             try {
                 localStorage.setItem('adminBlogPosts', JSON.stringify(blogPosts));
-                console.log('💾 Blog posts saved to localStorage for main website sync');
+                console.log('💾 Blog posts saved to localStorage for main website sync:', blogPosts.length, 'items');
+                console.log('📄 Saved data:', blogPosts);
             } catch (error) {
                 console.error('Failed to save blog posts to localStorage:', error);
             }
+        }
+
+        function forceSyncBlogToMainSite() {
+            saveBlogPostsToStorage();
+            showNotification('Blog posts synced to main website!', 'success');
+            console.log('🔄 Force sync completed for blog posts');
         }
 
         function getSiteId() {
@@ -1190,6 +1197,10 @@
             }
             return 'your-site-name';
         }
+
+        // Make functions globally available for debugging
+        window.forceSyncBlogToMainSite = forceSyncBlogToMainSite;
+        window.saveBlogPostsToStorage = saveBlogPostsToStorage;
     </script>
 </body>
 </html>
