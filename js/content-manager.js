@@ -109,7 +109,7 @@ class ContentManager {
             container.innerHTML = studiesToShow.map(caseStudy => {
                 console.log('🏗️ Rendering case study:', caseStudy.title, 'with fields:', Object.keys(caseStudy));
                 return `
-                <div class="case-study-card" data-category="${(caseStudy.industry || caseStudy.category || 'general').toLowerCase().replace(/\s+/g, '-')}">
+                <div class="case-study-card" data-category="${((caseStudy.industry || caseStudy.category || 'general') + '').toLowerCase().replace(/\s+/g, '-')}">
                     <img src="${caseStudy.image || '../assets/images/placeholder.svg'}" alt="${caseStudy.title}" class="case-study-image" loading="lazy">
                     <div class="case-study-content">
                         <p class="case-study-category">${caseStudy.industry || caseStudy.category || 'General'}</p>
@@ -118,7 +118,7 @@ class ContentManager {
                         <div class="case-study-results">
                             <h4>Technologies:</h4>
                             <ul>
-                                ${(caseStudy.technologies || caseStudy.tags || []).map(tech => `<li>${tech}</li>`).join('')}
+                                ${(caseStudy.technologies || caseStudy.tags || []).map(tech => `<li>${tech || 'N/A'}</li>`).join('')}
                             </ul>
                         </div>
                         <a href="case-studies/${caseStudy.slug || 'details'}.html" class="case-study-link" style="color: #ffffff !important;">View Case Study</a>
