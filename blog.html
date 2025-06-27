@@ -806,8 +806,7 @@ Dar es Salaam, Tanzania</a>
                 }
 
                 // Get all posts for recent posts sidebar
-                const allResponse = await fetch('/api/public/blog-posts');
-                const allBlogPosts = await allResponse.json();
+                const allBlogPosts = await window.contentManager.getBlogPosts();
                 allBlogPosts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
                 updateRecentPosts(allBlogPosts.slice(0, 3));
 
@@ -920,8 +919,7 @@ Dar es Salaam, Tanzania</a>
 
             // Also check if post count changed (backup method)
             try {
-                const response = await fetch('/api/public/blog-posts/page/1');
-                const posts = await response.json();
+                const posts = await window.contentManager.getBlogPosts();
                 if (posts.length !== lastPostCount) {
                     console.log('🔄 Post count changed, refreshing...', `${lastPostCount} → ${posts.length}`);
                     await loadBlogPostsForPage(1);
