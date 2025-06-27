@@ -834,7 +834,18 @@
 
         async function loadCaseStudies() {
             try {
-                // Using mock data for now
+                // First, try to load from localStorage (saved data)
+                const savedCases = localStorage.getItem('adminCaseStudies');
+                if (savedCases) {
+                    caseStudies = JSON.parse(savedCases);
+                    console.log('📁 Loaded saved case studies from localStorage:', caseStudies.length, 'items');
+                    renderCaseStudies();
+                    updateStats();
+                    return;
+                }
+
+                // Fallback to mock data if no saved data
+                console.log('📄 No saved data found, using mock data');
                 const mockCases = [
                     {
                         id: '1',

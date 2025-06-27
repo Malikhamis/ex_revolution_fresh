@@ -856,7 +856,18 @@
             showLoadingState();
             
             try {
-                // Using mock data for now
+                // First, try to load from localStorage (saved data)
+                const savedPosts = localStorage.getItem('adminBlogPosts');
+                if (savedPosts) {
+                    blogPosts = JSON.parse(savedPosts);
+                    console.log('📁 Loaded saved blog posts from localStorage:', blogPosts.length, 'items');
+                    renderBlogPosts();
+                    updateStats();
+                    return;
+                }
+
+                // Fallback to mock data if no saved data
+                console.log('📄 No saved data found, using mock data');
                 const mockPosts = [
                     {
                         id: '1',
