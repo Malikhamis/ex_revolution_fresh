@@ -850,40 +850,55 @@
                     {
                         id: '1',
                         title: 'E-commerce Platform for Usangu Logistics',
+                        slug: 'e-commerce-platform-for-usangu-logistics',
                         client: 'Usangu Logistics',
                         category: 'Web Development',
+                        industry: 'Web Development',
                         description: 'Complete e-commerce solution with inventory management, order tracking, and payment integration.',
+                        excerpt: 'Complete e-commerce solution with inventory management, order tracking, and payment integration.',
                         image: '../assets/images/placeholder.svg',
                         tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+                        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
                         url: 'https://usangulogistics.com',
                         duration: '4 months',
                         content: '<p>Detailed project information...</p>',
+                        status: 'published',
                         createdAt: new Date().toISOString()
                     },
                     {
                         id: '2',
                         title: 'Mobile App for Sprinkle Sprout School',
+                        slug: 'mobile-app-for-sprinkle-sprout-school',
                         client: 'Sprinkle Sprout School',
                         category: 'Mobile App',
+                        industry: 'Mobile App',
                         description: 'Educational mobile app with parent-teacher communication and student progress tracking.',
+                        excerpt: 'Educational mobile app with parent-teacher communication and student progress tracking.',
                         image: '../assets/images/placeholder.svg',
                         tags: ['React Native', 'Firebase', 'Node.js'],
+                        technologies: ['React Native', 'Firebase', 'Node.js'],
                         url: 'https://sprinklesprout.edu',
                         duration: '6 months',
                         content: '<p>Detailed project information...</p>',
+                        status: 'published',
                         createdAt: new Date().toISOString()
                     },
                     {
                         id: '3',
                         title: 'Branding & Website for Man Haulage',
+                        slug: 'branding-website-for-man-haulage',
                         client: 'Man Haulage',
                         category: 'Branding',
+                        industry: 'Branding',
                         description: 'Complete brand identity design and responsive website development for logistics company.',
+                        excerpt: 'Complete brand identity design and responsive website development for logistics company.',
                         image: '../assets/images/placeholder.svg',
                         tags: ['Branding', 'Web Design', 'WordPress'],
+                        technologies: ['Branding', 'Web Design', 'WordPress'],
                         url: 'https://manhaulage.co.tz',
                         duration: '2 months',
                         content: '<p>Detailed project information...</p>',
+                        status: 'published',
                         createdAt: new Date().toISOString()
                     }
                 ];
@@ -992,12 +1007,17 @@
                 title: formData.get('title'),
                 client: formData.get('client'),
                 category: formData.get('category'),
+                industry: formData.get('category'), // For main website compatibility
                 description: formData.get('description'),
+                excerpt: formData.get('description'), // For main website compatibility
                 image: formData.get('image') || '../assets/images/placeholder.svg',
                 tags: formData.get('tags').split(',').map(tag => tag.trim()),
+                technologies: formData.get('tags').split(',').map(tag => tag.trim()), // For main website compatibility
                 url: formData.get('url'),
                 duration: formData.get('duration'),
                 content: content,
+                slug: formData.get('title').toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-'), // Auto-generate slug
+                status: 'published', // Always published for main site
                 createdAt: new Date().toISOString()
             };
 
@@ -1061,12 +1081,17 @@
                     title: formData.get('title'),
                     client: formData.get('client'),
                     category: formData.get('category'),
+                    industry: formData.get('category'), // For main website compatibility
                     description: formData.get('description'),
+                    excerpt: formData.get('description'), // For main website compatibility
                     tags: formData.get('tags').split(',').map(tag => tag.trim()),
+                    technologies: formData.get('tags').split(',').map(tag => tag.trim()), // For main website compatibility
                     url: formData.get('url'),
                     duration: formData.get('duration'),
                     image: formData.get('image') || caseStudies[caseIndex].image,
                     content: content,
+                    slug: formData.get('title').toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-'), // Auto-generate slug
+                    status: 'published', // Always published for main site
                     updatedAt: new Date().toISOString()
                 };
 
