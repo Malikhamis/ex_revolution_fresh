@@ -614,18 +614,23 @@
         }
 
         function updateStats() {
-            // These could be dynamic or pulled from an analytics API
-            const stats = {
-                posts: 12,
-                caseStudies: 8,
-                pageViews: '2.4K',
-                avgTime: '3.2m'
-            };
-
-            document.getElementById('total-posts').textContent = stats.posts;
-            document.getElementById('case-studies').textContent = stats.caseStudies;
-            document.getElementById('page-views').textContent = stats.pageViews;
-            document.getElementById('avg-time').textContent = stats.avgTime;
+            // Dynamically count blog posts and case studies from contentManager
+            if (window.contentManager) {
+                window.contentManager.getBlogPosts().then(posts => {
+                    document.getElementById('total-posts').textContent = posts.length;
+                });
+                window.contentManager.getCaseStudies().then(studies => {
+                    // Only count published case studies
+                    const published = studies.filter(cs => cs.status === 'published');
+                    document.getElementById('case-studies').textContent = published.length;
+                });
+            } else {
+                // fallback static values
+                document.getElementById('total-posts').textContent = 12;
+                document.getElementById('case-studies').textContent = 8;
+            }
+            document.getElementById('page-views').textContent = '2.4K';
+            document.getElementById('avg-time').textContent = '3.2m';
         }
 
         function animateNumbers() {
