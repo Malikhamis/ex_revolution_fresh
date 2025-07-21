@@ -24,7 +24,9 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { username, password } = JSON.parse(event.body);
+    const body = JSON.parse(event.body);
+    const username = body.username || body.email;
+    const password = body.password;
 
     // Simple hardcoded admin check for now
     if (username === 'admin@exrevolution.com' && password === 'ExRev@Admin2025') {
