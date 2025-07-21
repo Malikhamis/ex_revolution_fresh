@@ -27,7 +27,7 @@ exports.handler = async (event, context) => {
     const { username, password } = JSON.parse(event.body);
 
     // Simple hardcoded admin check for now
-    if (username === 'admin@exrevolution.com' && password === 'ExRev@Admin2023') {
+    if (username === 'admin@exrevolution.com' && password === 'ExRev@Admin2025') {
       // Generate a simple token (in production, use JWT)
       const token = Buffer.from(`${username}:${Date.now()}`).toString('base64');
       
